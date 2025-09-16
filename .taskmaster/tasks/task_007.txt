@@ -1,0 +1,43 @@
+# Task ID: 7
+# Title: Integrate Contact Form with Backend API
+# Status: pending
+# Dependencies: None
+# Priority: medium
+# Description: Connect the frontend contact form on the 'Contact' page to the backend API endpoint.
+# Details:
+In src/pages/Contact/Contact.js, add logic to handle form submission. Use fetch or axios to send a POST request to the /api/contact endpoint with the form data. Implement logic to display success or error messages to the user.
+
+# Test Strategy:
+Fill out and submit the form on the live website. Check the browser's network tab to ensure the API call is made correctly. Verify that the success/error message is displayed appropriately and the backend sends the email.
+
+# Subtasks:
+## 1. Implement State Management for Contact Form Inputs [pending]
+### Dependencies: None
+### Description: In `src/pages/Contact/Contact.js`, use the `useState` hook to create and manage state for the `name`, `email`, and `message` form fields. Bind these state variables to their respective input elements.
+### Details:
+Import the `useState` hook from React. Create three state variables, e.g., `const [name, setName] = useState('');`. For each form input (`<input>`, `<textarea>`), set the `value` attribute to the corresponding state variable and the `onChange` handler to update the state (e.g., `onChange={(e) => setName(e.target.value)}`).
+
+## 2. Create the Form Submission Handler [pending]
+### Dependencies: 7.1
+### Description: Create an asynchronous `handleSubmit` function in `src/pages/Contact/Contact.js`. This function should be attached to the form's `onSubmit` event and prevent the default form submission behavior.
+### Details:
+Define a function `const handleSubmit = async (e) => { ... };`. The first line should be `e.preventDefault();`. Attach this function to the form element: `<form onSubmit={handleSubmit}>`. Inside the function, construct a data object using the state variables from the previous subtask, e.g., `{ name, email, message }`.
+
+## 3. Integrate Axios for API POST Request [pending]
+### Dependencies: 7.2
+### Description: Install the `axios` library if it's not already in the project. Within the `handleSubmit` function, use `axios.post` to send the form data to the `/api/contact` backend endpoint.
+### Details:
+Run `npm install axios` or `yarn add axios`. Import axios at the top of `src/pages/Contact/Contact.js`. Inside `handleSubmit`, add a `try...catch` block. In the `try` block, make the API call: `await axios.post('/api/contact', formData);`. The `formData` object should contain the name, email, and message.
+
+## 4. Add State for Submission Status and Feedback Messages [pending]
+### Dependencies: 7.3
+### Description: Introduce new state variables to manage the UI feedback, such as loading status, success, and error messages. Update these states based on the outcome of the API call.
+### Details:
+Create state variables like `const [isSubmitting, setIsSubmitting] = useState(false);` and `const [statusMessage, setStatusMessage] = useState('');`. Set `isSubmitting` to `true` before the API call and `false` in a `finally` block. In the `try` block, upon success, set a success message. In the `catch` block, set an error message.
+
+## 5. Conditionally Render UI Feedback Elements [pending]
+### Dependencies: 7.4
+### Description: Use the submission status state to render dynamic feedback in the JSX. Display a loading indicator on the submit button, and show success or error messages to the user near the form.
+### Details:
+In the JSX, conditionally render a message container based on `statusMessage`. For example: `{statusMessage && <p className='status-message'>{statusMessage}</p>}`. You can also disable the submit button and change its text while `isSubmitting` is true, e.g., `<button type='submit' disabled={isSubmitting}>{isSubmitting ? 'Sending...' : 'Send Message'}</button>`.
+

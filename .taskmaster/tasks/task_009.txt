@@ -1,0 +1,130 @@
+# Task ID: 9
+# Title: Develop Blog List and Blog Post Pages
+# Status: pending
+# Dependencies: 8, 4
+# Priority: medium
+# Description: Create two new page components: one to list all blog articles fetched from the headless CMS, and another to display the full content of a single selected article. This includes setting up routing and fetching data from the CMS.
+# Details:
+This task involves creating the frontend implementation for the blog section, fetching data from the Sanity.io CMS configured in Task #25.
+
+**1. Component & Page Structure:**
+- Create a new page component for the blog list at `src/pages/Blog/Blog.js`.
+- Create a new page component for a single blog post at `src/pages/BlogPost/BlogPost.js`.
+- Create a reusable component `src/components/BlogPostCard/BlogPostCard.js` to display a post summary on the blog list page. This should follow the component pattern established in Task #19.
+
+**2. Routing:**
+- In the main application router (likely `src/App.js`), add two new routes using `react-router-dom`:
+  - A route for `/blog` that renders the `Blog` page component.
+  - A dynamic route for `/blog/:slug` that renders the `BlogPost` page component.
+
+**3. Data Fetching & Integration:**
+- Install and configure the Sanity client (`@sanity/client`) to connect to the CMS project.
+- **Blog List Page (`Blog.js`):**
+  - Use a `useEffect` hook to fetch a list of all posts on component mount.
+  - Write a GROQ query to retrieve necessary fields: `_id`, `title`, `slug`, `mainImage`, `publishedAt`, and an excerpt/summary.
+  - Map the fetched posts to render a list of `BlogPostCard` components. Each card should use `<Link to={'/blog/' + post.slug.current}>` to link to the detail page.
+- **Blog Post Page (`BlogPost.js`):**
+  - Use the `useParams` hook from `react-router-dom` to extract the `slug` from the URL.
+  - Use a `useEffect` hook to fetch the single post data matching the slug.
+  - Write a GROQ query to retrieve all details for the post, including `title`, `mainImage`, `author`, `publishedAt`, and the `body` (portable text).
+
+**4. Content Rendering:**
+- On the `BlogPost.js` page, render the post's title, image, and metadata.
+- Install and use `@portabletext/react` to render the `body` content. This will correctly translate the rich text from Sanity into HTML elements.
+
+**5. Styling:**
+- Create corresponding style files (e.g., `Blog.styles.js`, `BlogPost.styles.js`) using `styled-components`.
+- Implement a fully responsive, mobile-first design for both pages, adhering to the global breakpoints and patterns established in Task #21.
+
+# Test Strategy:
+1. **Routing Verification:**
+   - Navigate to the `/blog` URL. The blog list page should render correctly.
+   - Click on a blog post card. The URL should update to `/blog/your-post-slug` and the single post page should load.
+   - Manually enter an invalid slug (e.g., `/blog/non-existent-post`) and verify the page handles the 'not found' case gracefully (e.g., displays a 'Post not found' message or redirects).
+
+2. **Data & Content Verification:**
+   - On the `/blog` page, confirm that all sample posts created in the Sanity CMS are listed with their correct title, image, and summary.
+   - On a single post page (`/blog/:slug`), verify that the title, main image, author, and full body content match the data entered in the CMS studio.
+   - Check that rich text elements from the CMS (e.g., headings, bold text, lists) are rendered correctly as HTML.
+
+3. **Responsiveness Testing:**
+   - Using browser developer tools, view both the blog list and blog post pages at the project's standard mobile, tablet, and desktop breakpoints (as defined in Task #21). 
+   - Confirm that the layout adapts correctly, content is readable, and no horizontal scrollbars appear.
+
+# Subtasks:
+## 1. Create Page/Component Skeletons and Configure Routing [pending]
+### Dependencies: None
+### Description: Create the necessary file structure for the new blog pages and the reusable card component. Then, add the corresponding routes to the main application router to make the pages accessible.
+### Details:
+Following the existing project structure, create these files:
+- `src/pages/Blog/Blog.js`
+- `src/pages/Blog/Blog.styles.js`
+- `src/pages/BlogPost/BlogPost.js`
+- `src/pages/BlogPost/BlogPost.styles.js`
+- `src/components/BlogPostCard/BlogPostCard.js`
+- `src/components/BlogPostCard/BlogPostCard.styles.js`
+
+In `src/App.js`, import the `Blog` and `BlogPost` components and add two new routes inside the `<Routes>` component:
+- `<Route path="/blog" element={<Blog />} />`
+- `<Route path="/blog/:slug" element={<BlogPost />} />`
+
+## 2. Fetch and Display Blog Post List on Blog Page [pending]
+### Dependencies: 9.1
+### Description: Implement the data fetching logic on the `Blog.js` page to retrieve all blog posts from the Sanity CMS and display them as a list of `BlogPostCard` components.
+### Details:
+In `src/pages/Blog/Blog.js`:
+1. Import `useState`, `useEffect` from 'react'.
+2. Import the configured Sanity client: `import client from '../../client';`
+3. Use a `useEffect` hook to fetch data on component mount.
+4. Write a GROQ query to get all documents of type `post`, selecting the `_id`, `title`, `slug`, `mainImage`, and `publishedAt` fields.
+5. Store the fetched posts in a state variable (e.g., `const [posts, setPosts] = useState(null);`).
+6. Map over the `posts` array and render a `BlogPostCard` for each post. Pass the post data as props.
+7. Wrap each `BlogPostCard` in a `Link` from `react-router-dom` pointing to `'/blog/' + post.slug.current`.
+
+## 3. Implement the BlogPostCard Component [pending]
+### Dependencies: 9.1
+### Description: Build the reusable `BlogPostCard` component to display a summary of a blog post, including its image, title, and publication date. Style the card to match the project's aesthetic.
+### Details:
+In `src/components/BlogPostCard/BlogPostCard.js`:
+1. Define the component to accept props: `image`, `title`, and `date`.
+2. Render the received props within a structured layout (e.g., an image at the top, followed by the date and then the title).
+
+In `src/components/BlogPostCard/BlogPostCard.styles.js`:
+1. Use `styled-components` to create the card layout.
+2. Refer to `src/components/ServiceCard/ServiceCard.styles.js` for patterns.
+3. Add styles for the container, image, title, and date elements, ensuring it's responsive.
+
+## 4. Fetch and Render Single Post Data [pending]
+### Dependencies: 9.1
+### Description: On the `BlogPost.js` page, fetch the complete data for a single article based on the URL slug. Render the post's title, main image, and other metadata.
+### Details:
+In `src/pages/BlogPost/BlogPost.js`:
+1. Import `useState`, `useEffect` from 'react' and `useParams` from 'react-router-dom'.
+2. Import the Sanity client: `import client from '../../client';`
+3. Use `useParams` to get the `slug` from the URL.
+4. Use a `useEffect` hook that triggers when the `slug` changes.
+5. Inside the hook, write a GROQ query to fetch the single post where `slug.current == $slug`. Select all relevant fields, including `title`, `mainImage`, `publishedAt`, and `body`.
+6. Store the fetched post data in a state variable.
+7. Render the `title`, `mainImage`, and `publishedAt` data on the page. Leave the `body` for the next subtask.
+
+## 5. Render Portable Text and Finalize Styling [pending]
+### Dependencies: 9.4
+### Description: Integrate the `@portabletext/react` library to correctly render the rich text content from Sanity. Finalize the responsive styling for both the blog list and single post pages.
+### Details:
+1. Install the portable text library: `npm install @portabletext/react` or `yarn add @portabletext/react`.
+2. In `src/pages/BlogPost/BlogPost.js`, import `PortableText` from `@portabletext/react`.
+3. Use the `<PortableText value={post.body} />` component to render the rich text content.
+4. In `src/pages/Blog/Blog.styles.js` and `src/pages/BlogPost/BlogPost.styles.js`, implement a responsive, mobile-first grid/layout for the content, adhering to the project's global styles and breakpoints.
+
+## 6. Expose Blog List Page via Express.js [pending]
+### Dependencies: None
+### Description: Create an EJS template for the blog list page and define a route in public.routes.js to render it.
+### Details:
+
+
+## 7. Expose Blog Post Page via Express.js [pending]
+### Dependencies: None
+### Description: Create an EJS template for the single blog post page and define a route in public.routes.js to render it, handling dynamic slugs.
+### Details:
+
+

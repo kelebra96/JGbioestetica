@@ -1,0 +1,87 @@
+# Task ID: 11
+# Title: Perform SEO and Performance Optimization
+# Status: pending
+# Dependencies: 9, 10
+# Priority: medium
+# Description: Implement on-page SEO best practices, optimize asset loading, and improve overall site performance to enhance search engine visibility and user experience.
+# Details:
+This task involves a comprehensive audit and implementation of SEO and performance enhancements across the application, leveraging the existing React and Sanity.io architecture.
+
+**1. On-Page SEO Implementation:**
+   - Install `react-helmet-async` to manage per-page head tags (`npm install react-helmet-async`). Wrap the root component in `src/index.js` or `src/App.js` with `<HelmetProvider>`.
+   - Create a reusable `MetaTags` component (`src/components/MetaTags/MetaTags.js`) that accepts props like `title`, `description`, `imageUrl`, and `canonicalUrl` to generate `<title>`, `<meta name="description">`, `<link rel="canonical">`, and Open Graph tags (`og:title`, `og:description`, `og:image`, `og:url`).
+   - Integrate the `MetaTags` component into all pages. For dynamic pages like `src/pages/BlogPost/BlogPost.js`, pull the title, a summary for the description, and the main image URL from the Sanity data.
+   - Update `public/index.html` to set the correct language attribute (`<html lang="pt-BR">`) and add fallback meta tags for the homepage.
+   - Create `public/robots.txt` to guide search engine crawlers, allowing all relevant content and pointing to the sitemap.
+   - Implement a sitemap generation strategy. This can be a post-build script that fetches all blog and service slugs from Sanity to create a `sitemap.xml` file in the build output directory.
+
+**2. Performance Optimization:**
+   - **Image Optimization:** Modify image rendering logic to use the Sanity.io Image API for serving responsive, next-gen format images (e.g., WebP). Append URL parameters like `?auto=format&q=75&w=800` to image URLs fetched from Sanity. Implement native lazy loading by adding `loading="lazy"` to all `<img>` tags for content below the fold, especially in `src/components/BlogPostCard/BlogPostCard.js` and within blog post content.
+   - **Code Splitting:** Review the routing setup in `src/App.js`. Use `React.lazy()` and `<Suspense>` to dynamically import page components (e.g., `const Blog = React.lazy(() => import('./pages/Blog/Blog'));`). This will ensure users only download the code for the page they are viewing.
+   - **Bundle Analysis:** After a production build (`npm run build`), use a tool like `source-map-explorer` to analyze the JavaScript bundle sizes and identify any unexpectedly large dependencies that could be optimized or replaced.
+
+**3. Accessibility (A11y) & Semantics:**
+   - Audit the entire application to ensure correct semantic HTML is used (e.g., `<main>`, `<article>`, `<nav>`).
+   - Ensure all images rendered from Sanity have their `alt` text field from the CMS applied to the `<img>` tag's `alt` attribute.
+   - Verify that all interactive elements (buttons, links) have accessible names and visible focus states. Check the form in `src/pages/Contact/Contact.js` to ensure all inputs are linked to a `<label>`.
+
+# Test Strategy:
+**1. SEO Verification:**
+   - Use browser developer tools to inspect the `<head>` section on the Home page, Blog list page, and several individual Blog Post pages. Verify that the `<title>`, `<meta name="description">`, and `og:` tags are present, unique, and accurately reflect the page's content.
+   - Use an online tool like the Facebook Sharing Debugger to test a blog post URL. Verify that the correct title, description, and image appear in the preview.
+   - Navigate to `/robots.txt` and `/sitemap.xml` on the deployed site to ensure they are accessible and correctly formatted.
+
+**2. Performance Testing:**
+   - Run a Google Lighthouse audit in an incognito Chrome window on the Home page, a Blog Post, and the Blog list page. Aim for scores of 90+ in Performance, Accessibility, and SEO categories. Address any major issues reported.
+   - Open the Network tab in developer tools, enable 'Slow 3G' throttling, and load a long page like the blog list. Confirm that images below the fold are loaded only as you scroll down (verifying `loading="lazy"`).
+   - Clear the cache, navigate between the Home page and the Blog page, and observe the Network tab to confirm that separate JavaScript chunks are being loaded for each page, verifying code splitting.
+
+**3. Accessibility Audit:**
+   - Use the Axe DevTools browser extension to run an automated accessibility scan on all pages. Fix all critical and serious issues.
+   - Navigate the entire website using only the keyboard (Tab, Shift+Tab, Enter). Ensure all links, buttons, and form fields in the contact form are reachable, interactive, and have a visible focus indicator.
+
+# Subtasks:
+## 1. Set Up SEO Foundation with `react-helmet-async` [pending]
+### Dependencies: None
+### Description: Install and configure `react-helmet-async` to enable dynamic management of the document head. This includes creating a reusable component for all meta tags.
+### Details:
+1. Install the necessary package: `npm install react-helmet-async`.
+2. In `src/index.js`, import `HelmetProvider` from `react-helmet-async` and wrap the `<BrowserRouter>` component with it.
+3. Create a new component file at `src/components/MetaTags/MetaTags.js`.
+4. Implement the `MetaTags` component to accept props like `title`, `description`, `imageUrl`, and `canonicalUrl`. It should render `<Helmet>` with `<title>`, `<meta name='description'>`, `<link rel='canonical'>`, and Open Graph tags (`og:title`, `og:description`, `og:image`, `og:url`).
+
+## 2. Integrate Meta Tags and Create Core SEO Files [pending]
+### Dependencies: 11.1
+### Description: Deploy the `MetaTags` component across all pages, using dynamic data where applicable. Update static HTML files and create `robots.txt` to guide search engines.
+### Details:
+1. Import and use the `MetaTags` component in each page component inside `src/pages/` (`Home.js`, `About.js`, `Services.js`, `Blog.js`, `Contact.js`). Provide static, relevant content for each page.
+2. In `src/pages/BlogPost/BlogPost.js`, integrate `MetaTags` and populate its props dynamically using the fetched post data (e.g., `title={post.title}`, `description={post.excerpt}`).
+3. In `public/index.html`, change the language attribute to `<html lang="pt-BR">` and update the fallback `<title>` and `<meta name="description">` to be relevant to the homepage.
+4. Create a new file `public/robots.txt` with rules to allow crawlers access to all content and specify the sitemap location (e.g., `Sitemap: https://www.jgbioestetica.com.br/sitemap.xml`).
+
+## 3. Optimize Image Delivery with Sanity.io API and Lazy Loading [pending]
+### Dependencies: None
+### Description: Modify image rendering to leverage the Sanity.io Image API for optimized formats and sizes. Implement native lazy loading for images below the fold to improve initial page load time.
+### Details:
+1. Locate the `urlFor` helper function, likely in files that render Sanity images like `src/pages/BlogPost/BlogPost.js` or `src/client.js`.
+2. Update the image URL generation to include Sanity's optimization parameters. For example, change `urlFor(source).url()` to `urlFor(source).auto('format').quality(75).width(800).url()`.
+3. Apply this optimization to images in `src/components/BlogPostCard/BlogPostCard.js` and `src/pages/BlogPost/BlogPost.js`.
+4. Add the `loading="lazy"` attribute to all `<img>` tags within `BlogPostCard.js` and any other components rendering lists of images that may extend off-screen.
+
+## 4. Implement Route-Based Code Splitting [pending]
+### Dependencies: None
+### Description: Refactor the main router in `src/App.js` to dynamically import page components. This will reduce the initial JavaScript bundle size by splitting the code for each page into separate chunks.
+### Details:
+1. In `src/App.js`, import `lazy` and `Suspense` from 'react'.
+2. Convert the static page imports to dynamic imports using `React.lazy()`. For example: `const Home = lazy(() => import('./pages/Home/Home'));`.
+3. Repeat this for all page components: `About`, `Services`, `Blog`, `BlogPost`, and `Contact`.
+4. Wrap the `<Routes>` component within a `<Suspense>` component, providing a fallback UI, such as a simple loading message or a spinner: `<Suspense fallback={<div>Carregando...</div>}>`.
+
+## 5. Enhance Accessibility (A11y) and Semantic HTML [pending]
+### Dependencies: None
+### Description: Audit the application to ensure proper use of semantic HTML, all images have meaningful alt text, and all interactive elements are accessible.
+### Details:
+1. Review all page and component files to ensure correct semantic HTML is used. Confirm that `<main>` in `App.js` correctly wraps the primary content, and use `<article>`, `<section>`, and `<nav>` where appropriate.
+2. In `src/pages/BlogPost/BlogPost.js` and `src/components/BlogPostCard/BlogPostCard.js`, ensure the `alt` attribute of the `<img>` tag is populated from the `alt` text field provided by Sanity for each image.
+3. In `src/pages/Contact/Contact.js`, inspect the form and verify that every `<input>` and `<textarea>` has a corresponding `<label>` element with a matching `htmlFor` attribute pointing to the input's `id`.
+

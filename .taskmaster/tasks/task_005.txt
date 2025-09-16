@@ -1,0 +1,43 @@
+# Task ID: 5
+# Title: Set Up Backend Server for Contact Form
+# Status: pending
+# Dependencies: None
+# Priority: medium
+# Description: Initialize a new backend project (e.g., Node.js with Express) to handle API requests.
+# Details:
+Create a new directory for the backend. Set up a basic Express server that can listen for incoming HTTP requests. Choose a hosting solution for the backend (e.g., Vercel Serverless Functions, Heroku, Netlify Functions).
+
+# Test Strategy:
+Create a simple health-check endpoint (e.g., /api/status). Deploy the basic server and ensure the endpoint is reachable and returns a success status.
+
+# Subtasks:
+## 1. Create API Directory for Vercel Functions [pending]
+### Dependencies: None
+### Description: Create a new 'api' directory at the project root to house the backend serverless functions, following Vercel's standard project structure.
+### Details:
+In the root of the project `C:\Barao\Projetos\JGbioestetica`, create a new folder named `api`. This directory is where Vercel automatically looks for serverless functions.
+
+## 2. Install Backend Dependencies [pending]
+### Dependencies: None
+### Description: Add necessary Node.js packages like Express and CORS to the project to handle HTTP requests and cross-origin policies.
+### Details:
+Open a terminal in the project root and run `npm install express cors`. This will add `express` and `cors` to the `dependencies` section of the root `package.json` file.
+
+## 3. Implement Basic Express Server in an API File [pending]
+### Dependencies: 5.1, 5.2
+### Description: Create an initial API file (e.g., `index.js`) inside the `api` directory and set up a minimal Express application to handle all API requests.
+### Details:
+Create a file named `index.js` inside the `api` directory. In this file, require `express` and `cors`, initialize an Express app, apply the `cors()` middleware, and export the app instance using `module.exports = app;`. This will serve as the entry point for all API routes.
+
+## 4. Create the `/api/status` Health-Check Endpoint [pending]
+### Dependencies: 5.3
+### Description: Implement a GET route for `/api/status` within the Express application to serve as a health check, confirming the server is running.
+### Details:
+In `api/index.js`, add a GET route handler: `app.get('/api/status', (req, res) => { res.status(200).json({ status: 'ok' }); });`. This endpoint will be used to verify that the backend is deployed and responsive.
+
+## 5. Configure Vercel for API Rewrites [pending]
+### Dependencies: 5.1
+### Description: Create or update the `vercel.json` configuration file to correctly route all requests made to `/api/*` to the Express serverless function.
+### Details:
+Create a `vercel.json` file in the project root if one does not exist. Add a `rewrites` rule to direct all API traffic to the main function. Example configuration: `{ "rewrites": [{ "source": "/api/(.*)", "destination": "/api/index.js" }] }`. This ensures that Vercel properly maps incoming requests like `/api/status` to your backend code.
+

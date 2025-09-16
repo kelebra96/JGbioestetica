@@ -1,0 +1,75 @@
+# Task ID: 12
+# Title: Set Up Hosting, Domain, and Deploy Website
+# Status: pending
+# Dependencies: 10, 11
+# Priority: medium
+# Description: Configure a hosting environment and domain, and deploy the final version of the website to make it publicly accessible.
+# Details:
+This task involves selecting a hosting provider, configuring the domain's DNS, setting up the deployment pipeline, and pushing the application to production.
+
+1. **Hosting Provider Setup:**
+   - Choose and sign up for a hosting provider optimized for modern JavaScript applications, such as Vercel or Netlify. Vercel is recommended given the potential for serverless functions (as per Task #24).
+   - Create a new project and connect it to the project's Git repository.
+
+2. **Build Configuration:**
+   - In the hosting provider's project settings, configure the build command to `npm run build`.
+   - Set the publish directory to `build`, which is the standard output for Create React App projects.
+   - Select "Create React App" as the framework preset if available.
+
+3. **Domain Configuration:**
+   - Purchase the final domain name if not already acquired.
+   - In the hosting provider's dashboard, add the custom domain.
+   - Update the domain's DNS records (either by changing nameservers or adding A/CNAME records) to point to the hosting provider as per their instructions.
+
+4. **Environment Variables:**
+   - In the project settings on the hosting platform, add all necessary environment variables required for the production build. Based on previous tasks, these will include:
+     - `REACT_APP_SANITY_PROJECT_ID`: The project ID from the Sanity.io CMS.
+     - `REACT_APP_SANITY_DATASET`: The dataset name (likely 'production').
+     - Any server-side keys for the contact form API (e.g., `SENDGRID_API_KEY`, `CONTACT_FORM_RECIPIENT_EMAIL`).
+
+5. **CMS CORS Configuration:**
+   - Go to the Sanity.io project management dashboard (manage.sanity.io).
+   - Navigate to `API` -> `CORS origins`.
+   - Add the new production URL (e.g., `https://www.yourdomain.com`) to the list of allowed origins to enable the live frontend to fetch data from the CMS.
+
+6. **Initial Deployment:**
+   - Push the latest, completed code from the `main` branch to trigger the first production deployment. Monitor the build logs in the hosting provider's dashboard to ensure a successful build and deployment.
+
+# Test Strategy:
+1. **Domain & SSL Verification:** Access the website using the final custom domain. Verify that the site loads correctly over HTTPS and that the browser shows a valid SSL certificate.
+2. **Live Data Fetching:** Navigate to the blog and services pages. Confirm that all content is being fetched correctly from the Sanity.io CMS. Check the browser's network tab for any failed requests or CORS errors.
+3. **Contact Form Submission:** Go to the contact page and submit the form with valid data. Verify that the success message appears and that the designated recipient receives the email notification. Check the serverless function logs on the hosting platform for any execution errors.
+4. **Performance Audit:** Run a Google Lighthouse audit on the live home page, a blog list page, and a blog post page. Verify that performance, accessibility, and SEO scores meet the targets set in Task #28.
+5. **Final Content Check:** Perform a final spot-check across all pages to ensure all content populated in Task #27 is present and correctly formatted, with no remaining placeholder text or images.
+
+# Subtasks:
+## 1. Connect Repository and Configure Build Settings on Vercel [pending]
+### Dependencies: None
+### Description: Create a new project on a hosting provider like Vercel, connect it to the project's Git repository, and configure the necessary build settings for a Create React App.
+### Details:
+Sign up for Vercel. Create a new project and import the Git repository. In the project settings, Vercel should auto-detect 'Create React App'. Verify the build command is set to `npm run build` and the Output Directory is `build`. This aligns with the `react-scripts build` command found in `package.json`.
+
+## 2. Add and Configure Custom Domain [pending]
+### Dependencies: 12.1
+### Description: Add the final custom domain to the Vercel project and update the domain's DNS records at the registrar to point to Vercel.
+### Details:
+In the Vercel project's 'Domains' tab, add the custom domain name. Vercel will provide instructions, typically to update the nameservers (NS records) at your domain registrar to point to Vercel's nameservers. This change can take time to propagate.
+
+## 3. Set Production Environment Variables in Vercel [pending]
+### Dependencies: 12.1
+### Description: Add all necessary environment variables to the Vercel project settings to allow the production build to connect to the Sanity.io CMS and other services.
+### Details:
+Navigate to the 'Settings' -> 'Environment Variables' section of the Vercel project. Based on the codebase analysis (`grep 'process.env.REACT_APP_'`), add the following keys and their corresponding production values: `REACT_APP_SANITY_PROJECT_ID` and `REACT_APP_SANITY_DATASET`. Also include any other required secrets, such as for a contact form API.
+
+## 4. Add Production Domain to Sanity CMS CORS Origins [pending]
+### Dependencies: 12.2
+### Description: Authorize the newly deployed website to fetch data from the Sanity.io CMS by adding its production URL to the allowed CORS origins list.
+### Details:
+Go to the Sanity project management dashboard (manage.sanity.io). Navigate to the 'API' tab and find the 'CORS origins' configuration. Click 'Add new origin' and enter the full URL of the production domain (e.g., `https://www.yourdomain.com`). Ensure 'Allow credentials' is checked.
+
+## 5. Trigger Final Deployment and Perform Full Site Verification [pending]
+### Dependencies: 12.3, 12.4
+### Description: Push the latest code from the main branch to trigger a final production deployment, and conduct a full smoke test of the live website.
+### Details:
+With all configurations in place, ensure the `main` branch contains the final, approved version of the code. Push any final commits to the `main` branch. This will automatically trigger a new production deployment on Vercel. Monitor the build and deployment logs for success.
+

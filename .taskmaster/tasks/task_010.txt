@@ -1,0 +1,61 @@
+# Task ID: 10
+# Title: Populate Website with Final Content
+# Status: pending
+# Dependencies: 7, 8, 9
+# Priority: medium
+# Description: Replace all placeholder text, images, and temporary data across the entire website with the final, client-approved content for both static pages and dynamic sections managed by the CMS.
+# Details:
+This task involves updating all content to its final state. All text, images, and other media should be sourced from the client-provided content document and asset folder.
+
+**1. Dynamic Content Entry (Headless CMS):**
+   - Log in to the Sanity Studio, which was configured in Task #25.
+   - Navigate to the 'Service' content type and create entries for each service offered. Fill in all defined fields such as title, description, image, and any other custom fields.
+   - Navigate to the 'Post' content type and create the initial set of blog articles. Upload cover images, assign authors, and populate the body content.
+
+**2. Static Page Content Updates:**
+   - **Home Page (`src/pages/Home/Home.js`):** Update the hero section headline, sub-headline, and call-to-action text. Replace placeholder content in feature sections and testimonials.
+   - **About Page (`src/pages/About/About.js`):** Populate the company history, mission statement, and team member bios with the final text and professional photos.
+   - **Contact Page (`src/pages/Contact/Contact.js`):** Update the introductory text above the form, and verify contact details like address, phone number, and email are correct.
+
+**3. Global Element Updates:**
+   - **Header & Footer (`src/components/Header/Header.js`, `src/components/Footer/Footer.js`):** Ensure all navigation links are correct and point to the right pages. Update footer content, including social media links and the copyright year.
+   - **Global Assets (`public/` directory):** Replace `favicon.ico`, `logo192.png`, and any other placeholder logos with the final, optimized brand assets.
+
+# Test Strategy:
+1. **Static Content Audit:** Systematically navigate to each static page (Home, About, Contact) and compare the on-screen content against the master content document. Verify there is no 'lorem ipsum' or placeholder text remaining.
+2. **Dynamic Content Verification:** Navigate to the `/blog` and any services pages. Confirm that all posts and services entered into the Sanity Studio are displayed correctly on their respective list pages. Click into each individual item to ensure the detail pages (`/blog/:slug`) render the full content accurately.
+3. **Asset & Media Check:** Verify that the website's favicon in the browser tab and the logo in the header are the final versions. Ensure all images across all pages load correctly, are not distorted, and have appropriate `alt` text.
+4. **Link Integrity Check:** Click every link on the website, including navigation menu items, buttons, and in-text links, to ensure they direct to the correct internal or external pages without any 404 errors.
+5. **Responsive Review:** Use browser developer tools to view the website on various screen sizes (desktop, tablet, mobile). Confirm that the final content reflows correctly and does not break the layout on any device.
+
+# Subtasks:
+## 1. Populate 'Service' and 'Post' Content in Sanity CMS [pending]
+### Dependencies: None
+### Description: Log into the Sanity Studio and populate all dynamic content types. This includes creating entries for every service and the initial set of blog posts using the final client-provided text and images.
+### Details:
+Access the Sanity Studio deployment. Navigate to the 'Service' schema and create a new document for each service, filling in the title, description, and uploading the corresponding service image. Then, navigate to the 'Post' schema and create the initial blog articles, ensuring all fields like title, body content, author, and cover image are populated.
+
+## 2. Update Home Page Static Content and Images [pending]
+### Dependencies: None
+### Description: Replace all placeholder text and images on the home page with the final, client-approved content. This includes the main hero section, feature descriptions, and testimonials.
+### Details:
+In `src/pages/Home/Home.js`, update the props being passed to the `Hero` component with the final headline and sub-headline. Locate the `FeatureSection` and `Testimonials` components (or equivalent JSX) and replace the 'lorem ipsum' text and placeholder image paths with the final content and assets provided by the client.
+
+## 3. Update About and Contact Page Content [pending]
+### Dependencies: None
+### Description: Populate the 'About' and 'Contact' pages with their final text, team member information, and contact details.
+### Details:
+In `src/pages/About/About.js`, replace the placeholder text for the company history, mission statement, and team member bios. Replace placeholder team member images with their professional photos. In `src/pages/Contact/Contact.js`, update the introductory text above the contact form and verify that the displayed address, phone number, and email are correct.
+
+## 4. Update Global Header and Footer Content [pending]
+### Dependencies: None
+### Description: Update the site-wide header and footer to reflect the final navigation structure, social media links, and copyright information.
+### Details:
+In `src/components/Header/Header.js`, review all navigation links to ensure they are correct and point to the right pages. In `src/components/Footer/Footer.js`, update the `href` attributes for all social media icons to point to the client's actual profiles. Also, update the copyright year to the current year.
+
+## 5. Replace Global Brand Assets and Favicon [pending]
+### Dependencies: None
+### Description: Replace all placeholder logos, favicons, and web app manifest icons with the final, optimized brand assets.
+### Details:
+In the `public/` directory, replace `favicon.ico`, `logo192.png`, and `logo512.png` with the final assets provided by the client. Ensure the new files use the exact same filenames. If other placeholder images exist in `public/images/`, replace them as well. Update `public/manifest.json` if necessary to reflect the new branding.
+

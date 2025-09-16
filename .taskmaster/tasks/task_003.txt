@@ -1,0 +1,72 @@
+# Task ID: 3
+# Title: Enhance Header and Footer Components
+# Status: pending
+# Dependencies: 1
+# Priority: medium
+# Description: Update the existing `Header.js` and `Footer.js` components to match the final design, including navigation links, logo, and footer information.
+# Details:
+This task involves a complete overhaul of the placeholder Header and Footer components to align with the final UI/UX design. The implementation should be fully responsive and utilize the existing `styled-components` architecture.
+
+**Header (`src/components/Header/Header.js`):**
+1.  **Logo Integration:** Replace the placeholder logo with the official SVG logo from `src/assets/images/logo.svg`. The logo must be wrapped in a `Link` component from `react-router-dom` pointing to the root path ('/').
+2.  **Desktop Navigation:** Implement the primary navigation bar using `styled-components`. Use `NavLink` from `react-router-dom` for the links (e.g., 'Início', 'Sobre', 'Serviços', 'Contato') to allow for active-state styling.
+3.  **Responsive Behavior (Mobile Menu):**
+    *   The navigation links should be hidden on mobile viewports (e.g., < 768px).
+    *   Implement a hamburger menu icon that becomes visible on mobile.
+    *   Use the `useState` hook to manage the open/closed state of the mobile menu.
+    *   Clicking the hamburger icon should toggle a full-screen or slide-in overlay containing the navigation links.
+4.  **Styling:** Create styled components such as `HeaderWrapper`, `NavContainer`, `LogoImage`, `NavLinks`, and `MobileMenuIcon`. Ensure all styling references the project's theme file (`src/styles/theme.js`) for colors, fonts, and breakpoints.
+
+**Footer (`src/components/Footer/Footer.js`):**
+1.  **Layout:** Structure the footer using a multi-column layout for desktop (e.g., Logo/About, Quick Links, Contact Info, Social Media) that stacks vertically on mobile.
+2.  **Content Population:**
+    *   **Column 1 (About):** Include the logo and a brief company tagline.
+    *   **Column 2 (Quick Links):** Re-implement the main navigation links for user convenience.
+    *   **Column 3 (Contact):** Add static contact information: Address, Phone Number, and Email.
+    *   **Column 4 (Social):** Integrate social media icons (e.g., Instagram, WhatsApp) with links opening in a new tab (`target='_blank' rel='noopener noreferrer'`). Use an icon library like `react-icons` if already in the project, or import SVGs.
+3.  **Copyright:** Add a copyright section at the very bottom with the text '© [Current Year] JG Bioestética. Todos os direitos reservados.' The year should be generated dynamically using `new Date().getFullYear()`.
+
+# Test Strategy:
+1.  **Visual Verification:** Compare the rendered Header and Footer against the high-fidelity mockups across multiple browsers (Chrome, Firefox) and screen sizes (375px, 768px, 1440px). Verify pixel-perfect implementation of spacing, colors, typography, and logo.
+2.  **Navigation Functional Testing:**
+    *   Click every link in both the Header (desktop and mobile) and Footer to ensure it navigates to the correct route.
+    *   Confirm that the `NavLink` active style is correctly applied to the link corresponding to the current page.
+    *   Verify the logo in the Header and Footer links back to the homepage.
+3.  **Responsiveness Testing:**
+    *   Resize the browser window from desktop to mobile width. Confirm the desktop navigation smoothly transitions to the hamburger menu icon.
+    *   Test the hamburger menu's open/close functionality on-click.
+    *   Verify all links within the mobile menu are clickable and route correctly.
+    *   Confirm the footer columns stack vertically and all content remains legible and well-formatted on mobile screens.
+4.  **External Link Validation:** Click on all social media icons in the footer and verify they open the correct social media pages in a new browser tab.
+
+# Subtasks:
+## 1. Implement Desktop Header with Logo and Navigation [pending]
+### Dependencies: None
+### Description: Overhaul `Header.js` to implement the desktop version. This includes integrating the SVG logo wrapped in a `Link` to the homepage and creating the primary navigation bar using `NavLink` for active-state capabilities.
+### Details:
+Modify `src/components/Header/Header.js` and create a corresponding `src/components/Header/Header.styles.js`. Import the logo from `src/assets/images/logo.svg`. Use `Link` and `NavLink` from `react-router-dom`. Create styled components like `HeaderWrapper`, `LogoImage`, and `NavContainer` using `styled-components`, referencing `src/styles/theme.js` for colors and fonts. The navigation links are 'Início', 'Sobre', 'Serviços', 'Contato'. The navigation should be visible on viewports wider than the mobile breakpoint defined in the theme.
+
+## 2. Implement Responsive Mobile Header with Hamburger Menu [pending]
+### Dependencies: 3.1
+### Description: Enhance the Header to be fully responsive by adding a hamburger menu for mobile viewports. The desktop navigation will be hidden, and a clickable icon will toggle a mobile-friendly navigation overlay.
+### Details:
+In `Header.js`, use the `useState` hook to manage the open/closed state of the mobile menu. Create a `MobileMenuIcon` (hamburger) styled component that is only visible below the theme's mobile breakpoint. The desktop `NavContainer` should be hidden on mobile. Create a new `MobileNavOverlay` styled component that appears when the menu is open, containing the navigation links. The hamburger icon's `onClick` event should toggle the menu's state.
+
+## 3. Structure Footer Layout and Implement Core Content [pending]
+### Dependencies: None
+### Description: Develop the foundational structure of the footer in `Footer.js`, creating a responsive multi-column layout. Populate the initial columns with the logo, a brief tagline, quick links, and static contact information.
+### Details:
+Modify `src/components/Footer/Footer.js` and create `src/components/Footer/Footer.styles.js`. Use Flexbox or CSS Grid to build a multi-column layout that stacks vertically on mobile. Create columns for: 1) Logo and tagline, 2) Quick Links (re-using `NavLink`s from the header), and 3) Static contact info (Address, Phone, Email). All styling must use `styled-components` and reference the project theme.
+
+## 4. Add Social Media Icons and Copyright to Footer [pending]
+### Dependencies: 3.3
+### Description: Complete the footer content by adding a social media section with linked icons and a dynamic copyright notice at the bottom.
+### Details:
+First, add `react-icons` to the project (`npm install react-icons`). In `Footer.js`, create a new column for social media. Import icons like `FaInstagram` and `FaWhatsapp` and wrap them in `<a>` tags pointing to the correct social profiles, ensuring they open in a new tab (`target='_blank'`). Below the column grid, add a copyright section with the text '© [Current Year] JG Bioestética. Todos os direitos reservados.', generating the year dynamically with `new Date().getFullYear()`.
+
+## 5. Implement Active Link Styling and Final Responsive Polish [pending]
+### Dependencies: 3.2, 3.4
+### Description: Apply active-state styling to navigation links in the header and footer. Conduct a final review to polish the responsive behavior of both components across all target screen sizes.
+### Details:
+In `Header.styles.js`, target the `.active` class added by `NavLink` to apply distinct styling (e.g., color change or underline) based on the theme. Ensure this style works for both desktop and mobile navigation. Review the Header and Footer on screen widths like 375px, 768px, and 1440px, adjusting spacing, font sizes, and alignment to ensure a pixel-perfect and consistent user experience across all devices.
+

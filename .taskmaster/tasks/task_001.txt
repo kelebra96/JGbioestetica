@@ -1,0 +1,73 @@
+# Task ID: 1
+# Title: Desenvolvimento do Website Institucional e CMS da JG Bioestética
+# Status: pending
+# Dependencies: None
+# Priority: medium
+# Description: Tarefa principal que engloba todas as atividades de desenvolvimento do site e do painel de administração.
+# Details:
+
+
+# Test Strategy:
+
+
+# Subtasks:
+## 1. Define Brand Guidelines and Finalize Sitemap [done]
+### Dependencies: None
+### Description: Establish the official brand guidelines including color palette, typography, and logo usage. Finalize the website sitemap based on the PRD to confirm all required pages and their hierarchy.
+### Details:
+This task involves collaborating with the client to create a definitive guide for the website's visual identity. The sitemap should be a visual diagram outlining the structure: Home, About Us, Services (with potential sub-pages for each service), Blog, and Contact.
+<info added on 2025-09-12T01:19:46.828Z>
+**Implementation Notes:**
+
+The foundational brand guidelines and sitemap are now complete and serve as the primary input for this design task.
+
+-   **Source of Truth:** All wireframes and high-fidelity mockups must be based on the specifications within:
+    -   `./.taskmaster/docs/brand-guidelines.md`: For the complete visual identity, including the expanded color palette, typography, iconography, and voice/tone.
+    -   `./.taskmaster/docs/sitemap.md`: For the full page structure, content hierarchy, and administrative pages.
+-   **Design Scope:** Create designs for all pages defined in the sitemap, ensuring the visual language is consistent with the brand guidelines. This includes the 5 main pages and their sub-pages.
+-   **Development Phasing:** Prioritize the creation of mockups according to the 3-phase development plan outlined in the sitemap document to facilitate a staged development process.
+-   **Responsive Design:** Ensure mockups are created for both desktop and mobile views, taking into account the mobile navigation and SEO considerations detailed in the sitemap.
+</info added on 2025-09-12T01:19:46.828Z>
+
+## 2. Create Wireframes and High-Fidelity Mockups [done]
+### Dependencies: 1.1
+### Description: Design wireframes for all key pages (Homepage, About, Services, Contact, Blog) and then create high-fidelity mockups based on the approved brand guidelines.
+### Details:
+The design phase should produce a complete visual representation of the website for both desktop and mobile views. This will serve as the blueprint for frontend development. Tools like Figma or Adobe XD should be used.
+
+## 3. Develop 'About Us' Page [pending]
+### Dependencies: 1.2, 4
+### Description: Create the 'About Us' page, detailing the clinic's history, mission, and team.
+### Details:
+Create a new page component at `src/pages/About/About.js`. Add a route for `/about` in `src/App.js`. The page should include sections for the clinic's story and profiles for key staff members, following the approved mockup.
+
+## 4. Develop 'Services' Page [pending]
+### Dependencies: 1.2, 4
+### Description: Create the main 'Services' page, which will list all aesthetic procedures offered by the clinic.
+### Details:
+Create a new page component at `src/pages/Services/Services.js`. Add a route for `/services` in `src/App.js`. This page should display a grid or list of services, with each item linking to a detailed page for that service (to be developed separately if needed).
+
+## 5. Develop 'Contact' Page with Form and Map [pending]
+### Dependencies: 1.2, 4
+### Description: Create the 'Contact' page, including a contact form, clinic address, phone number, and an embedded map.
+### Details:
+Create a new page component at `src/pages/Contact/Contact.js` and add a route for `/contact` in `src/App.js`. The form will initially be a UI-only component. The map can be embedded using Google Maps iframe. The form submission logic will be connected in a later task.
+
+## 6. Expose 'About Us' Page via Express.js [pending]
+### Dependencies: None
+### Description: Create an EJS template for the 'About Us' page and define a route in public.routes.js to render it.
+### Details:
+
+
+## 7. Expose 'Services' Page via Express.js [pending]
+### Dependencies: None
+### Description: Create an EJS template for the 'Services' page and define a route in public.routes.js to render it.
+### Details:
+
+
+## 8. Expose 'Contact' Page via Express.js [pending]
+### Dependencies: None
+### Description: Create an EJS template for the 'Contact' page and define a route in public.routes.js to render it.
+### Details:
+
+

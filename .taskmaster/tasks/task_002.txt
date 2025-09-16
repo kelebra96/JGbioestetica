@@ -1,0 +1,86 @@
+# Task ID: 2
+# Title: Fully Develop Homepage UI
+# Status: pending
+# Dependencies: None
+# Priority: medium
+# Description: Expand the existing placeholder `Home.js` page to match the approved high-fidelity mockup. This involves implementing all visual sections, including the hero banner, service highlights, and testimonials, using the existing `styled-components` architecture.
+# Details:
+The primary goal is to transform the current placeholder `src/pages/Home/Home.js` into a fully-featured page as per the design mockup.
+
+**Implementation Steps:**
+
+1.  **Component Structure:**
+    *   Break down the homepage design into reusable components within the `src/components/` directory.
+    *   Create dedicated folders for each new major component (e.g., `src/components/Hero/`, `src/components/ServiceHighlights/`, `src/components/Testimonials/`).
+    *   Each component folder should contain an `index.js` for the component logic and a `styles.js` for its `styled-components` definitions, following the existing project pattern.
+
+2.  **Hero Section:**
+    *   Develop a `Hero` component in `src/components/Hero/`.
+    *   It should feature a full-width background image, a primary headline, a descriptive sub-headline, and a call-to-action (CTA).
+    *   Utilize the existing `src/components/Button/Button.js` for the CTA button.
+
+3.  **Service Highlights Section:**
+    *   Create a `ServiceHighlights` component in `src/components/ServiceHighlights/`.
+    *   This component will render a collection of featured services.
+    *   Create a sub-component, `ServiceCard`, to represent each individual service. This card should accept props for an icon/image, service title, and a brief description.
+    *   For this task, use a hardcoded array of service data within the `ServiceHighlights` component. This data will be replaced by a CMS feed in a future task.
+
+4.  **Testimonials Section:**
+    *   Develop a `Testimonials` component in `src/components/Testimonials/`.
+    *   This section should display customer feedback, likely in a carousel or slider format.
+    *   If a slider library (e.g., `react-slick`, `swiper`) is not already in `package.json`, add one and implement the slider.
+    *   Create a `TestimonialCard` sub-component to display the testimonial text, author's name, and any other relevant details from the mockup.
+    *   Use a hardcoded array of 2-3 testimonials for the initial implementation.
+
+5.  **Assembly:**
+    *   In `src/pages/Home/Home.js`, clear the placeholder content and import and render the new `Hero`, `ServiceHighlights`, and `Testimonials` components in the correct order.
+
+6.  **Styling & Responsiveness:**
+    *   All styling must be done using `styled-components`, consistent with the project's setup.
+    *   Ensure all new components are fully responsive and match the mockup across mobile, tablet, and desktop breakpoints. Leverage the project's theme and `src/styles/global.css` for consistency.
+
+# Test Strategy:
+1.  **Visual Verification:** Open the developed homepage in Chrome, Firefox, and Safari. Compare the UI against the high-fidelity mockup at various screen widths (e.g., 375px, 768px, 1440px), ensuring pixel-perfect alignment, spacing, fonts, and colors.
+2.  **Responsiveness Testing:** Use browser developer tools to emulate different devices (e.g., iPhone 14, iPad Air, Galaxy S20). Resize the browser window from minimum to maximum width and verify that the layout adjusts smoothly without any broken elements.
+3.  **Component Isolation:** Verify that the new components (`Hero`, `ServiceHighlights`, `Testimonials`) render correctly and do not negatively impact the shared `Header` and `Footer` components.
+4.  **Interaction Testing:** Click on all interactive elements, especially the Hero section's CTA button and any links on the service cards. Ensure they are clickable and have the correct hover/active states.
+5.  **Testimonial Slider:** If a slider is implemented, test the navigation controls (next/previous arrows, pagination dots) to ensure they function as expected.
+6.  **Cross-Browser Compatibility:** Confirm that the page renders correctly and without visual bugs on the latest versions of major web browsers.
+
+# Subtasks:
+## 1. Create and Style the Hero Section Component [done]
+### Dependencies: None
+### Description: Develop the `Hero` component, which serves as the main banner for the homepage. This includes setting up the component structure, adding a full-width background image, headlines, and a call-to-action button.
+### Details:
+Create a new folder `src/components/Hero`. Inside, create `index.js` for the component logic and `styles.js` for the styled-components. The component should accept props for the background image, headline, and sub-headline. Import and use the existing `src/components/Button/Button.js` for the CTA. Ensure all styling is responsive and defined in `styles.js`.
+
+## 2. Develop the Service Highlights Section with Service Cards [pending]
+### Dependencies: None
+### Description: Build the `ServiceHighlights` section to display a curated list of services. This involves creating the main section component and a reusable `ServiceCard` sub-component.
+### Details:
+Create `src/components/ServiceHighlights` with `index.js` and `styles.js`. Inside this component, define a hardcoded array of service objects (e.g., `{ icon, title, description }`). Create a `ServiceCard` component (within the same folder or a new `src/components/ServiceCard` folder) that takes props and renders one service. Map over the hardcoded array in `ServiceHighlights` to render multiple `ServiceCard` instances. Style both components using styled-components for a grid or flexbox layout that is responsive.
+
+## 3. Set Up Testimonials Section and Install Slider Library [pending]
+### Dependencies: None
+### Description: Prepare the structure for the `Testimonials` section. This includes creating the component files, defining the data structure, and installing a suitable carousel/slider library if one is not already present.
+### Details:
+First, check `package.json` for an existing slider library (e.g., `react-slick`, `swiper`). If none exists, install one (e.g., `npm install swiper`). Create the folder `src/components/Testimonials` with `index.js` and `styles.js`. Also, create a `TestimonialCard` sub-component structure. In the `Testimonials/index.js`, define a hardcoded array of 2-3 testimonial objects (e.g., `{ quote, author, role }`). Set up the basic JSX structure for the slider, importing the chosen library's components.
+
+## 4. Implement and Style the Testimonials Slider [pending]
+### Dependencies: 2.3
+### Description: Implement the slider functionality for the `Testimonials` section using the installed library and style the `TestimonialCard` components to match the mockup.
+### Details:
+In `src/components/Testimonials/index.js`, configure the slider component (e.g., `<Swiper>`) with necessary options like navigation, pagination, and breakpoints for responsiveness. Map over the hardcoded testimonial data to render a `TestimonialCard` for each item within the slider. Implement the styling for the slider controls (arrows/dots) and the `TestimonialCard` (quote text, author name, etc.) in `styles.js`.
+
+## 5. Assemble Homepage and Finalize Responsiveness [pending]
+### Dependencies: 2.1, 2.2, 2.4
+### Description: Integrate all the newly created components (`Hero`, `ServiceHighlights`, `Testimonials`) into the main `Home.js` page and perform a final review of the overall layout and responsiveness.
+### Details:
+Open `src/pages/Home/Home.js`. Remove all placeholder content. Import the `Hero`, `ServiceHighlights`, and `Testimonials` components from `src/components`. Render them in the correct order. Add a main container with appropriate padding if needed, following project conventions. Review the entire page at different screen sizes (e.g., 375px, 768px, 1440px) to catch any layout, spacing, or alignment issues between sections.
+
+## 6. Expose Homepage via Express.js [pending]
+### Dependencies: None
+### Description: Create an EJS template for the homepage and define a route in public.routes.js to render it.
+### Details:
+
+

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title || 'Serviços - JG Bioestética' %></title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #F5F5DC;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(85, 107, 47, 0.8), rgba(85, 107, 47, 0.8)),
+                        url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+        }
+
+        /* Services Content Section */
+        .services-content {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #556B2F;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            text-align: center;
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+            margin-bottom: 60px;
+        }
+
+        .service-card {
+            background: #F8F8F8;
+            border-radius: 15px;
+            padding: 32px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(85, 107, 47, 0.15);
+            border-color: #EDE5B0;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: #EDE5B0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #556B2F;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            color: #556B2F;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .service-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 24px;
+            text-align: left;
+        }
+
+        .service-features li {
+            color: #666;
+            padding: 4px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .service-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #556B2F;
+            font-weight: bold;
+        }
+
+        .service-price {
+            font-size: 1.2rem;
+            color: #E2B850;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .service-button {
+            background-color: #556B2F;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .service-button:hover {
+            background-color: #E2B850;
+            transform: translateY(-2px);
+        }
+
+        /* Featured Services Section */
+        .featured-services {
+            padding: 80px 0;
+            background: #F5F5DC;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .featured-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .featured-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .featured-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .featured-content {
+            padding: 24px;
+        }
+
+        .featured-title {
+            font-size: 1.3rem;
+            color: #556B2F;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .featured-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .featured-link {
+            color: #E2B850;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .featured-link:hover {
+            color: #556B2F;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 60px 0;
+            background: #556B2F;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-title {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .cta-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 32px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background-color: #E2B850;
+            color: white;
+            padding: 16px 32px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: #EDE5B0;
+            color: #556B2F;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .navigation {
+                display: none;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Nossos Serviços</h1>
+            <p class="hero-subtitle">Descubra todos os tratamentos de bioestética que oferecemos para realçar sua beleza natural</p>
+        </div>
+    </section>
+
+    <!-- Main Services -->
+    <section class="services-content">
+        <div class="container">
+            <h2 class="section-title">Tratamentos Disponíveis</h2>
+            <p class="section-subtitle">
+                Oferecemos uma ampla gama de procedimentos estéticos avançados, realizados por profissionais experientes
+                com equipamentos de última geração para garantir sua segurança e os melhores resultados.
+            </p>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💆‍♀️</div>
+                    <h3 class="service-title">Limpeza de Pele Profunda</h3>
+                    <p class="service-description">
+                        Tratamento completo para purificação e renovação da pele, removendo impurezas e células mortas.
+                    </p>
+                    <ul class="service-features">
+                        <li>Análise detalhada da pele</li>
+                        <li>Extração de comedões</li>
+                        <li>Aplicação de máscara específica</li>
+                        <li>Hidratação profunda</li>
+                    </ul>
+                    <div class="service-price">A partir de R$ 120</div>
+                    <a href="/contact" class="service-button">Agendar</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">✨</div>
+                    <h3 class="service-title">Rejuvenescimento Facial</h3>
+                    <p class="service-description">
+                        Procedimentos avançados para combater sinais de envelhecimento e devolver vitalidade à pele.
+                    </p>
+                    <ul class="service-features">
+                        <li>Radiofrequência</li>
+                        <li>Microagulhamento</li>
+                        <li>Estimulação de colágeno</li>
+                        <li>Redução de rugas e linhas</li>
+                    </ul>
+                    <div class="service-price">A partir de R$ 180</div>
+                    <a href="/contact" class="service-button">Agendar</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🌟</div>
+                    <h3 class="service-title">Harmonização Facial</h3>
+                    <p class="service-description">
+                        Técnicas especializadas para realçar a beleza natural e harmonizar os traços faciais.
+                    </p>
+                    <ul class="service-features">
+                        <li>Preenchimento com ácido hialurônico</li>
+                        <li>Aplicação de toxina botulínica</li>
+                        <li>Bioestimuladores de colágeno</li>
+                        <li>Planejamento facial personalizado</li>
+                    </ul>
+                    <div class="service-price">A partir de R$ 350</div>
+                    <a href="/contact" class="service-button">Agendar</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💫</div>
+                    <h3 class="service-title">Peeling Químico</h3>
+                    <p class="service-description">
+                        Renovação celular profunda para melhorar textura, manchas e uniformidade da pele.
+                    </p>
+                    <ul class="service-features">
+                        <li>Peeling superficial e médio</li>
+                        <li>Tratamento de manchas</li>
+                        <li>Melhora da textura da pele</li>
+                        <li>Estímulo à renovação celular</li>
+                    </ul>
+                    <div class="service-price">A partir de R$ 150</div>
+                    <a href="/contact" class="service-button">Agendar</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🧴</div>
+                    <h3 class="service-title">Hidrafacial</h3>
+                    <p class="service-description">
+                        Tratamento revolucionário que combina limpeza, esfoliação, extração e hidratação em um só procedimento.
+                    </p>
+                    <ul class="service-features">
+                        <li>Limpeza profunda com vácuo</li>
+                        <li>Esfoliação suave</li>
+                        <li>Infusão de séruns específicos</li>
+                        <li>Resultados imediatos</li>
+                    </ul>
+                    <div class="service-price">A partir de R$ 200</div>
+                    <a href="/contact" class="service-button">Agendar</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🌿</div>
+                    <h3 class="service-title">Tratamentos Corporais</h3>
+                    <p class="service-description">
+                        Procedimentos estéticos para cuidar e tratar diferentes áreas do corpo com tecnologia avançada.
+                    </p>
+                    <ul class="service-features">
+                        <li>Drenagem linfática</li>
+                        <li>Criolipólise</li>
+                        <li>Radiofrequência corporal</li>
+                        <li>Massagem modeladora</li>
+                    </ul>
+                    <div class="service-price">A partir de R$ 120</div>
+                    <a href="/contact" class="service-button">Agendar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Services -->
+    <section class="featured-services">
+        <div class="container">
+            <h2 class="section-title">Tratamentos em Destaque</h2>
+            <div class="featured-grid">
+                <div class="featured-card">
+                    <div class="featured-image" style="background-image: url('https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                    <div class="featured-content">
+                        <h3 class="featured-title">Protocolo Anti-idade</h3>
+                        <p class="featured-description">
+                            Combinação de tratamentos para resultados superiores no combate ao envelhecimento.
+                        </p>
+                        <a href="/contact" class="featured-link">Saiba mais →</a>
+                    </div>
+                </div>
+
+                <div class="featured-card">
+                    <div class="featured-image" style="background-image: url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                    <div class="featured-content">
+                        <h3 class="featured-title">Tratamento de Acne</h3>
+                        <p class="featured-description">
+                            Protocolo especializado para controle e tratamento da acne em todas as idades.
+                        </p>
+                        <a href="/contact" class="featured-link">Saiba mais →</a>
+                    </div>
+                </div>
+
+                <div class="featured-card">
+                    <div class="featured-image" style="background-image: url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                    <div class="featured-content">
+                        <h3 class="featured-title">Remoção de Manchas</h3>
+                        <p class="featured-description">
+                            Tratamentos específicos para clarear e uniformizar o tom da pele.
+                        </p>
+                        <a href="/contact" class="featured-link">Saiba mais →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Pronto para Transformar sua Beleza?</h2>
+            <p class="cta-subtitle">
+                Agende uma avaliação gratuita e descubra qual tratamento é ideal para você
+            </p>
+            <a href="/contact" class="cta-button">Agendar Avaliação</a>
+        </div>
+    </section>
+
+    <%- include('partials/footer') %>
+
+    <script src="/js/mobile-menu.js"></script>
+</body>
+</html>

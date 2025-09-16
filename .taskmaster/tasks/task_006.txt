@@ -1,0 +1,43 @@
+# Task ID: 6
+# Title: Create API Endpoint for Contact Form Submission
+# Status: pending
+# Dependencies: None
+# Priority: medium
+# Description: Develop a backend API endpoint to receive data from the contact form, validate it, and send an email notification.
+# Details:
+Create a POST endpoint (e.g., /api/contact). Implement server-side validation for the form data (name, email, message). Use a service like SendGrid, Mailgun, or Nodemailer to send an email to the clinic's admin address with the form contents.
+
+# Test Strategy:
+Use a tool like Postman or Insomnia to send test POST requests to the endpoint with both valid and invalid data. Verify that email notifications are received successfully.
+
+# Subtasks:
+## 1. Create API Route File and Install Nodemailer [pending]
+### Dependencies: None
+### Description: Set up the basic file structure for the new contact form API endpoint within the Next.js App Router. Install the `nodemailer` library and its types to handle email sending.
+### Details:
+Based on the Next.js App Router convention, create a new directory `src/app/api/contact` and a file `src/app/api/contact/route.ts`. Add a basic `POST` handler function that accepts a `Request` and returns a placeholder `NextResponse.json({ message: 'OK' })`. Use your package manager (e.g., npm, yarn, pnpm) to run `install nodemailer @types/nodemailer` to add the required dependencies to `package.json`.
+
+## 2. Add and Configure Environment Variables for Email Service [pending]
+### Dependencies: None
+### Description: Define and configure the necessary environment variables to securely connect to the email sending service (e.g., an SMTP provider like SendGrid, or a personal Gmail account for development).
+### Details:
+In the `.env.local` file (create it if it doesn't exist at the project root), add variables for the email service. For example: `EMAIL_SERVER_HOST`, `EMAIL_SERVER_PORT`, `EMAIL_SERVER_USER`, `EMAIL_SERVER_PASS`. Also add `EMAIL_TO_ADDRESS` for the clinic's admin recipient email. Ensure these variables are not prefixed with `NEXT_PUBLIC_` to keep them server-side only and secure.
+
+## 3. Implement Request Body Validation using Zod [pending]
+### Dependencies: 6.1
+### Description: Create a Zod schema to validate the incoming data from the contact form, ensuring `name`, `email`, and `message` fields meet the required criteria.
+### Details:
+Inside `src/app/api/contact/route.ts`, import `z` from `zod`. Define a schema `contactFormSchema` that validates `name` (string, min 2 characters), `email` (a valid email string), and `message` (string, min 10 characters). In the `POST` handler, parse the request body using `await request.json()` and use the schema's `safeParse` method. If validation fails, return a `NextResponse.json` with the validation errors and a 400 status code.
+
+## 4. Implement Nodemailer Transport and Email Sending Logic [pending]
+### Dependencies: 6.1, 6.2
+### Description: Configure the Nodemailer transporter and create a function that constructs and sends the contact form submission as an email.
+### Details:
+Within `src/app/api/contact/route.ts` or a new helper file (e.g., `src/lib/email.ts`), import `nodemailer`. Create a `transporter` object using `nodemailer.createTransport` and configure it with the environment variables from subtask 2. Create an `async` function that accepts the validated form data, constructs the email `mailOptions` (from, to, subject, html), and uses `await transporter.sendMail(mailOptions)` to send it.
+
+## 5. Integrate Validation and Email Service in API Endpoint [pending]
+### Dependencies: 6.3, 6.4
+### Description: Connect the validation and email sending logic within the POST handler. Implement comprehensive success and error responses to finalize the endpoint.
+### Details:
+In the `src/app/api/contact/route.ts` POST handler, after a successful `safeParse` of the request body, call the email sending function with the validated data. Wrap the email sending call in a `try/catch` block. On success, return a `NextResponse.json({ message: 'Submission successful' }, { status: 200 })`. If the email fails to send, log the server-side error and return a `NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })`.
+

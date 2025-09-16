@@ -1,0 +1,65 @@
+# Task ID: 14
+# Title: Set up Express.js server files based on README.md architecture
+# Status: done
+# Dependencies: None
+# Priority: medium
+# Description: Create the basic Express.js server files and directory structure as outlined in the README.md. This includes: src/app.js, src/server.js, src/config/, src/middlewares/, src/services/, src/models/, src/controllers/, src/routes/, src/views/, src/public/, and src/seed/.
+# Details:
+
+
+# Test Strategy:
+
+
+# Subtasks:
+## 1. Create Backend Directory Structure in src/ [done]
+### Dependencies: None
+### Description: Create all the specified empty directories for the Express.js backend within the existing `src/` directory, as outlined in the `README.md`.
+### Details:
+Create the following directories:
+- `src/config/`
+- `src/middlewares/`
+- `src/services/`
+- `src/models/`
+- `src/controllers/`
+- `src/routes/`
+- `src/views/`
+- `src/public/`
+- `src/seed/`
+
+## 2. Install Express.js and Configure package.json [done]
+### Dependencies: None
+### Description: Install the `express` package and `nodemon` for development. Update `package.json` to include these dependencies and add a new script to run the backend server.
+### Details:
+1. Run `npm install express nodemon`.
+2. Add `express` and `nodemon` to the `dependencies` or `devDependencies` section of `package.json`.
+3. Add a new script, e.g., `"start:backend": "nodemon src/server.js"`, to the `scripts` section of `package.json`.
+
+## 3. Create src/app.js with Basic Express Application Setup [done]
+### Dependencies: None
+### Description: Create the `src/app.js` file and set up the basic Express application instance, including essential middleware and a placeholder health check route.
+### Details:
+1. Create `src/app.js`.
+2. Import `express` and initialize the app instance.
+3. Add `express.json()` middleware for parsing JSON request bodies.
+4. Add `express.urlencoded({ extended: true })` middleware for parsing URL-encoded request bodies.
+5. Configure `express.static('src/public')` to serve static files from the `src/public` directory.
+6. Add a simple GET route, e.g., `/api/status`, that responds with `{ status: 'Server is running' }`.
+7. Export the `app` instance.
+
+## 4. Create src/server.js to Bootstrap the Express Server [done]
+### Dependencies: None
+### Description: Create the `src/server.js` file, which will serve as the entry point to start the Express server, importing the application from `src/app.js`.
+### Details:
+1. Create `src/server.js`.
+2. Import the `app` instance from `src/app.js`.
+3. Define the port for the server, e.g., `const PORT = process.env.PORT || 3001;`.
+4. Use `app.listen()` to start the server on the defined port.
+5. Add a `console.log` message to confirm the server is running and on which port.
+
+## 5. Implement Basic Error Handling and 404 Middleware in src/app.js [done]
+### Dependencies: None
+### Description: Enhance `src/app.js` by adding middleware for handling 404 (Not Found) errors and a general error handling middleware to provide robust responses for unhandled routes and server errors.
+### Details:
+1. In `src/app.js`, add a middleware function *after* all routes and other middleware to handle 404 errors. This middleware should respond with a 404 status and a JSON message like `{ message: 'Resource not found' }`.
+2. Add a general error handling middleware function *as the last middleware* in `src/app.js`. This middleware should catch any errors, log them, and respond with a 500 status and a generic error message (e.g., `{ message: 'Internal Server Error' }`).
+

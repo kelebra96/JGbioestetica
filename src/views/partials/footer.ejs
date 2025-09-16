@@ -1,0 +1,71 @@
+<!-- Footer Section -->
+<footer class="main-footer">
+    <div class="footer-container">
+        <!-- Column 1: Logo and About -->
+        <div class="footer-column footer-about">
+            <div class="footer-logo">
+                <a href="/">
+                    <!-- Placeholder logo - will be replaced with actual SVG logo -->
+                    <h3>JG Bioestética</h3>
+                </a>
+            </div>
+            <p class="footer-tagline">
+                Realçando sua beleza natural com tratamentos seguros e eficazes.
+            </p>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div class="footer-column footer-links">
+            <h4>Links Rápidos</h4>
+            <ul>
+                <li><a href="/" class="<%= currentPage === '/' ? 'active' : '' %>">Início</a></li>
+                <li><a href="/about" class="<%= currentPage === '/about' ? 'active' : '' %>">Sobre</a></li>
+                <li><a href="/services" class="<%= currentPage === '/services' ? 'active' : '' %>">Serviços</a></li>
+                <li><a href="/contact" class="<%= currentPage === '/contact' ? 'active' : '' %>">Contato</a></li>
+            </ul>
+        </div>
+
+        <!-- Column 3: Contact Info -->
+        <div class="footer-column footer-contact">
+            <h4>Contato</h4>
+            <div class="contact-info">
+                <p>
+                    <strong>Endereço:</strong><br>
+                    Rua das Flores, 123<br>
+                    Centro, São Paulo - SP<br>
+                    CEP: 01234-567
+                </p>
+                <p>
+                    <strong>Telefone:</strong><br>
+                    (11) 9 9999-9999
+                </p>
+                <p>
+                    <strong>Email:</strong><br>
+                    contato@jgbioestetica.com.br
+                </p>
+            </div>
+        </div>
+
+        <!-- Column 4: Social Media -->
+        <div class="footer-column footer-social">
+            <h4>Redes Sociais</h4>
+            <div class="social-links">
+                <a href="https://instagram.com/jgbioestetica" target="_blank" rel="noopener noreferrer" class="social-link">
+                    <span class="social-icon">📷</span>
+                    Instagram
+                </a>
+                <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" class="social-link">
+                    <span class="social-icon">💬</span>
+                    WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copyright Section -->
+    <div class="footer-copyright">
+        <div class="footer-container">
+            <p>&copy; <%= new Date().getFullYear() %> JG Bioestética. Todos os direitos reservados.</p>
+        </div>
+    </div>
+</footer>

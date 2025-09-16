@@ -1,0 +1,29 @@
+<!-- Header -->
+<header class="header">
+    <div class="header-container">
+        <a href="/" class="logo">JG Bioestética</a>
+        <nav class="navigation">
+            <a href="/" class="nav-link <%= currentPage === '/' ? 'active' : '' %>">Início</a>
+            <a href="/about" class="nav-link <%= currentPage === '/about' ? 'active' : '' %>">Sobre</a>
+            <a href="/services" class="nav-link <%= currentPage === '/services' ? 'active' : '' %>">Serviços</a>
+            <a href="/contact" class="nav-link <%= currentPage === '/contact' ? 'active' : '' %>">Contato</a>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn" aria-label="Menu" aria-expanded="false">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+
+        <!-- Mobile Navigation Overlay -->
+        <div class="mobile-nav-overlay">
+            <nav class="mobile-navigation">
+                <a href="/" class="mobile-nav-link <%= currentPage === '/' ? 'active' : '' %>">Início</a>
+                <a href="/about" class="mobile-nav-link <%= currentPage === '/about' ? 'active' : '' %>">Sobre</a>
+                <a href="/services" class="mobile-nav-link <%= currentPage === '/services' ? 'active' : '' %>">Serviços</a>
+                <a href="/contact" class="mobile-nav-link <%= currentPage === '/contact' ? 'active' : '' %>">Contato</a>
+            </nav>
+        </div>
+    </div>
+</header>

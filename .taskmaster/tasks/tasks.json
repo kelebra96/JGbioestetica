@@ -1,0 +1,999 @@
+{
+  "version": "0.26.0",
+  "tags": {
+    "master": {
+      "tasks": [],
+      "metadata": {
+        "description": "Default tag"
+      }
+    }
+  },
+  "currentTag": "master",
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Desenvolvimento do Website Institucional e CMS da JG Bioestética",
+        "description": "Tarefa principal que engloba todas as atividades de desenvolvimento do site e do painel de administração.",
+        "details": "",
+        "testStrategy": "",
+        "status": "done",
+        "dependencies": [],
+        "priority": "medium",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Define Brand Guidelines and Finalize Sitemap",
+            "description": "Establish the official brand guidelines including color palette, typography, and logo usage. Finalize the website sitemap based on the PRD to confirm all required pages and their hierarchy.",
+            "details": "This task involves collaborating with the client to create a definitive guide for the website's visual identity. The sitemap should be a visual diagram outlining the structure: Home, About Us, Services (with potential sub-pages for each service), Blog, and Contact.\n<info added on 2025-09-12T01:19:46.828Z>\n**Implementation Notes:**\n\nThe foundational brand guidelines and sitemap are now complete and serve as the primary input for this design task.\n\n-   **Source of Truth:** All wireframes and high-fidelity mockups must be based on the specifications within:\n    -   `./.taskmaster/docs/brand-guidelines.md`: For the complete visual identity, including the expanded color palette, typography, iconography, and voice/tone.\n    -   `./.taskmaster/docs/sitemap.md`: For the full page structure, content hierarchy, and administrative pages.\n-   **Design Scope:** Create designs for all pages defined in the sitemap, ensuring the visual language is consistent with the brand guidelines. This includes the 5 main pages and their sub-pages.\n-   **Development Phasing:** Prioritize the creation of mockups according to the 3-phase development plan outlined in the sitemap document to facilitate a staged development process.\n-   **Responsive Design:** Ensure mockups are created for both desktop and mobile views, taking into account the mobile navigation and SEO considerations detailed in the sitemap.\n</info added on 2025-09-12T01:19:46.828Z>",
+            "testStrategy": "Review the brand guide and sitemap with the project stakeholders for approval. Ensure all pages from the PRD are accounted for in the sitemap.",
+            "priority": "high",
+            "dependencies": [],
+            "status": "done",
+            "subtasks": [],
+            "parentTaskId": 1
+          },
+          {
+            "id": 2,
+            "title": "Create Wireframes and High-Fidelity Mockups",
+            "description": "Design wireframes for all key pages (Homepage, About, Services, Contact, Blog) and then create high-fidelity mockups based on the approved brand guidelines.",
+            "details": "The design phase should produce a complete visual representation of the website for both desktop and mobile views. This will serve as the blueprint for frontend development. Tools like Figma or Adobe XD should be used.",
+            "testStrategy": "Conduct a design review with the client and development team to ensure the mockups meet all requirements and are technically feasible.",
+            "priority": "high",
+            "dependencies": [
+              "1.1"
+            ],
+            "status": "done",
+            "subtasks": [],
+            "parentTaskId": 1
+          },
+          {
+            "id": 3,
+            "title": "Develop 'About Us' Page",
+            "description": "Create the 'About Us' page, detailing the clinic's history, mission, and team.",
+            "details": "Create a new page component at `src/pages/About/About.js`. Add a route for `/about` in `src/App.js`. The page should include sections for the clinic's story and profiles for key staff members, following the approved mockup.",
+            "testStrategy": "Ensure the page renders correctly when navigating to the '/about' route. Verify that all content is displayed as per the design.",
+            "priority": "medium",
+            "dependencies": [
+              "1.2",
+              "4"
+            ],
+            "status": "done",
+            "subtasks": [],
+            "parentTaskId": 1
+          },
+          {
+            "id": 4,
+            "title": "Develop 'Services' Page",
+            "description": "Create the main 'Services' page, which will list all aesthetic procedures offered by the clinic.",
+            "details": "Create a new page component at `src/pages/Services/Services.js`. Add a route for `/services` in `src/App.js`. This page should display a grid or list of services, with each item linking to a detailed page for that service (to be developed separately if needed).",
+            "testStrategy": "Verify the page renders at the '/services' route. Check that the layout of services matches the mockup. For now, links can be placeholders.",
+            "priority": "high",
+            "dependencies": [
+              "1.2",
+              "4"
+            ],
+            "status": "done",
+            "subtasks": [],
+            "parentTaskId": 1
+          },
+          {
+            "id": 5,
+            "title": "Develop 'Contact' Page with Form and Map",
+            "description": "Create the 'Contact' page, including a contact form, clinic address, phone number, and an embedded map.",
+            "details": "Create a new page component at `src/pages/Contact/Contact.js` and add a route for `/contact` in `src/App.js`. The form will initially be a UI-only component. The map can be embedded using Google Maps iframe. The form submission logic will be connected in a later task.",
+            "testStrategy": "Check that the page renders at '/contact'. Verify all form fields are present as per the design. Ensure the embedded map loads and displays the correct location.",
+            "priority": "high",
+            "dependencies": [
+              "1.2",
+              "4"
+            ],
+            "status": "done",
+            "subtasks": [],
+            "parentTaskId": 1
+          },
+          {
+            "id": 6,
+            "title": "Expose 'About Us' Page via Express.js",
+            "description": "Create an EJS template for the 'About Us' page and define a route in public.routes.js to render it.",
+            "details": "",
+            "status": "done",
+            "dependencies": [],
+            "parentTaskId": 1
+          },
+          {
+            "id": 7,
+            "title": "Expose 'Services' Page via Express.js",
+            "description": "Create an EJS template for the 'Services' page and define a route in public.routes.js to render it.",
+            "details": "",
+            "status": "done",
+            "dependencies": [],
+            "parentTaskId": 1
+          },
+          {
+            "id": 8,
+            "title": "Expose 'Contact' Page via Express.js",
+            "description": "Create an EJS template for the 'Contact' page and define a route in public.routes.js to render it.",
+            "details": "",
+            "status": "done",
+            "dependencies": [],
+            "parentTaskId": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Fully Develop Homepage UI",
+        "description": "Expand the existing placeholder `Home.js` page to match the approved high-fidelity mockup. This involves implementing all visual sections, including the hero banner, service highlights, and testimonials, using the existing `styled-components` architecture.",
+        "details": "The primary goal is to transform the current placeholder `src/pages/Home/Home.js` into a fully-featured page as per the design mockup.\n\n**Implementation Steps:**\n\n1.  **Component Structure:**\n    *   Break down the homepage design into reusable components within the `src/components/` directory.\n    *   Create dedicated folders for each new major component (e.g., `src/components/Hero/`, `src/components/ServiceHighlights/`, `src/components/Testimonials/`).\n    *   Each component folder should contain an `index.js` for the component logic and a `styles.js` for its `styled-components` definitions, following the existing project pattern.\n\n2.  **Hero Section:**\n    *   Develop a `Hero` component in `src/components/Hero/`.\n    *   It should feature a full-width background image, a primary headline, a descriptive sub-headline, and a call-to-action (CTA).\n    *   Utilize the existing `src/components/Button/Button.js` for the CTA button.\n\n3.  **Service Highlights Section:**\n    *   Create a `ServiceHighlights` component in `src/components/ServiceHighlights/`.\n    *   This component will render a collection of featured services.\n    *   Create a sub-component, `ServiceCard`, to represent each individual service. This card should accept props for an icon/image, service title, and a brief description.\n    *   For this task, use a hardcoded array of service data within the `ServiceHighlights` component. This data will be replaced by a CMS feed in a future task.\n\n4.  **Testimonials Section:**\n    *   Develop a `Testimonials` component in `src/components/Testimonials/`.\n    *   This section should display customer feedback, likely in a carousel or slider format.\n    *   If a slider library (e.g., `react-slick`, `swiper`) is not already in `package.json`, add one and implement the slider.\n    *   Create a `TestimonialCard` sub-component to display the testimonial text, author's name, and any other relevant details from the mockup.\n    *   Use a hardcoded array of 2-3 testimonials for the initial implementation.\n\n5.  **Assembly:**\n    *   In `src/pages/Home/Home.js`, clear the placeholder content and import and render the new `Hero`, `ServiceHighlights`, and `Testimonials` components in the correct order.\n\n6.  **Styling & Responsiveness:**\n    *   All styling must be done using `styled-components`, consistent with the project's setup.\n    *   Ensure all new components are fully responsive and match the mockup across mobile, tablet, and desktop breakpoints. Leverage the project's theme and `src/styles/global.css` for consistency.",
+        "testStrategy": "1.  **Visual Verification:** Open the developed homepage in Chrome, Firefox, and Safari. Compare the UI against the high-fidelity mockup at various screen widths (e.g., 375px, 768px, 1440px), ensuring pixel-perfect alignment, spacing, fonts, and colors.\n2.  **Responsiveness Testing:** Use browser developer tools to emulate different devices (e.g., iPhone 14, iPad Air, Galaxy S20). Resize the browser window from minimum to maximum width and verify that the layout adjusts smoothly without any broken elements.\n3.  **Component Isolation:** Verify that the new components (`Hero`, `ServiceHighlights`, `Testimonials`) render correctly and do not negatively impact the shared `Header` and `Footer` components.\n4.  **Interaction Testing:** Click on all interactive elements, especially the Hero section's CTA button and any links on the service cards. Ensure they are clickable and have the correct hover/active states.\n5.  **Testimonial Slider:** If a slider is implemented, test the navigation controls (next/previous arrows, pagination dots) to ensure they function as expected.\n6.  **Cross-Browser Compatibility:** Confirm that the page renders correctly and without visual bugs on the latest versions of major web browsers.",
+        "status": "done",
+        "dependencies": [],
+        "priority": "medium",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create and Style the Hero Section Component",
+            "description": "Develop the `Hero` component, which serves as the main banner for the homepage. This includes setting up the component structure, adding a full-width background image, headlines, and a call-to-action button.",
+            "dependencies": [],
+            "details": "Create a new folder `src/components/Hero`. Inside, create `index.js` for the component logic and `styles.js` for the styled-components. The component should accept props for the background image, headline, and sub-headline. Import and use the existing `src/components/Button/Button.js` for the CTA. Ensure all styling is responsive and defined in `styles.js`.",
+            "status": "done",
+            "testStrategy": "Visually verify the Hero section against the mockup on desktop, tablet, and mobile viewports. Confirm the background image covers the full width, text is legible, and the CTA button is correctly styled and positioned."
+          },
+          {
+            "id": 2,
+            "title": "Develop the Service Highlights Section with Service Cards",
+            "description": "Build the `ServiceHighlights` section to display a curated list of services. This involves creating the main section component and a reusable `ServiceCard` sub-component.",
+            "dependencies": [],
+            "details": "Create `src/components/ServiceHighlights` with `index.js` and `styles.js`. Inside this component, define a hardcoded array of service objects (e.g., `{ icon, title, description }`). Create a `ServiceCard` component (within the same folder or a new `src/components/ServiceCard` folder) that takes props and renders one service. Map over the hardcoded array in `ServiceHighlights` to render multiple `ServiceCard` instances. Style both components using styled-components for a grid or flexbox layout that is responsive.",
+            "status": "done",
+            "testStrategy": "Check that the Service Highlights section displays correctly with the hardcoded data. Verify that the layout of the service cards is responsive, transitioning from a multi-column layout on desktop to a single-column layout on mobile. Ensure spacing and alignment match the design."
+          },
+          {
+            "id": 3,
+            "title": "Set Up Testimonials Section and Install Slider Library",
+            "description": "Prepare the structure for the `Testimonials` section. This includes creating the component files, defining the data structure, and installing a suitable carousel/slider library if one is not already present.",
+            "dependencies": [],
+            "details": "First, check `package.json` for an existing slider library (e.g., `react-slick`, `swiper`). If none exists, install one (e.g., `npm install swiper`). Create the folder `src/components/Testimonials` with `index.js` and `styles.js`. Also, create a `TestimonialCard` sub-component structure. In the `Testimonials/index.js`, define a hardcoded array of 2-3 testimonial objects (e.g., `{ quote, author, role }`). Set up the basic JSX structure for the slider, importing the chosen library's components.",
+            "status": "done",
+            "testStrategy": "Verify that the chosen slider library is added to `package.json` dependencies. Confirm that the basic `Testimonials` component renders without errors, even if the slider is not yet functional. Ensure the hardcoded data structure is correctly defined."
+          },
+          {
+            "id": 4,
+            "title": "Implement and Style the Testimonials Slider",
+            "description": "Implement the slider functionality for the `Testimonials` section using the installed library and style the `TestimonialCard` components to match the mockup.",
+            "dependencies": [
+              "2.3"
+            ],
+            "details": "In `src/components/Testimonials/index.js`, configure the slider component (e.g., `<Swiper>`) with necessary options like navigation, pagination, and breakpoints for responsiveness. Map over the hardcoded testimonial data to render a `TestimonialCard` for each item within the slider. Implement the styling for the slider controls (arrows/dots) and the `TestimonialCard` (quote text, author name, etc.) in `styles.js`.",
+            "status": "done",
+            "testStrategy": "Test the slider functionality thoroughly. Ensure it is swipeable on touch devices and navigable with arrows/dots on desktop. Verify that the content within each `TestimonialCard` is styled correctly and that the slider is responsive, adjusting the number of visible slides per the design's breakpoints."
+          },
+          {
+            "id": 5,
+            "title": "Assemble Homepage and Finalize Responsiveness",
+            "description": "Integrate all the newly created components (`Hero`, `ServiceHighlights`, `Testimonials`) into the main `Home.js` page and perform a final review of the overall layout and responsiveness.",
+            "dependencies": [
+              "2.1",
+              "2.2",
+              "2.4"
+            ],
+            "details": "Open `src/pages/Home/Home.js`. Remove all placeholder content. Import the `Hero`, `ServiceHighlights`, and `Testimonials` components from `src/components`. Render them in the correct order. Add a main container with appropriate padding if needed, following project conventions. Review the entire page at different screen sizes (e.g., 375px, 768px, 1440px) to catch any layout, spacing, or alignment issues between sections.",
+            "status": "done",
+            "testStrategy": "Perform a full end-to-end visual regression test of the homepage against the mockup. Use browser developer tools to toggle between different device sizes and ensure there are no visual bugs or content overflows. Click on the CTA button to ensure it's interactive."
+          },
+          {
+            "id": 6,
+            "title": "Expose Homepage via Express.js",
+            "description": "Create an EJS template for the homepage and define a route in public.routes.js to render it.",
+            "details": "",
+            "status": "done",
+            "dependencies": [],
+            "parentTaskId": 2
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Enhance Header and Footer Components",
+        "description": "Update the existing `Header.js` and `Footer.js` components to match the final design, including navigation links, logo, and footer information.",
+        "details": "This task involves a complete overhaul of the placeholder Header and Footer components to align with the final UI/UX design. The implementation should be fully responsive and utilize the existing `styled-components` architecture.\n\n**Header (`src/components/Header/Header.js`):**\n1.  **Logo Integration:** Replace the placeholder logo with the official SVG logo from `src/assets/images/logo.svg`. The logo must be wrapped in a `Link` component from `react-router-dom` pointing to the root path ('/').\n2.  **Desktop Navigation:** Implement the primary navigation bar using `styled-components`. Use `NavLink` from `react-router-dom` for the links (e.g., 'Início', 'Sobre', 'Serviços', 'Contato') to allow for active-state styling.\n3.  **Responsive Behavior (Mobile Menu):**\n    *   The navigation links should be hidden on mobile viewports (e.g., < 768px).\n    *   Implement a hamburger menu icon that becomes visible on mobile.\n    *   Use the `useState` hook to manage the open/closed state of the mobile menu.\n    *   Clicking the hamburger icon should toggle a full-screen or slide-in overlay containing the navigation links.\n4.  **Styling:** Create styled components such as `HeaderWrapper`, `NavContainer`, `LogoImage`, `NavLinks`, and `MobileMenuIcon`. Ensure all styling references the project's theme file (`src/styles/theme.js`) for colors, fonts, and breakpoints.\n\n**Footer (`src/components/Footer/Footer.js`):**\n1.  **Layout:** Structure the footer using a multi-column layout for desktop (e.g., Logo/About, Quick Links, Contact Info, Social Media) that stacks vertically on mobile.\n2.  **Content Population:**\n    *   **Column 1 (About):** Include the logo and a brief company tagline.\n    *   **Column 2 (Quick Links):** Re-implement the main navigation links for user convenience.\n    *   **Column 3 (Contact):** Add static contact information: Address, Phone Number, and Email.\n    *   **Column 4 (Social):** Integrate social media icons (e.g., Instagram, WhatsApp) with links opening in a new tab (`target='_blank' rel='noopener noreferrer'`). Use an icon library like `react-icons` if already in the project, or import SVGs.\n3.  **Copyright:** Add a copyright section at the very bottom with the text '© [Current Year] JG Bioestética. Todos os direitos reservados.' The year should be generated dynamically using `new Date().getFullYear()`.",
+        "testStrategy": "1.  **Visual Verification:** Compare the rendered Header and Footer against the high-fidelity mockups across multiple browsers (Chrome, Firefox) and screen sizes (375px, 768px, 1440px). Verify pixel-perfect implementation of spacing, colors, typography, and logo.\n2.  **Navigation Functional Testing:**\n    *   Click every link in both the Header (desktop and mobile) and Footer to ensure it navigates to the correct route.\n    *   Confirm that the `NavLink` active style is correctly applied to the link corresponding to the current page.\n    *   Verify the logo in the Header and Footer links back to the homepage.\n3.  **Responsiveness Testing:**\n    *   Resize the browser window from desktop to mobile width. Confirm the desktop navigation smoothly transitions to the hamburger menu icon.\n    *   Test the hamburger menu's open/close functionality on-click.\n    *   Verify all links within the mobile menu are clickable and route correctly.\n    *   Confirm the footer columns stack vertically and all content remains legible and well-formatted on mobile screens.\n4.  **External Link Validation:** Click on all social media icons in the footer and verify they open the correct social media pages in a new browser tab.",
+        "status": "pending",
+        "dependencies": [
+          "1"
+        ],
+        "priority": "medium",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement Desktop Header with Logo and Navigation",
+            "description": "Overhaul `Header.js` to implement the desktop version. This includes integrating the SVG logo wrapped in a `Link` to the homepage and creating the primary navigation bar using `NavLink` for active-state capabilities.",
+            "dependencies": [],
+            "details": "Modify `src/components/Header/Header.js` and create a corresponding `src/components/Header/Header.styles.js`. Import the logo from `src/assets/images/logo.svg`. Use `Link` and `NavLink` from `react-router-dom`. Create styled components like `HeaderWrapper`, `LogoImage`, and `NavContainer` using `styled-components`, referencing `src/styles/theme.js` for colors and fonts. The navigation links are 'Início', 'Sobre', 'Serviços', 'Contato'. The navigation should be visible on viewports wider than the mobile breakpoint defined in the theme.\n<info added on 2025-09-16T03:01:54.904Z>\n**CORRECTION: The project stack is Node.js/Express with EJS templates, not React. The previous implementation details are incorrect.**\n\nBased on the codebase analysis, the correct approach is to create a reusable EJS partial for the header.\n\n**Implementation Steps:**\n\n1.  **Create the Header Partial:** Create a new file at `src/views/partials/header.ejs`.\n2.  **Extract Existing Code:** Locate the current header implementation within `src/views/about.ejs` (around lines 334-345) and move this HTML structure into the newly created `src/views/partials/header.ejs`.\n3.  **Add Navigation:** Inside `header.ejs`, build the navigation menu using standard `<a>` tags for the following routes:\n    *   'Início': `/`\n    *   'Sobre': `/sobre`\n    *   'Serviços': `/servicos`\n    *   'Contato': `/contato`\n4.  **Integrate the Partial:** In all main view files (e.g., `index.ejs`, `about.ejs`, etc.), replace the existing header code with the EJS include directive: `<%- include('partials/header') %>`.\n5.  **Styling:**\n    *   Create or update a general stylesheet (e.g., in `public/css/style.css`) to style the header.\n    *   Ensure you link this stylesheet in your main layout file or individual EJS templates.\n    *   Use the color scheme defined in `CLAUDE.md` for styling:\n        *   **Primary/Active Elements:** Verde Musgo (`#556B2F`)\n        *   **Background:** Bege (`#F5F5DC`)\n        *   **Accent/Highlight:** Dourado (`#E2B850`) or Amarelo Claro (`#EDE5B0`)\n6.  **Logo:** For now, use a placeholder `<img>` tag or text for the logo, which will be linked to the homepage (`/`).\n</info added on 2025-09-16T03:01:54.904Z>",
+            "status": "done",
+            "testStrategy": "Verify the header displays correctly on desktop screens (>768px). Check that the logo is present and links to '/'. Confirm all navigation links are visible and are `NavLink` components."
+          },
+          {
+            "id": 2,
+            "title": "Implement Responsive Mobile Header with Hamburger Menu",
+            "description": "Enhance the Header to be fully responsive by adding a hamburger menu for mobile viewports. The desktop navigation will be hidden, and a clickable icon will toggle a mobile-friendly navigation overlay.",
+            "dependencies": [
+              "3.1"
+            ],
+            "details": "In `Header.js`, use the `useState` hook to manage the open/closed state of the mobile menu. Create a `MobileMenuIcon` (hamburger) styled component that is only visible below the theme's mobile breakpoint. The desktop `NavContainer` should be hidden on mobile. Create a new `MobileNavOverlay` styled component that appears when the menu is open, containing the navigation links. The hamburger icon's `onClick` event should toggle the menu's state.",
+            "status": "done",
+            "testStrategy": "On viewports <768px, verify the desktop navigation is hidden and the hamburger icon is visible. Test clicking the icon to ensure the mobile navigation overlay toggles correctly. Check that links inside the overlay are functional."
+          },
+          {
+            "id": 3,
+            "title": "Structure Footer Layout and Implement Core Content",
+            "description": "Develop the foundational structure of the footer in `Footer.js`, creating a responsive multi-column layout. Populate the initial columns with the logo, a brief tagline, quick links, and static contact information.",
+            "dependencies": [],
+            "details": "Modify `src/components/Footer/Footer.js` and create `src/components/Footer/Footer.styles.js`. Use Flexbox or CSS Grid to build a multi-column layout that stacks vertically on mobile. Create columns for: 1) Logo and tagline, 2) Quick Links (re-using `NavLink`s from the header), and 3) Static contact info (Address, Phone, Email). All styling must use `styled-components` and reference the project theme.",
+            "status": "done",
+            "testStrategy": "Verify the footer displays a multi-column layout on desktop. Check that the columns stack vertically on mobile viewports. Confirm the logo, tagline, quick links, and contact info are present and correctly styled."
+          },
+          {
+            "id": 4,
+            "title": "Add Social Media Icons and Copyright to Footer",
+            "description": "Complete the footer content by adding a social media section with linked icons and a dynamic copyright notice at the bottom.",
+            "dependencies": [
+              "3.3"
+            ],
+            "details": "First, add `react-icons` to the project (`npm install react-icons`). In `Footer.js`, create a new column for social media. Import icons like `FaInstagram` and `FaWhatsapp` and wrap them in `<a>` tags pointing to the correct social profiles, ensuring they open in a new tab (`target='_blank'`). Below the column grid, add a copyright section with the text '© [Current Year] JG Bioestética. Todos os direitos reservados.', generating the year dynamically with `new Date().getFullYear()`.",
+            "status": "done",
+            "testStrategy": "Check that social media icons are visible and correctly linked, opening in a new browser tab. Verify the copyright text is present at the bottom of the footer and that the year is the current year."
+          },
+          {
+            "id": 5,
+            "title": "Implement Active Link Styling and Final Responsive Polish",
+            "description": "Apply active-state styling to navigation links in the header and footer. Conduct a final review to polish the responsive behavior of both components across all target screen sizes.",
+            "dependencies": [
+              "3.2",
+              "3.4"
+            ],
+            "details": "In `Header.styles.js`, target the `.active` class added by `NavLink` to apply distinct styling (e.g., color change or underline) based on the theme. Ensure this style works for both desktop and mobile navigation. Review the Header and Footer on screen widths like 375px, 768px, and 1440px, adjusting spacing, font sizes, and alignment to ensure a pixel-perfect and consistent user experience across all devices.",
+            "status": "done",
+            "testStrategy": "Navigate between pages and verify that the `NavLink` for the current page has the correct active style in the header. Resize the browser window to confirm smooth transitions and correct layout breaks for both Header and Footer."
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Implement Responsive Design Across All Pages",
+        "description": "Apply CSS media queries and flexible layouts to ensure the website is fully responsive and provides an optimal viewing experience on desktop, tablet, and mobile devices.",
+        "details": "This task focuses on retrofitting all existing and newly developed components with responsive styles using a mobile-first approach. The implementation must leverage the existing `styled-components` architecture and establish a consistent pattern for handling breakpoints across the application.\n\n**1. Establish Global Breakpoints:**\n   - In a central theme file (e.g., `src/styles/theme.js` or a new `src/styles/breakpoints.js`), define the standard breakpoints for the project. Based on other tasks, these should be:\n     - `mobile`: 375px\n     - `tablet`: 768px\n     - `desktop`: 1440px\n   - Create a media query helper utility to easily consume these breakpoints within styled-components. Example:\n     ```javascript\n     // src/styles/media.js\n     const breakpoints = { tablet: '768px', desktop: '1440px' };\n     export const media = Object.keys(breakpoints).reduce((acc, label) => {\n       acc[label] = (...args) => css`\n         @media (min-width: ${breakpoints[label]}) {\n           ${css(...args)}\n         }\n       `;\n       return acc;\n     }, {});\n     ```\n\n**2. Refactor Core Components:**\n   - **Header (`src/components/Header/Header.styles.js`):** Implement the mobile navigation (hamburger menu). The navigation links should collapse into a toggleable menu on screens smaller than the tablet breakpoint. On larger screens, it should display the full navigation bar.\n   - **Footer (`src/components/Footer/Footer.styles.js`):** Adjust the layout of footer columns. On mobile, stack elements vertically. On tablet and desktop, arrange them in a multi-column layout using Flexbox or CSS Grid.\n\n**3. Refactor Page Components:**\n   - **Homepage (`src/pages/Home/Home.js` and its sub-components):**\n     - `Hero`: Adjust font sizes, padding, and button sizes for smaller screens.\n     - `ServiceHighlights`: The layout should transition from a single-column view on mobile to a multi-column grid on tablet and desktop.\n     - `Testimonials`: Ensure the testimonial cards are readable and well-formatted on all screen sizes, potentially using a carousel/slider for mobile.\n\n**4. General Guidelines:**\n   - Use relative units like `rem`, `em`, and `%` for font sizes, padding, and margins where appropriate to ensure scalability.\n   - Use `max-width` on containers to prevent content from becoming too wide on large desktop screens.\n   - Ensure all images are responsive, using `max-width: 100%;` and `height: auto;`.",
+        "testStrategy": "1.  **Breakpoint Verification:** Use browser developer tools (e.g., Chrome DevTools' Responsive Mode) to test the layout at the specified breakpoints (375px, 768px, 1440px) and at sizes in between.\n2.  **Layout Integrity:** Verify that no horizontal scrollbars appear on any page at any screen size. Check that all content reflows correctly and there are no overlapping or broken elements.\n3.  **Mobile Navigation Functional Test:** On screen widths below 768px, confirm that the hamburger menu icon appears in the header. Test opening and closing the menu, and verify that all navigation links within it are tappable and functional.\n4.  **Component Responsiveness:**\n    - **Homepage:** Confirm the `ServiceHighlights` section transitions from a single column to a grid layout at the tablet breakpoint.\n    - **Footer:** Verify that footer elements stack vertically on mobile and align horizontally on larger screens.\n5.  **Cross-Browser Testing:** Render all pages on the latest versions of Chrome, Firefox, and Safari to ensure consistent behavior and appearance.\n6.  **Device Testing (Optional but Recommended):** Test the site on at least one physical iOS device and one physical Android device to check for touch target sizing and performance.",
+        "status": "pending",
+        "dependencies": [
+          "2",
+          "3"
+        ],
+        "priority": "medium",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Establish Global Breakpoints and Media Query Helper",
+            "description": "Define standard project breakpoints in the theme and create a reusable media query utility for styled-components to ensure a consistent, mobile-first approach.",
+            "dependencies": [],
+            "details": "In `src/styles/theme.js`, add a `breakpoints` object: `{ mobile: '375px', tablet: '768px', desktop: '1440px' }`. Create a new file `src/styles/media.js` to export a `media` helper function that consumes these breakpoints and generates `min-width` media queries for use in styled-components, as outlined in the task description.",
+            "status": "done",
+            "testStrategy": "Verify that the `theme.js` file is updated and the `media.js` helper can be imported and used in a sample component without errors. No visual change is expected yet."
+          },
+          {
+            "id": 2,
+            "title": "Implement Responsive Header with Hamburger Menu",
+            "description": "Refactor the Header component to be fully responsive. The desktop navigation should collapse into a toggleable hamburger menu on mobile and tablet screens.",
+            "dependencies": [
+              "4.1"
+            ],
+            "details": "In `src/components/Header/Header.styles.js`, use the new `media` helper to hide the main navigation links and display a hamburger menu icon on screens smaller than the tablet breakpoint. In `src/components/Header/index.js`, add state management (e.g., `useState`) to toggle the visibility of a mobile navigation overlay/drawer when the hamburger icon is clicked.",
+            "status": "done",
+            "testStrategy": "On screen widths below 768px, confirm the navigation links are hidden and a hamburger icon is visible. Clicking the icon should toggle the display of the mobile menu. Above 768px, the full navigation bar should be visible."
+          },
+          {
+            "id": 3,
+            "title": "Refactor Footer for Responsive Layout",
+            "description": "Adjust the layout of the Footer component to ensure its content is well-organized and readable on all screen sizes, stacking vertically on mobile devices.",
+            "dependencies": [
+              "4.1"
+            ],
+            "details": "Using the `media` helper in `src/components/Footer/Footer.styles.js`, modify the footer's container. The default style (mobile-first) should use `flex-direction: column` to stack footer sections and links vertically. For tablet and larger screens, use a media query to set `flex-direction: row` and `justify-content: space-between` for a multi-column layout.",
+            "status": "done",
+            "testStrategy": "Verify that footer elements are stacked vertically on screens narrower than 768px. On screens wider than 768px, confirm the elements are arranged in a horizontal, multi-column layout."
+          },
+          {
+            "id": 4,
+            "title": "Apply Responsive Styles to Homepage Sections (Hero & Service Highlights)",
+            "description": "Adapt the main sections of the homepage, including the Hero banner and Service Highlights, to be responsive across all devices.",
+            "dependencies": [
+              "4.1"
+            ],
+            "details": "Locate the style files for the `Hero` and `ServiceHighlights` components. Use the `media` helper to adjust styles for different breakpoints. For the `Hero` component, scale down font sizes, padding, and button sizes for mobile. For `ServiceHighlights`, change the layout from a multi-column grid on desktop to a single-column vertical stack on mobile.",
+            "status": "done",
+            "testStrategy": "On the homepage, check that the Hero section's text is readable and contained within the viewport on mobile. Verify the Service Highlights section displays as a single column on mobile and transitions to a grid layout on tablet/desktop."
+          },
+          {
+            "id": 5,
+            "title": "Adapt Homepage Testimonials and Implement a Global Container",
+            "description": "Make the Testimonials section responsive and create a reusable `Container` component to enforce a consistent max-width across all pages.",
+            "dependencies": [
+              "4.1"
+            ],
+            "details": "In the `Testimonials` component styles, adjust the layout so that cards stack vertically on mobile. Create a new reusable component (e.g., `src/components/Layout/Container.js`) that applies `width: 100%`, a `max-width` (e.g., 1200px), `margin: 0 auto`, and responsive padding. Apply this `Container` as the top-level wrapper within each page component (e.g., `Home`, `About`, `Services`) to prevent content from stretching too wide on large screens.",
+            "status": "done",
+            "testStrategy": "Check that testimonial cards are readable and stacked on mobile. Verify that on large desktop screens, the main content of the homepage and other pages is centered and does not exceed the specified `max-width`."
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Set Up Backend Server for Contact Form",
+        "description": "Initialize a new backend project (e.g., Node.js with Express) to handle API requests.",
+        "details": "Create a new directory for the backend. Set up a basic Express server that can listen for incoming HTTP requests. Choose a hosting solution for the backend (e.g., Vercel Serverless Functions, Heroku, Netlify Functions).",
+        "testStrategy": "Create a simple health-check endpoint (e.g., /api/status). Deploy the basic server and ensure the endpoint is reachable and returns a success status.",
+        "status": "pending",
+        "dependencies": [],
+        "priority": "medium",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create API Directory for Vercel Functions",
+            "description": "Create a new 'api' directory at the project root to house the backend serverless functions, following Vercel's standard project structure.",
+            "dependencies": [],
+            "details": "In the root of the project `C:\\Barao\\Projetos\\JGbioestetica`, create a new folder named `api`. This directory is where Vercel automatically looks for serverless functions.",
+            "status": "pending",
+            "testStrategy": "Verify that the `api` directory exists at the project root level using the file explorer or `ls -a` command."
+          },
+          {
+            "id": 2,
+            "title": "Install Backend Dependencies",
+            "description": "Add necessary Node.js packages like Express and CORS to the project to handle HTTP requests and cross-origin policies.",
+            "dependencies": [],
+            "details": "Open a terminal in the project root and run `npm install express cors`. This will add `express` and `cors` to the `dependencies` section of the root `package.json` file.",
+            "status": "pending",
+            "testStrategy": "Check the `package.json` file to confirm that `express` and `cors` are listed as dependencies."
+          },
+          {
+            "id": 3,
+            "title": "Implement Basic Express Server in an API File",
+            "description": "Create an initial API file (e.g., `index.js`) inside the `api` directory and set up a minimal Express application to handle all API requests.",
+            "dependencies": [
+              "5.1",
+              "5.2"
+            ],
+            "details": "Create a file named `index.js` inside the `api` directory. In this file, require `express` and `cors`, initialize an Express app, apply the `cors()` middleware, and export the app instance using `module.exports = app;`. This will serve as the entry point for all API routes.",
+            "status": "pending",
+            "testStrategy": "Run the project locally using the Vercel CLI (`vercel dev`) to ensure no errors are thrown on startup related to the `api/index.js` file."
+          },
+          {
+            "id": 4,
+            "title": "Create the `/api/status` Health-Check Endpoint",
+            "description": "Implement a GET route for `/api/status` within the Express application to serve as a health check, confirming the server is running.",
+            "dependencies": [
+              "5.3"
+            ],
+            "details": "In `api/index.js`, add a GET route handler: `app.get('/api/status', (req, res) => { res.status(200).json({ status: 'ok' }); });`. This endpoint will be used to verify that the backend is deployed and responsive.",
+            "status": "pending",
+            "testStrategy": "While running the project locally with `vercel dev`, navigate to `http://localhost:3000/api/status` in your browser or use a tool like Postman. Verify that it returns a 200 status and the JSON payload `{ \"status\": \"ok\" }`."
+          },
+          {
+            "id": 5,
+            "title": "Configure Vercel for API Rewrites",
+            "description": "Create or update the `vercel.json` configuration file to correctly route all requests made to `/api/*` to the Express serverless function.",
+            "dependencies": [
+              "5.1"
+            ],
+            "details": "Create a `vercel.json` file in the project root if one does not exist. Add a `rewrites` rule to direct all API traffic to the main function. Example configuration: `{ \"rewrites\": [{ \"source\": \"/api/(.*)\", \"destination\": \"/api/index.js\" }] }`. This ensures that Vercel properly maps incoming requests like `/api/status` to your backend code.",
+            "status": "pending",
+            "testStrategy": "After deploying the changes to Vercel, access the public URL for the health check endpoint (e.g., `https://your-project-name.vercel.app/api/status`). Confirm it returns the expected success response."
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Create API Endpoint for Contact Form Submission",
+        "description": "Develop a backend API endpoint to receive data from the contact form, validate it, and send an email notification.",
+        "details": "Create a POST endpoint (e.g., /api/contact). Implement server-side validation for the form data (name, email, message). Use a service like SendGrid, Mailgun, or Nodemailer to send an email to the clinic's admin address with the form contents.",
+        "testStrategy": "Use a tool like Postman or Insomnia to send test POST requests to the endpoint with both valid and invalid data. Verify that email notifications are received successfully.",
+        "status": "pending",
+        "dependencies": [],
+        "priority": "medium",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create API Route File and Install Nodemailer",
+            "description": "Set up the basic file structure for the new contact form API endpoint within the Next.js App Router. Install the `nodemailer` library and its types to handle email sending.",
+            "dependencies": [],
+            "details": "Based on the Next.js App Router convention, create a new directory `src/app/api/contact` and a file `src/app/api/contact/route.ts`. Add a basic `POST` handler function that accepts a `Request` and returns a placeholder `NextResponse.json({ message: 'OK' })`. Use your package manager (e.g., npm, yarn, pnpm) to run `install nodemailer @types/nodemailer` to add the required dependencies to `package.json`.",
+            "status": "pending",
+            "testStrategy": "After creation, run the local dev server and send a POST request to `/api/contact` using a tool like Postman or curl. Verify that you receive the placeholder 'OK' response with a 200 status code."
+          },
+          {
+            "id": 2,
+            "title": "Add and Configure Environment Variables for Email Service",
+            "description": "Define and configure the necessary environment variables to securely connect to the email sending service (e.g., an SMTP provider like SendGrid, or a personal Gmail account for development).",
+            "dependencies": [],
+            "details": "In the `.env.local` file (create it if it doesn't exist at the project root), add variables for the email service. For example: `EMAIL_SERVER_HOST`, `EMAIL_SERVER_PORT`, `EMAIL_SERVER_USER`, `EMAIL_SERVER_PASS`. Also add `EMAIL_TO_ADDRESS` for the clinic's admin recipient email. Ensure these variables are not prefixed with `NEXT_PUBLIC_` to keep them server-side only and secure.",
+            "status": "pending",
+            "testStrategy": "Read the environment variables within the `route.ts` file using `process.env` and log them to the server console (for development only) to ensure they are being loaded correctly when the endpoint is hit."
+          },
+          {
+            "id": 3,
+            "title": "Implement Request Body Validation using Zod",
+            "description": "Create a Zod schema to validate the incoming data from the contact form, ensuring `name`, `email`, and `message` fields meet the required criteria.",
+            "dependencies": [
+              "6.1"
+            ],
+            "details": "Inside `src/app/api/contact/route.ts`, import `z` from `zod`. Define a schema `contactFormSchema` that validates `name` (string, min 2 characters), `email` (a valid email string), and `message` (string, min 10 characters). In the `POST` handler, parse the request body using `await request.json()` and use the schema's `safeParse` method. If validation fails, return a `NextResponse.json` with the validation errors and a 400 status code.",
+            "status": "pending",
+            "testStrategy": "Use Postman to send various invalid payloads to the endpoint: missing fields, an invalid email format, a name that is too short. Verify that the API returns a 400 status code with a descriptive error message for each case."
+          },
+          {
+            "id": 4,
+            "title": "Implement Nodemailer Transport and Email Sending Logic",
+            "description": "Configure the Nodemailer transporter and create a function that constructs and sends the contact form submission as an email.",
+            "dependencies": [
+              "6.1",
+              "6.2"
+            ],
+            "details": "Within `src/app/api/contact/route.ts` or a new helper file (e.g., `src/lib/email.ts`), import `nodemailer`. Create a `transporter` object using `nodemailer.createTransport` and configure it with the environment variables from subtask 2. Create an `async` function that accepts the validated form data, constructs the email `mailOptions` (from, to, subject, html), and uses `await transporter.sendMail(mailOptions)` to send it.",
+            "status": "pending",
+            "testStrategy": "Temporarily call the email sending function with hardcoded valid data from within the route handler. Trigger the endpoint and check the recipient's inbox to confirm the email is received and formatted correctly."
+          },
+          {
+            "id": 5,
+            "title": "Integrate Validation and Email Service in API Endpoint",
+            "description": "Connect the validation and email sending logic within the POST handler. Implement comprehensive success and error responses to finalize the endpoint.",
+            "dependencies": [
+              "6.3",
+              "6.4"
+            ],
+            "details": "In the `src/app/api/contact/route.ts` POST handler, after a successful `safeParse` of the request body, call the email sending function with the validated data. Wrap the email sending call in a `try/catch` block. On success, return a `NextResponse.json({ message: 'Submission successful' }, { status: 200 })`. If the email fails to send, log the server-side error and return a `NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })`.",
+            "status": "pending",
+            "testStrategy": "Perform end-to-end testing. Use Postman to send a valid request and verify a 200 response and email receipt. Test with an invalid request and verify a 400 response. Simulate an email sending failure (e.g., by temporarily using incorrect `EMAIL_SERVER_PASS`) and verify a 500 response is returned."
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Integrate Contact Form with Backend API",
+        "description": "Connect the frontend contact form on the 'Contact' page to the backend API endpoint.",
+        "details": "In src/pages/Contact/Contact.js, add logic to handle form submission. Use fetch or axios to send a POST request to the /api/contact endpoint with the form data. Implement logic to display success or error messages to the user.",
+        "testStrategy": "Fill out and submit the form on the live website. Check the browser's network tab to ensure the API call is made correctly. Verify that the success/error message is displayed appropriately and the backend sends the email.",
+        "status": "pending",
+        "dependencies": [],
+        "priority": "medium",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement State Management for Contact Form Inputs",
+            "description": "In `src/pages/Contact/Contact.js`, use the `useState` hook to create and manage state for the `name`, `email`, and `message` form fields. Bind these state variables to their respective input elements.",
+            "dependencies": [],
+            "details": "Import the `useState` hook from React. Create three state variables, e.g., `const [name, setName] = useState('');`. For each form input (`<input>`, `<textarea>`), set the `value` attribute to the corresponding state variable and the `onChange` handler to update the state (e.g., `onChange={(e) => setName(e.target.value)}`).",
+            "status": "pending",
+            "testStrategy": "Verify that typing in the form fields updates the component's state by using React DevTools or logging the state variables."
+          },
+          {
+            "id": 2,
+            "title": "Create the Form Submission Handler",
+            "description": "Create an asynchronous `handleSubmit` function in `src/pages/Contact/Contact.js`. This function should be attached to the form's `onSubmit` event and prevent the default form submission behavior.",
+            "dependencies": [
+              "7.1"
+            ],
+            "details": "Define a function `const handleSubmit = async (e) => { ... };`. The first line should be `e.preventDefault();`. Attach this function to the form element: `<form onSubmit={handleSubmit}>`. Inside the function, construct a data object using the state variables from the previous subtask, e.g., `{ name, email, message }`.",
+            "status": "pending",
+            "testStrategy": "Add a `console.log` inside the `handleSubmit` function. Submit the form and check the browser's console to ensure the function is called and the form data object is logged correctly."
+          },
+          {
+            "id": 3,
+            "title": "Integrate Axios for API POST Request",
+            "description": "Install the `axios` library if it's not already in the project. Within the `handleSubmit` function, use `axios.post` to send the form data to the `/api/contact` backend endpoint.",
+            "dependencies": [
+              "7.2"
+            ],
+            "details": "Run `npm install axios` or `yarn add axios`. Import axios at the top of `src/pages/Contact/Contact.js`. Inside `handleSubmit`, add a `try...catch` block. In the `try` block, make the API call: `await axios.post('/api/contact', formData);`. The `formData` object should contain the name, email, and message.",
+            "status": "pending",
+            "testStrategy": "Submit the form and use the browser's Network tab to inspect the request. Verify that a POST request is made to `/api/contact` with the correct payload and headers."
+          },
+          {
+            "id": 4,
+            "title": "Add State for Submission Status and Feedback Messages",
+            "description": "Introduce new state variables to manage the UI feedback, such as loading status, success, and error messages. Update these states based on the outcome of the API call.",
+            "dependencies": [
+              "7.3"
+            ],
+            "details": "Create state variables like `const [isSubmitting, setIsSubmitting] = useState(false);` and `const [statusMessage, setStatusMessage] = useState('');`. Set `isSubmitting` to `true` before the API call and `false` in a `finally` block. In the `try` block, upon success, set a success message. In the `catch` block, set an error message.",
+            "status": "pending",
+            "testStrategy": "Use React DevTools to monitor the `isSubmitting` and `statusMessage` state changes as you submit the form and simulate both successful and failed API responses."
+          },
+          {
+            "id": 5,
+            "title": "Conditionally Render UI Feedback Elements",
+            "description": "Use the submission status state to render dynamic feedback in the JSX. Display a loading indicator on the submit button, and show success or error messages to the user near the form.",
+            "dependencies": [
+              "7.4"
+            ],
+            "details": "In the JSX, conditionally render a message container based on `statusMessage`. For example: `{statusMessage && <p className='status-message'>{statusMessage}</p>}`. You can also disable the submit button and change its text while `isSubmitting` is true, e.g., `<button type='submit' disabled={isSubmitting}>{isSubmitting ? 'Sending...' : 'Send Message'}</button>`.",
+            "status": "pending",
+            "testStrategy": "Submit the form. Verify that the 'Sending...' text or a spinner appears. After the API call completes, confirm that the correct success or error message is displayed on the page and that the button is re-enabled."
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Set Up Headless CMS for Blog and Services",
+        "description": "Choose, configure, and set up a headless CMS to manage dynamic content for the website's blog and services sections, including defining the necessary content models.",
+        "details": "This task involves setting up a headless CMS to allow non-technical users to manage content. The implementation will be split into CMS configuration and frontend integration preparation.\n\n1. **CMS Selection & Setup:**\n   - Choose a headless CMS. Sanity.io is recommended due to its generous free tier and real-time content editing capabilities.\n   - Create a new project on the chosen platform.\n   - Initialize the CMS studio within the project repository, likely in a new top-level directory named `studio`.\n\n2. **Content Modeling (Schema Definition):**\n   - Inside the `studio/schemas` directory, define the following content models:\n     - **`post`:** For blog articles. Fields: `title` (string), `slug` (slug, with source from title), `mainImage` (image with hotspot/crop), `publishedAt` (datetime), `excerpt` (string), `body` (block content for rich text).\n     - **`service`:** For clinic services. Fields: `title` (string), `slug` (slug, with source from title), `mainImage` (image), `summary` (text), `details` (block content for rich text).\n     - **`author`:** To link authors to posts. Fields: `name` (string), `picture` (image).\n\n3. **Frontend Client Integration:**\n   - Install the CMS client library in the React app: `npm install @sanity/client`.\n   - Create a new utility file `src/lib/sanityClient.js` to initialize and export the client. Configuration details (Project ID, Dataset) should be stored in environment variables (`.env` file) and accessed via `process.env.REACT_APP_SANITY_PROJECT_ID`.\n\n4. **API Hooks for Data Fetching:**\n   - To promote reusability, create custom hooks for fetching data. For example, `src/hooks/usePosts.js` which will use the Sanity client to run a GROQ query to fetch all published posts. This abstracts the data-fetching logic from the UI components.",
+        "testStrategy": "1. **Studio Verification:** Deploy the Sanity Studio and access it via its URL. Verify that you can log in and see the custom content types: 'Post', 'Service', and 'Author'.\n2. **Content Entry:** Use the studio to create at least two sample services and two sample blog posts. Test all fields, including image uploads and rich text formatting. Publish the entries.\n3. **API Connectivity Test:** Create a temporary test page or component in the React app. Use the configured client from `src/lib/sanityClient.js` to fetch all posts. `console.log` the results and verify in the browser's developer console that the data matches the content entered in the CMS.\n4. **Environment Variable Check:** Ensure no secret keys or project IDs are hardcoded in the repository. Verify the application successfully connects to the CMS using only environment variables.",
+        "status": "pending",
+        "dependencies": [],
+        "priority": "medium",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Initialize Sanity.io Project and Studio",
+            "description": "Create a new project on Sanity.io and initialize the Sanity Studio within the local project repository in a new 'studio' directory. This sets the foundation for all content management.",
+            "dependencies": [],
+            "details": "1. Go to sanity.io and create a new project. Note the Project ID and choose a dataset name (e.g., 'production').\n2. In the project root, run `npm create sanity@latest` and follow the prompts to connect to your new project. Choose the 'Clean project with no predefined schemas' template.\n3. When prompted for the output path, specify `./studio`.\n4. After initialization, navigate to the `studio` directory and run `npm install`.\n5. Add `/studio/node_modules` and `/studio/dist` to the main `.gitignore` file to avoid committing them.",
+            "status": "pending",
+            "testStrategy": "Run `npm run dev` inside the `studio` directory. The Sanity Studio should launch successfully in your browser on `http://localhost:3333`."
+          },
+          {
+            "id": 2,
+            "title": "Define 'Post' and 'Author' Schemas",
+            "description": "Create the schema definitions for blog posts and authors within the Sanity Studio. This will define the structure of the content that can be created.",
+            "dependencies": [
+              "8.1"
+            ],
+            "details": "1. In `studio/schemas`, create `post.js`. Define fields: `title` (string), `slug` (slug, with `title` as source), `author` (reference to `author`), `mainImage` (image with hotspot), `publishedAt` (datetime), `excerpt` (string), and `body` (blockContent).\n2. In `studio/schemas`, create `author.js`. Define fields: `name` (string), `picture` (image).\n3. In `studio/schemas/index.js`, import both `post` and `author` schemas and add them to the `types` array to register them with the studio.",
+            "status": "pending",
+            "testStrategy": "Launch the Sanity Studio. Verify that 'Post' and 'Author' appear as new content types in the navigation. Attempt to create a new author and a new post, ensuring all fields are present and functional, especially the author reference."
+          },
+          {
+            "id": 3,
+            "title": "Define 'Service' Schema",
+            "description": "Create the schema definition for the clinic's services. This model will store information about each service offered.",
+            "dependencies": [
+              "8.1"
+            ],
+            "details": "1. In `studio/schemas`, create a new file `service.js`.\n2. Define the schema with the following fields: `title` (string), `slug` (slug, with `title` as source), `mainImage` (image), `summary` (text), and `details` (blockContent for rich text).\n3. In `studio/schemas/index.js`, import the `service` schema and add it to the `types` array.",
+            "status": "pending",
+            "testStrategy": "Launch the Sanity Studio. Verify that 'Service' appears as a new content type. Create a sample service, populating all fields to ensure they are configured correctly."
+          },
+          {
+            "id": 4,
+            "title": "Configure Frontend Sanity Client",
+            "description": "Install the Sanity client library in the React application and create a configured, reusable client instance. This will enable the frontend to communicate with the Sanity API.",
+            "dependencies": [
+              "8.1"
+            ],
+            "details": "1. In the project root, run `npm install @sanity/client`.\n2. Create a `.env` file in the project root. Add your Sanity Project ID and Dataset name: `REACT_APP_SANITY_PROJECT_ID=your_project_id` and `REACT_APP_SANITY_DATASET=production`.\n3. Ensure `.env` is listed in your `.gitignore` file.\n4. Create a new file at `src/lib/sanityClient.js`.\n5. In this file, import `createClient` from `@sanity/client`, initialize it with the project ID, dataset, `apiVersion`, and `useCdn: true`, and export the configured client.",
+            "status": "pending",
+            "testStrategy": "In a temporary component or `App.js`, import the client and attempt a simple query like `client.fetch('*[_type == \"post\"][0]')`. Log the result to the console to confirm a successful connection and data retrieval."
+          },
+          {
+            "id": 5,
+            "title": "Create Custom Hooks for Data Fetching",
+            "description": "Develop reusable React hooks to abstract the logic for fetching posts and services from Sanity. This promotes clean code and separation of concerns in UI components.",
+            "dependencies": [
+              "8.2",
+              "8.3",
+              "8.4"
+            ],
+            "details": "1. Create a new directory `src/hooks`.\n2. Create `src/hooks/usePosts.js`. This hook should use the Sanity client to fetch all published posts, ordered by `publishedAt` date. It should manage loading and error states.\n3. Create `src/hooks/useServices.js`. This hook will use the Sanity client to fetch all services, likely ordered by title. It should also manage loading and error states.\n4. The hooks should accept optional parameters for more specific queries in the future (e.g., fetching a single post by its slug).",
+            "status": "pending",
+            "testStrategy": "Create temporary test components that use `usePosts` and `useServices`. Verify that the components correctly display loading states and then render the data fetched from Sanity. Test edge cases like what happens when no data is returned."
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "title": "Develop Blog List and Blog Post Pages",
+        "description": "Create two new page components: one to list all blog articles fetched from the headless CMS, and another to display the full content of a single selected article. This includes setting up routing and fetching data from the CMS.",
+        "details": "This task involves creating the frontend implementation for the blog section, fetching data from the Sanity.io CMS configured in Task #25.\n\n**1. Component & Page Structure:**\n- Create a new page component for the blog list at `src/pages/Blog/Blog.js`.\n- Create a new page component for a single blog post at `src/pages/BlogPost/BlogPost.js`.\n- Create a reusable component `src/components/BlogPostCard/BlogPostCard.js` to display a post summary on the blog list page. This should follow the component pattern established in Task #19.\n\n**2. Routing:**\n- In the main application router (likely `src/App.js`), add two new routes using `react-router-dom`:\n  - A route for `/blog` that renders the `Blog` page component.\n  - A dynamic route for `/blog/:slug` that renders the `BlogPost` page component.\n\n**3. Data Fetching & Integration:**\n- Install and configure the Sanity client (`@sanity/client`) to connect to the CMS project.\n- **Blog List Page (`Blog.js`):**\n  - Use a `useEffect` hook to fetch a list of all posts on component mount.\n  - Write a GROQ query to retrieve necessary fields: `_id`, `title`, `slug`, `mainImage`, `publishedAt`, and an excerpt/summary.\n  - Map the fetched posts to render a list of `BlogPostCard` components. Each card should use `<Link to={'/blog/' + post.slug.current}>` to link to the detail page.\n- **Blog Post Page (`BlogPost.js`):**\n  - Use the `useParams` hook from `react-router-dom` to extract the `slug` from the URL.\n  - Use a `useEffect` hook to fetch the single post data matching the slug.\n  - Write a GROQ query to retrieve all details for the post, including `title`, `mainImage`, `author`, `publishedAt`, and the `body` (portable text).\n\n**4. Content Rendering:**\n- On the `BlogPost.js` page, render the post's title, image, and metadata.\n- Install and use `@portabletext/react` to render the `body` content. This will correctly translate the rich text from Sanity into HTML elements.\n\n**5. Styling:**\n- Create corresponding style files (e.g., `Blog.styles.js`, `BlogPost.styles.js`) using `styled-components`.\n- Implement a fully responsive, mobile-first design for both pages, adhering to the global breakpoints and patterns established in Task #21.",
+        "testStrategy": "1. **Routing Verification:**\n   - Navigate to the `/blog` URL. The blog list page should render correctly.\n   - Click on a blog post card. The URL should update to `/blog/your-post-slug` and the single post page should load.\n   - Manually enter an invalid slug (e.g., `/blog/non-existent-post`) and verify the page handles the 'not found' case gracefully (e.g., displays a 'Post not found' message or redirects).\n\n2. **Data & Content Verification:**\n   - On the `/blog` page, confirm that all sample posts created in the Sanity CMS are listed with their correct title, image, and summary.\n   - On a single post page (`/blog/:slug`), verify that the title, main image, author, and full body content match the data entered in the CMS studio.\n   - Check that rich text elements from the CMS (e.g., headings, bold text, lists) are rendered correctly as HTML.\n\n3. **Responsiveness Testing:**\n   - Using browser developer tools, view both the blog list and blog post pages at the project's standard mobile, tablet, and desktop breakpoints (as defined in Task #21). \n   - Confirm that the layout adapts correctly, content is readable, and no horizontal scrollbars appear.",
+        "status": "pending",
+        "dependencies": [
+          "8",
+          "4"
+        ],
+        "priority": "medium",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create Page/Component Skeletons and Configure Routing",
+            "description": "Create the necessary file structure for the new blog pages and the reusable card component. Then, add the corresponding routes to the main application router to make the pages accessible.",
+            "dependencies": [],
+            "details": "Following the existing project structure, create these files:\n- `src/pages/Blog/Blog.js`\n- `src/pages/Blog/Blog.styles.js`\n- `src/pages/BlogPost/BlogPost.js`\n- `src/pages/BlogPost/BlogPost.styles.js`\n- `src/components/BlogPostCard/BlogPostCard.js`\n- `src/components/BlogPostCard/BlogPostCard.styles.js`\n\nIn `src/App.js`, import the `Blog` and `BlogPost` components and add two new routes inside the `<Routes>` component:\n- `<Route path=\"/blog\" element={<Blog />} />`\n- `<Route path=\"/blog/:slug\" element={<BlogPost />} />`",
+            "status": "pending",
+            "testStrategy": "After creating the files and adding the routes, run the application. Navigate to `/blog` and see the blank `Blog` component. Manually navigate to `/blog/test-slug` and see the blank `BlogPost` component."
+          },
+          {
+            "id": 2,
+            "title": "Fetch and Display Blog Post List on Blog Page",
+            "description": "Implement the data fetching logic on the `Blog.js` page to retrieve all blog posts from the Sanity CMS and display them as a list of `BlogPostCard` components.",
+            "dependencies": [
+              "9.1"
+            ],
+            "details": "In `src/pages/Blog/Blog.js`:\n1. Import `useState`, `useEffect` from 'react'.\n2. Import the configured Sanity client: `import client from '../../client';`\n3. Use a `useEffect` hook to fetch data on component mount.\n4. Write a GROQ query to get all documents of type `post`, selecting the `_id`, `title`, `slug`, `mainImage`, and `publishedAt` fields.\n5. Store the fetched posts in a state variable (e.g., `const [posts, setPosts] = useState(null);`).\n6. Map over the `posts` array and render a `BlogPostCard` for each post. Pass the post data as props.\n7. Wrap each `BlogPostCard` in a `Link` from `react-router-dom` pointing to `'/blog/' + post.slug.current`.",
+            "status": "pending",
+            "testStrategy": "Load the `/blog` page. Verify that a list of blog post cards appears, populated with data from the CMS. Check the browser's network tab to ensure the fetch request to the Sanity API is successful."
+          },
+          {
+            "id": 3,
+            "title": "Implement the BlogPostCard Component",
+            "description": "Build the reusable `BlogPostCard` component to display a summary of a blog post, including its image, title, and publication date. Style the card to match the project's aesthetic.",
+            "dependencies": [
+              "9.1"
+            ],
+            "details": "In `src/components/BlogPostCard/BlogPostCard.js`:\n1. Define the component to accept props: `image`, `title`, and `date`.\n2. Render the received props within a structured layout (e.g., an image at the top, followed by the date and then the title).\n\nIn `src/components/BlogPostCard/BlogPostCard.styles.js`:\n1. Use `styled-components` to create the card layout.\n2. Refer to `src/components/ServiceCard/ServiceCard.styles.js` for patterns.\n3. Add styles for the container, image, title, and date elements, ensuring it's responsive.",
+            "status": "pending",
+            "testStrategy": "Once subtask 26.2 is complete, view the `/blog` page. The list of posts should now be rendered using the fully styled `BlogPostCard` component. Check the card's appearance on different screen sizes."
+          },
+          {
+            "id": 4,
+            "title": "Fetch and Render Single Post Data",
+            "description": "On the `BlogPost.js` page, fetch the complete data for a single article based on the URL slug. Render the post's title, main image, and other metadata.",
+            "dependencies": [
+              "9.1"
+            ],
+            "details": "In `src/pages/BlogPost/BlogPost.js`:\n1. Import `useState`, `useEffect` from 'react' and `useParams` from 'react-router-dom'.\n2. Import the Sanity client: `import client from '../../client';`\n3. Use `useParams` to get the `slug` from the URL.\n4. Use a `useEffect` hook that triggers when the `slug` changes.\n5. Inside the hook, write a GROQ query to fetch the single post where `slug.current == $slug`. Select all relevant fields, including `title`, `mainImage`, `publishedAt`, and `body`.\n6. Store the fetched post data in a state variable.\n7. Render the `title`, `mainImage`, and `publishedAt` data on the page. Leave the `body` for the next subtask.",
+            "status": "pending",
+            "testStrategy": "Click on a `BlogPostCard` from the `/blog` list. Verify the URL changes to `/blog/the-post-slug` and the correct post's title and image are displayed. Check the network tab for the specific post fetch request."
+          },
+          {
+            "id": 5,
+            "title": "Render Portable Text and Finalize Styling",
+            "description": "Integrate the `@portabletext/react` library to correctly render the rich text content from Sanity. Finalize the responsive styling for both the blog list and single post pages.",
+            "dependencies": [
+              "9.4"
+            ],
+            "details": "1. Install the portable text library: `npm install @portabletext/react` or `yarn add @portabletext/react`.\n2. In `src/pages/BlogPost/BlogPost.js`, import `PortableText` from `@portabletext/react`.\n3. Use the `<PortableText value={post.body} />` component to render the rich text content.\n4. In `src/pages/Blog/Blog.styles.js` and `src/pages/BlogPost/BlogPost.styles.js`, implement a responsive, mobile-first grid/layout for the content, adhering to the project's global styles and breakpoints.",
+            "status": "pending",
+            "testStrategy": "On a single post page (`/blog/:slug`), verify that the main body content (paragraphs, headings, lists, etc.) is rendered correctly as HTML. Resize the browser window to confirm that both the blog list and single post pages are fully responsive and visually polished."
+          },
+          {
+            "id": 6,
+            "title": "Expose Blog List Page via Express.js",
+            "description": "Create an EJS template for the blog list page and define a route in public.routes.js to render it.",
+            "details": "",
+            "status": "pending",
+            "dependencies": [],
+            "parentTaskId": 9
+          },
+          {
+            "id": 7,
+            "title": "Expose Blog Post Page via Express.js",
+            "description": "Create an EJS template for the single blog post page and define a route in public.routes.js to render it, handling dynamic slugs.",
+            "details": "",
+            "status": "pending",
+            "dependencies": [],
+            "parentTaskId": 9
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "title": "Populate Website with Final Content",
+        "description": "Replace all placeholder text, images, and temporary data across the entire website with the final, client-approved content for both static pages and dynamic sections managed by the CMS.",
+        "details": "This task involves updating all content to its final state. All text, images, and other media should be sourced from the client-provided content document and asset folder.\n\n**1. Dynamic Content Entry (Headless CMS):**\n   - Log in to the Sanity Studio, which was configured in Task #25.\n   - Navigate to the 'Service' content type and create entries for each service offered. Fill in all defined fields such as title, description, image, and any other custom fields.\n   - Navigate to the 'Post' content type and create the initial set of blog articles. Upload cover images, assign authors, and populate the body content.\n\n**2. Static Page Content Updates:**\n   - **Home Page (`src/pages/Home/Home.js`):** Update the hero section headline, sub-headline, and call-to-action text. Replace placeholder content in feature sections and testimonials.\n   - **About Page (`src/pages/About/About.js`):** Populate the company history, mission statement, and team member bios with the final text and professional photos.\n   - **Contact Page (`src/pages/Contact/Contact.js`):** Update the introductory text above the form, and verify contact details like address, phone number, and email are correct.\n\n**3. Global Element Updates:**\n   - **Header & Footer (`src/components/Header/Header.js`, `src/components/Footer/Footer.js`):** Ensure all navigation links are correct and point to the right pages. Update footer content, including social media links and the copyright year.\n   - **Global Assets (`public/` directory):** Replace `favicon.ico`, `logo192.png`, and any other placeholder logos with the final, optimized brand assets.",
+        "testStrategy": "1. **Static Content Audit:** Systematically navigate to each static page (Home, About, Contact) and compare the on-screen content against the master content document. Verify there is no 'lorem ipsum' or placeholder text remaining.\n2. **Dynamic Content Verification:** Navigate to the `/blog` and any services pages. Confirm that all posts and services entered into the Sanity Studio are displayed correctly on their respective list pages. Click into each individual item to ensure the detail pages (`/blog/:slug`) render the full content accurately.\n3. **Asset & Media Check:** Verify that the website's favicon in the browser tab and the logo in the header are the final versions. Ensure all images across all pages load correctly, are not distorted, and have appropriate `alt` text.\n4. **Link Integrity Check:** Click every link on the website, including navigation menu items, buttons, and in-text links, to ensure they direct to the correct internal or external pages without any 404 errors.\n5. **Responsive Review:** Use browser developer tools to view the website on various screen sizes (desktop, tablet, mobile). Confirm that the final content reflows correctly and does not break the layout on any device.",
+        "status": "pending",
+        "dependencies": [
+          "7",
+          "8",
+          "9"
+        ],
+        "priority": "medium",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Populate 'Service' and 'Post' Content in Sanity CMS",
+            "description": "Log into the Sanity Studio and populate all dynamic content types. This includes creating entries for every service and the initial set of blog posts using the final client-provided text and images.",
+            "dependencies": [],
+            "details": "Access the Sanity Studio deployment. Navigate to the 'Service' schema and create a new document for each service, filling in the title, description, and uploading the corresponding service image. Then, navigate to the 'Post' schema and create the initial blog articles, ensuring all fields like title, body content, author, and cover image are populated.",
+            "status": "pending",
+            "testStrategy": "After populating, visit the live `/servicos` and `/blog` pages on the website to ensure the new content is being fetched and displayed correctly."
+          },
+          {
+            "id": 2,
+            "title": "Update Home Page Static Content and Images",
+            "description": "Replace all placeholder text and images on the home page with the final, client-approved content. This includes the main hero section, feature descriptions, and testimonials.",
+            "dependencies": [],
+            "details": "In `src/pages/Home/Home.js`, update the props being passed to the `Hero` component with the final headline and sub-headline. Locate the `FeatureSection` and `Testimonials` components (or equivalent JSX) and replace the 'lorem ipsum' text and placeholder image paths with the final content and assets provided by the client.",
+            "status": "pending",
+            "testStrategy": "Load the home page and verify that the hero section, all feature blocks, and testimonials display the new text and images. Check for any remaining placeholder content."
+          },
+          {
+            "id": 3,
+            "title": "Update About and Contact Page Content",
+            "description": "Populate the 'About' and 'Contact' pages with their final text, team member information, and contact details.",
+            "dependencies": [],
+            "details": "In `src/pages/About/About.js`, replace the placeholder text for the company history, mission statement, and team member bios. Replace placeholder team member images with their professional photos. In `src/pages/Contact/Contact.js`, update the introductory text above the contact form and verify that the displayed address, phone number, and email are correct.",
+            "status": "pending",
+            "testStrategy": "Navigate to the '/sobre' and '/contato' pages. On the 'About' page, confirm all text and team photos are correct. On the 'Contact' page, verify the accuracy of the introductory text and all contact information."
+          },
+          {
+            "id": 4,
+            "title": "Update Global Header and Footer Content",
+            "description": "Update the site-wide header and footer to reflect the final navigation structure, social media links, and copyright information.",
+            "dependencies": [],
+            "details": "In `src/components/Header/Header.js`, review all navigation links to ensure they are correct and point to the right pages. In `src/components/Footer/Footer.js`, update the `href` attributes for all social media icons to point to the client's actual profiles. Also, update the copyright year to the current year.",
+            "status": "pending",
+            "testStrategy": "On any page, check that all header navigation links work as expected. Scroll to the footer and click on each social media icon to confirm it leads to the correct URL. Verify the copyright year is current."
+          },
+          {
+            "id": 5,
+            "title": "Replace Global Brand Assets and Favicon",
+            "description": "Replace all placeholder logos, favicons, and web app manifest icons with the final, optimized brand assets.",
+            "dependencies": [],
+            "details": "In the `public/` directory, replace `favicon.ico`, `logo192.png`, and `logo512.png` with the final assets provided by the client. Ensure the new files use the exact same filenames. If other placeholder images exist in `public/images/`, replace them as well. Update `public/manifest.json` if necessary to reflect the new branding.",
+            "status": "pending",
+            "testStrategy": "Clear browser cache and reload the website. Verify that the new favicon appears in the browser tab. Use browser developer tools to inspect the manifest icons and ensure the new logos are being used for 'add to home screen' functionality."
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "title": "Perform SEO and Performance Optimization",
+        "description": "Implement on-page SEO best practices, optimize asset loading, and improve overall site performance to enhance search engine visibility and user experience.",
+        "details": "This task involves a comprehensive audit and implementation of SEO and performance enhancements across the application, leveraging the existing React and Sanity.io architecture.\n\n**1. On-Page SEO Implementation:**\n   - Install `react-helmet-async` to manage per-page head tags (`npm install react-helmet-async`). Wrap the root component in `src/index.js` or `src/App.js` with `<HelmetProvider>`.\n   - Create a reusable `MetaTags` component (`src/components/MetaTags/MetaTags.js`) that accepts props like `title`, `description`, `imageUrl`, and `canonicalUrl` to generate `<title>`, `<meta name=\"description\">`, `<link rel=\"canonical\">`, and Open Graph tags (`og:title`, `og:description`, `og:image`, `og:url`).\n   - Integrate the `MetaTags` component into all pages. For dynamic pages like `src/pages/BlogPost/BlogPost.js`, pull the title, a summary for the description, and the main image URL from the Sanity data.\n   - Update `public/index.html` to set the correct language attribute (`<html lang=\"pt-BR\">`) and add fallback meta tags for the homepage.\n   - Create `public/robots.txt` to guide search engine crawlers, allowing all relevant content and pointing to the sitemap.\n   - Implement a sitemap generation strategy. This can be a post-build script that fetches all blog and service slugs from Sanity to create a `sitemap.xml` file in the build output directory.\n\n**2. Performance Optimization:**\n   - **Image Optimization:** Modify image rendering logic to use the Sanity.io Image API for serving responsive, next-gen format images (e.g., WebP). Append URL parameters like `?auto=format&q=75&w=800` to image URLs fetched from Sanity. Implement native lazy loading by adding `loading=\"lazy\"` to all `<img>` tags for content below the fold, especially in `src/components/BlogPostCard/BlogPostCard.js` and within blog post content.\n   - **Code Splitting:** Review the routing setup in `src/App.js`. Use `React.lazy()` and `<Suspense>` to dynamically import page components (e.g., `const Blog = React.lazy(() => import('./pages/Blog/Blog'));`). This will ensure users only download the code for the page they are viewing.\n   - **Bundle Analysis:** After a production build (`npm run build`), use a tool like `source-map-explorer` to analyze the JavaScript bundle sizes and identify any unexpectedly large dependencies that could be optimized or replaced.\n\n**3. Accessibility (A11y) & Semantics:**\n   - Audit the entire application to ensure correct semantic HTML is used (e.g., `<main>`, `<article>`, `<nav>`).\n   - Ensure all images rendered from Sanity have their `alt` text field from the CMS applied to the `<img>` tag's `alt` attribute.\n   - Verify that all interactive elements (buttons, links) have accessible names and visible focus states. Check the form in `src/pages/Contact/Contact.js` to ensure all inputs are linked to a `<label>`.",
+        "testStrategy": "**1. SEO Verification:**\n   - Use browser developer tools to inspect the `<head>` section on the Home page, Blog list page, and several individual Blog Post pages. Verify that the `<title>`, `<meta name=\"description\">`, and `og:` tags are present, unique, and accurately reflect the page's content.\n   - Use an online tool like the Facebook Sharing Debugger to test a blog post URL. Verify that the correct title, description, and image appear in the preview.\n   - Navigate to `/robots.txt` and `/sitemap.xml` on the deployed site to ensure they are accessible and correctly formatted.\n\n**2. Performance Testing:**\n   - Run a Google Lighthouse audit in an incognito Chrome window on the Home page, a Blog Post, and the Blog list page. Aim for scores of 90+ in Performance, Accessibility, and SEO categories. Address any major issues reported.\n   - Open the Network tab in developer tools, enable 'Slow 3G' throttling, and load a long page like the blog list. Confirm that images below the fold are loaded only as you scroll down (verifying `loading=\"lazy\"`).\n   - Clear the cache, navigate between the Home page and the Blog page, and observe the Network tab to confirm that separate JavaScript chunks are being loaded for each page, verifying code splitting.\n\n**3. Accessibility Audit:**\n   - Use the Axe DevTools browser extension to run an automated accessibility scan on all pages. Fix all critical and serious issues.\n   - Navigate the entire website using only the keyboard (Tab, Shift+Tab, Enter). Ensure all links, buttons, and form fields in the contact form are reachable, interactive, and have a visible focus indicator.",
+        "status": "pending",
+        "dependencies": [
+          "9",
+          "10"
+        ],
+        "priority": "medium",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Set Up SEO Foundation with `react-helmet-async`",
+            "description": "Install and configure `react-helmet-async` to enable dynamic management of the document head. This includes creating a reusable component for all meta tags.",
+            "dependencies": [],
+            "details": "1. Install the necessary package: `npm install react-helmet-async`.\n2. In `src/index.js`, import `HelmetProvider` from `react-helmet-async` and wrap the `<BrowserRouter>` component with it.\n3. Create a new component file at `src/components/MetaTags/MetaTags.js`.\n4. Implement the `MetaTags` component to accept props like `title`, `description`, `imageUrl`, and `canonicalUrl`. It should render `<Helmet>` with `<title>`, `<meta name='description'>`, `<link rel='canonical'>`, and Open Graph tags (`og:title`, `og:description`, `og:image`, `og:url`).",
+            "status": "pending",
+            "testStrategy": "After implementation, inspect the page source of the homepage. No visible changes should occur, but the app should be ready for the next step. Verify the app runs without errors."
+          },
+          {
+            "id": 2,
+            "title": "Integrate Meta Tags and Create Core SEO Files",
+            "description": "Deploy the `MetaTags` component across all pages, using dynamic data where applicable. Update static HTML files and create `robots.txt` to guide search engines.",
+            "dependencies": [
+              "11.1"
+            ],
+            "details": "1. Import and use the `MetaTags` component in each page component inside `src/pages/` (`Home.js`, `About.js`, `Services.js`, `Blog.js`, `Contact.js`). Provide static, relevant content for each page.\n2. In `src/pages/BlogPost/BlogPost.js`, integrate `MetaTags` and populate its props dynamically using the fetched post data (e.g., `title={post.title}`, `description={post.excerpt}`).\n3. In `public/index.html`, change the language attribute to `<html lang=\"pt-BR\">` and update the fallback `<title>` and `<meta name=\"description\">` to be relevant to the homepage.\n4. Create a new file `public/robots.txt` with rules to allow crawlers access to all content and specify the sitemap location (e.g., `Sitemap: https://www.jgbioestetica.com.br/sitemap.xml`).",
+            "status": "pending",
+            "testStrategy": "Use browser developer tools to inspect the `<head>` of the Home, Blog, and a specific BlogPost page. Verify that the title, description, and OG tags are unique and correct for each page."
+          },
+          {
+            "id": 3,
+            "title": "Optimize Image Delivery with Sanity.io API and Lazy Loading",
+            "description": "Modify image rendering to leverage the Sanity.io Image API for optimized formats and sizes. Implement native lazy loading for images below the fold to improve initial page load time.",
+            "dependencies": [],
+            "details": "1. Locate the `urlFor` helper function, likely in files that render Sanity images like `src/pages/BlogPost/BlogPost.js` or `src/client.js`.\n2. Update the image URL generation to include Sanity's optimization parameters. For example, change `urlFor(source).url()` to `urlFor(source).auto('format').quality(75).width(800).url()`.\n3. Apply this optimization to images in `src/components/BlogPostCard/BlogPostCard.js` and `src/pages/BlogPost/BlogPost.js`.\n4. Add the `loading=\"lazy\"` attribute to all `<img>` tags within `BlogPostCard.js` and any other components rendering lists of images that may extend off-screen.",
+            "status": "pending",
+            "testStrategy": "Using the Network tab in browser developer tools, inspect the image requests. Verify that images are being served in WebP format (where supported) and that their file sizes are reduced. Scroll down on the Blog page and confirm that images for cards initially off-screen are loaded only as they enter the viewport."
+          },
+          {
+            "id": 4,
+            "title": "Implement Route-Based Code Splitting",
+            "description": "Refactor the main router in `src/App.js` to dynamically import page components. This will reduce the initial JavaScript bundle size by splitting the code for each page into separate chunks.",
+            "dependencies": [],
+            "details": "1. In `src/App.js`, import `lazy` and `Suspense` from 'react'.\n2. Convert the static page imports to dynamic imports using `React.lazy()`. For example: `const Home = lazy(() => import('./pages/Home/Home'));`.\n3. Repeat this for all page components: `About`, `Services`, `Blog`, `BlogPost`, and `Contact`.\n4. Wrap the `<Routes>` component within a `<Suspense>` component, providing a fallback UI, such as a simple loading message or a spinner: `<Suspense fallback={<div>Carregando...</div>}>`.",
+            "status": "pending",
+            "testStrategy": "After building for production (`npm run build`), use a tool like `source-map-explorer` to analyze the output. Confirm that the main bundle is smaller and that separate JavaScript chunks have been created for each page. In the browser's Network tab, verify that navigating to a new page for the first time triggers a download of that page's specific JS chunk."
+          },
+          {
+            "id": 5,
+            "title": "Enhance Accessibility (A11y) and Semantic HTML",
+            "description": "Audit the application to ensure proper use of semantic HTML, all images have meaningful alt text, and all interactive elements are accessible.",
+            "dependencies": [],
+            "details": "1. Review all page and component files to ensure correct semantic HTML is used. Confirm that `<main>` in `App.js` correctly wraps the primary content, and use `<article>`, `<section>`, and `<nav>` where appropriate.\n2. In `src/pages/BlogPost/BlogPost.js` and `src/components/BlogPostCard/BlogPostCard.js`, ensure the `alt` attribute of the `<img>` tag is populated from the `alt` text field provided by Sanity for each image.\n3. In `src/pages/Contact/Contact.js`, inspect the form and verify that every `<input>` and `<textarea>` has a corresponding `<label>` element with a matching `htmlFor` attribute pointing to the input's `id`.",
+            "status": "pending",
+            "testStrategy": "Use a browser accessibility tool like Lighthouse or Axe DevTools to scan the main pages (Home, Contact, BlogPost). Check for any reported issues related to missing alt text, form labels, or incorrect semantic structure. Manually verify that all images have descriptive, non-generic alt text."
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "title": "Set Up Hosting, Domain, and Deploy Website",
+        "description": "Configure a hosting environment and domain, and deploy the final version of the website to make it publicly accessible.",
+        "details": "This task involves selecting a hosting provider, configuring the domain's DNS, setting up the deployment pipeline, and pushing the application to production.\n\n1. **Hosting Provider Setup:**\n   - Choose and sign up for a hosting provider optimized for modern JavaScript applications, such as Vercel or Netlify. Vercel is recommended given the potential for serverless functions (as per Task #24).\n   - Create a new project and connect it to the project's Git repository.\n\n2. **Build Configuration:**\n   - In the hosting provider's project settings, configure the build command to `npm run build`.\n   - Set the publish directory to `build`, which is the standard output for Create React App projects.\n   - Select \"Create React App\" as the framework preset if available.\n\n3. **Domain Configuration:**\n   - Purchase the final domain name if not already acquired.\n   - In the hosting provider's dashboard, add the custom domain.\n   - Update the domain's DNS records (either by changing nameservers or adding A/CNAME records) to point to the hosting provider as per their instructions.\n\n4. **Environment Variables:**\n   - In the project settings on the hosting platform, add all necessary environment variables required for the production build. Based on previous tasks, these will include:\n     - `REACT_APP_SANITY_PROJECT_ID`: The project ID from the Sanity.io CMS.\n     - `REACT_APP_SANITY_DATASET`: The dataset name (likely 'production').\n     - Any server-side keys for the contact form API (e.g., `SENDGRID_API_KEY`, `CONTACT_FORM_RECIPIENT_EMAIL`).\n\n5. **CMS CORS Configuration:**\n   - Go to the Sanity.io project management dashboard (manage.sanity.io).\n   - Navigate to `API` -> `CORS origins`.\n   - Add the new production URL (e.g., `https://www.yourdomain.com`) to the list of allowed origins to enable the live frontend to fetch data from the CMS.\n\n6. **Initial Deployment:**\n   - Push the latest, completed code from the `main` branch to trigger the first production deployment. Monitor the build logs in the hosting provider's dashboard to ensure a successful build and deployment.",
+        "testStrategy": "1. **Domain & SSL Verification:** Access the website using the final custom domain. Verify that the site loads correctly over HTTPS and that the browser shows a valid SSL certificate.\n2. **Live Data Fetching:** Navigate to the blog and services pages. Confirm that all content is being fetched correctly from the Sanity.io CMS. Check the browser's network tab for any failed requests or CORS errors.\n3. **Contact Form Submission:** Go to the contact page and submit the form with valid data. Verify that the success message appears and that the designated recipient receives the email notification. Check the serverless function logs on the hosting platform for any execution errors.\n4. **Performance Audit:** Run a Google Lighthouse audit on the live home page, a blog list page, and a blog post page. Verify that performance, accessibility, and SEO scores meet the targets set in Task #28.\n5. **Final Content Check:** Perform a final spot-check across all pages to ensure all content populated in Task #27 is present and correctly formatted, with no remaining placeholder text or images.",
+        "status": "pending",
+        "dependencies": [
+          "10",
+          "11"
+        ],
+        "priority": "medium",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Connect Repository and Configure Build Settings on Vercel",
+            "description": "Create a new project on a hosting provider like Vercel, connect it to the project's Git repository, and configure the necessary build settings for a Create React App.",
+            "dependencies": [],
+            "details": "Sign up for Vercel. Create a new project and import the Git repository. In the project settings, Vercel should auto-detect 'Create React App'. Verify the build command is set to `npm run build` and the Output Directory is `build`. This aligns with the `react-scripts build` command found in `package.json`.",
+            "status": "pending",
+            "testStrategy": "After connecting, trigger a test deployment (without custom domain or env vars yet) to ensure the project builds successfully on the Vercel platform."
+          },
+          {
+            "id": 2,
+            "title": "Add and Configure Custom Domain",
+            "description": "Add the final custom domain to the Vercel project and update the domain's DNS records at the registrar to point to Vercel.",
+            "dependencies": [
+              "12.1"
+            ],
+            "details": "In the Vercel project's 'Domains' tab, add the custom domain name. Vercel will provide instructions, typically to update the nameservers (NS records) at your domain registrar to point to Vercel's nameservers. This change can take time to propagate.",
+            "status": "pending",
+            "testStrategy": "After DNS propagation, check if the Vercel project dashboard shows the domain as successfully configured. The default Vercel deployment URL should be accessible via the custom domain, and an SSL certificate should be automatically provisioned."
+          },
+          {
+            "id": 3,
+            "title": "Set Production Environment Variables in Vercel",
+            "description": "Add all necessary environment variables to the Vercel project settings to allow the production build to connect to the Sanity.io CMS and other services.",
+            "dependencies": [
+              "12.1"
+            ],
+            "details": "Navigate to the 'Settings' -> 'Environment Variables' section of the Vercel project. Based on the codebase analysis (`grep 'process.env.REACT_APP_'`), add the following keys and their corresponding production values: `REACT_APP_SANITY_PROJECT_ID` and `REACT_APP_SANITY_DATASET`. Also include any other required secrets, such as for a contact form API.",
+            "status": "pending",
+            "testStrategy": "Trigger a new deployment after setting the variables. While the site may still fail due to CORS, check the build logs to ensure the build process completes without errors related to missing environment variables."
+          },
+          {
+            "id": 4,
+            "title": "Add Production Domain to Sanity CMS CORS Origins",
+            "description": "Authorize the newly deployed website to fetch data from the Sanity.io CMS by adding its production URL to the allowed CORS origins list.",
+            "dependencies": [
+              "12.2"
+            ],
+            "details": "Go to the Sanity project management dashboard (manage.sanity.io). Navigate to the 'API' tab and find the 'CORS origins' configuration. Click 'Add new origin' and enter the full URL of the production domain (e.g., `https://www.yourdomain.com`). Ensure 'Allow credentials' is checked.",
+            "status": "pending",
+            "testStrategy": "After adding the origin, visit the live production URL. Navigate to pages that fetch data from Sanity (e.g., blog, services). Verify that the content loads correctly and there are no CORS errors in the browser's developer console."
+          },
+          {
+            "id": 5,
+            "title": "Trigger Final Deployment and Perform Full Site Verification",
+            "description": "Push the latest code from the main branch to trigger a final production deployment, and conduct a full smoke test of the live website.",
+            "dependencies": [
+              "12.3",
+              "12.4"
+            ],
+            "details": "With all configurations in place, ensure the `main` branch contains the final, approved version of the code. Push any final commits to the `main` branch. This will automatically trigger a new production deployment on Vercel. Monitor the build and deployment logs for success.",
+            "status": "pending",
+            "testStrategy": "Access the website using the custom domain. Systematically check all pages (Home, About, Services, Blog, Contact). Verify that all static and dynamic content loads, images are present, navigation works, and the contact form is functional. Confirm the site is served over HTTPS with a valid certificate."
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "title": "Set Up Analytics and Post-Launch Monitoring",
+        "description": "Integrate web analytics to track user engagement and configure monitoring tools to ensure website uptime, performance, and search engine health post-launch.",
+        "details": "This task involves setting up essential third-party services to monitor the application after it has been deployed.\n\n**1. Google Analytics 4 (GA4) Integration:**\n- Create a new GA4 property in the Google Analytics dashboard to obtain a Measurement ID (e.g., `G-XXXXXXXXXX`).\n- Store this ID as an environment variable in the project's hosting environment (Vercel/Netlify) and locally in a `.env` file (e.g., `REACT_APP_GA_MEASUREMENT_ID=G-XXXXXXXXXX`). Ensure `.env` files are in `.gitignore`.\n- To handle page views in a Single Page Application (SPA), install a dedicated library: `npm install react-ga4`.\n- In `src/App.js` or a similar top-level component, initialize GA4 using the measurement ID. It's best to do this only in production environments.\n- Create a custom hook `src/hooks/usePageTracking.js` that utilizes `react-router-dom`'s `useLocation` hook. This hook will have a `useEffect` that triggers `ReactGA.send({ hitType: 'pageview', page: location.pathname + location.search });` whenever the location changes.\n- Call this `usePageTracking()` hook within your main `App.js` component to automate page view tracking across the entire site.\n\n**2. Google Search Console Setup:**\n- Go to Google Search Console and add the final domain (from Task #29) as a new property.\n- Verify domain ownership using the DNS record method, which can be configured in the control panel of the domain registrar.\n- Once verified, submit the `sitemap.xml` file (generated during Task #28) to help Google discover and index all pages efficiently.\n\n**3. Uptime Monitoring:**\n- Sign up for a free uptime monitoring service like UptimeRobot or Better Uptime.\n- Create a new HTTP(S) monitor pointing to the website's final production URL.\n- Configure the monitor to check the site every 5-15 minutes and set up email alerts to be notified immediately if the site becomes unavailable.\n\n**4. Performance and Error Monitoring:**\n- Leverage the built-in analytics and monitoring features of the hosting provider (Vercel is recommended in Task #29).\n- If using Vercel, enable Vercel Analytics to gather Core Web Vitals and other performance data from real users.\n- Regularly review the function logs in the Vercel dashboard to monitor for any server-side errors, especially for API routes or serverless functions connected to the Sanity CMS.",
+        "testStrategy": "**1. Analytics Verification:**\n- After deploying the changes, open the live website. Navigate between several pages (e.g., Home, Services, Blog, a specific blog post).\n- Log in to the Google Analytics dashboard and open the 'Realtime' report. Confirm that your activity, including page views and location, is being registered.\n- Use browser developer tools, open the 'Network' tab, and filter for 'collect'. Verify that a request to `google-analytics.com` is sent each time you navigate to a new page.\n\n**2. Search Console Verification:**\n- In Google Search Console, confirm that the domain property shows a 'Verified' status.\n- Navigate to the 'Sitemaps' section and check that the submitted `sitemap.xml` has a 'Success' status.\n- Use the 'URL Inspection' tool on the homepage and a blog post URL to ensure Google can crawl the pages successfully.\n\n**3. Uptime Monitor Verification:**\n- Log in to the chosen uptime monitoring service. Verify that the monitor for the website shows an 'Up' status.\n- Check the monitor's history to see a log of successful checks.",
+        "status": "pending",
+        "dependencies": [
+          "11",
+          "12"
+        ],
+        "priority": "medium",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Configure GA4 Environment and Dependencies",
+            "description": "Add the Google Analytics Measurement ID to a local environment file and install the necessary package for GA4 integration.",
+            "dependencies": [],
+            "details": "Based on the codebase analysis, the project uses Create React App, which supports `.env.local` for local environment variables. Create a `.env.local` file in the project root. Add the variable `REACT_APP_GA_MEASUREMENT_ID=G-XXXXXXXXXX` (replace with the actual ID). The existing `.gitignore` already ignores this file. Then, run `npm install react-ga4` to add the required dependency to `package.json`.",
+            "status": "pending",
+            "testStrategy": "Verify that `react-ga4` is added to the `dependencies` section in `package.json`. Ensure the `.env.local` file is created and not committed to git."
+          },
+          {
+            "id": 2,
+            "title": "Initialize Google Analytics in the Application",
+            "description": "Modify the main `App.js` component to initialize the `react-ga4` library using the environment variable, ensuring it only runs in the production environment.",
+            "dependencies": [
+              "13.1"
+            ],
+            "details": "In `src/App.js`, import `ReactGA` from `react-ga4`. Add logic at the top of the file, before the `App` component definition, to check if `process.env.NODE_ENV === 'production'` and if `process.env.REACT_APP_GA_MEASUREMENT_ID` is set. If both conditions are met, call `ReactGA.initialize(process.env.REACT_APP_GA_MEASUREMENT_ID)`. This ensures analytics are only active in the deployed version.",
+            "status": "pending",
+            "testStrategy": "After implementation, run the app locally (`npm start`) and check the browser console to ensure no GA-related errors appear and that initialization logic does not run. When building for production, confirm no build errors occur."
+          },
+          {
+            "id": 3,
+            "title": "Create a Custom Hook for Page View Tracking",
+            "description": "Develop a reusable React hook that listens for route changes using `react-router-dom` and sends pageview events to Google Analytics.",
+            "dependencies": [
+              "13.2"
+            ],
+            "details": "Create a new directory `src/hooks`. Inside it, create a file named `usePageTracking.js`. This file will define and export a custom hook `usePageTracking`. Inside the hook, use `useLocation` from `react-router-dom` and `useEffect` from `react`. The `useEffect` should have the `location` object as a dependency. Inside the effect, call `ReactGA.send({ hitType: 'pageview', page: location.pathname + location.search });` to report the new page view.",
+            "status": "pending",
+            "testStrategy": "This hook is a pure function with side effects. Its functionality will be tested in the next subtask when it's integrated into the app. Ensure the file is created in the correct location and exports the hook correctly."
+          },
+          {
+            "id": 4,
+            "title": "Implement Automated Page View Tracking in App.js",
+            "description": "Integrate the `usePageTracking` hook into the main application component to enable automatic page view tracking for all routes.",
+            "dependencies": [
+              "13.3"
+            ],
+            "details": "In `src/App.js`, import the `usePageTracking` hook from `src/hooks/usePageTracking.js`. Call the hook `usePageTracking()` once inside the `App` component function body, ensuring it is within the `<Router>` context. This will activate the listener for the entire application.",
+            "status": "pending",
+            "testStrategy": "After deploying the changes, open the live website and navigate between several pages. In the Google Analytics 'Realtime' report, verify that your activity is being tracked and that `page_view` events are registered for each navigated URL."
+          },
+          {
+            "id": 5,
+            "title": "Configure Google Search Console and Uptime Monitoring",
+            "description": "Perform the necessary external setup on Google Search Console and an uptime monitoring service to ensure search engine visibility and site availability. This task does not involve code changes.",
+            "dependencies": [],
+            "details": "This is an administrative task. 1. Go to Google Search Console, add the production domain as a property, and verify ownership using the DNS record method. 2. Submit the `sitemap.xml` (from Task #28) to the verified property. 3. Sign up for a free service like UptimeRobot, create a new HTTP(S) monitor for the production URL, and configure email alerts for downtime.",
+            "status": "pending",
+            "testStrategy": "Confirm that the domain is successfully verified in Google Search Console. Check that the sitemap is submitted and has a 'Success' status. Trigger a test alert from the uptime monitoring service to ensure notifications are received correctly."
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "title": "Set up Express.js server files based on README.md architecture",
+        "description": "Create the basic Express.js server files and directory structure as outlined in the README.md. This includes: src/app.js, src/server.js, src/config/, src/middlewares/, src/services/, src/models/, src/controllers/, src/routes/, src/views/, src/public/, and src/seed/.",
+        "details": "",
+        "testStrategy": "",
+        "status": "done",
+        "dependencies": [],
+        "priority": "medium",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create Backend Directory Structure in src/",
+            "description": "Create all the specified empty directories for the Express.js backend within the existing `src/` directory, as outlined in the `README.md`.",
+            "dependencies": [],
+            "details": "Create the following directories:\n- `src/config/`\n- `src/middlewares/`\n- `src/services/`\n- `src/models/`\n- `src/controllers/`\n- `src/routes/`\n- `src/views/`\n- `src/public/`\n- `src/seed/`",
+            "status": "done",
+            "testStrategy": "Verify that all specified directories exist under `src/` in the project structure."
+          },
+          {
+            "id": 2,
+            "title": "Install Express.js and Configure package.json",
+            "description": "Install the `express` package and `nodemon` for development. Update `package.json` to include these dependencies and add a new script to run the backend server.",
+            "dependencies": [],
+            "details": "1. Run `npm install express nodemon`.\n2. Add `express` and `nodemon` to the `dependencies` or `devDependencies` section of `package.json`.\n3. Add a new script, e.g., `\"start:backend\": \"nodemon src/server.js\"`, to the `scripts` section of `package.json`.",
+            "status": "done",
+            "testStrategy": "1. Verify `express` and `nodemon` are listed in `package.json` dependencies.\n2. Verify the `start:backend` script is present in `package.json`."
+          },
+          {
+            "id": 3,
+            "title": "Create src/app.js with Basic Express Application Setup",
+            "description": "Create the `src/app.js` file and set up the basic Express application instance, including essential middleware and a placeholder health check route.",
+            "dependencies": [],
+            "details": "1. Create `src/app.js`.\n2. Import `express` and initialize the app instance.\n3. Add `express.json()` middleware for parsing JSON request bodies.\n4. Add `express.urlencoded({ extended: true })` middleware for parsing URL-encoded request bodies.\n5. Configure `express.static('src/public')` to serve static files from the `src/public` directory.\n6. Add a simple GET route, e.g., `/api/status`, that responds with `{ status: 'Server is running' }`.\n7. Export the `app` instance.",
+            "status": "done",
+            "testStrategy": "1. Verify `src/app.js` exists and contains the basic Express setup.\n2. Ensure the `app` instance is exported correctly."
+          },
+          {
+            "id": 4,
+            "title": "Create src/server.js to Bootstrap the Express Server",
+            "description": "Create the `src/server.js` file, which will serve as the entry point to start the Express server, importing the application from `src/app.js`.",
+            "dependencies": [],
+            "details": "1. Create `src/server.js`.\n2. Import the `app` instance from `src/app.js`.\n3. Define the port for the server, e.g., `const PORT = process.env.PORT || 3001;`.\n4. Use `app.listen()` to start the server on the defined port.\n5. Add a `console.log` message to confirm the server is running and on which port.",
+            "status": "done",
+            "testStrategy": "1. Verify `src/server.js` exists and correctly imports `app`.\n2. Attempt to run `npm run start:backend` (from subtask 2) and verify that the server starts and logs the 'Server is running' message to the console without errors."
+          },
+          {
+            "id": 5,
+            "title": "Implement Basic Error Handling and 404 Middleware in src/app.js",
+            "description": "Enhance `src/app.js` by adding middleware for handling 404 (Not Found) errors and a general error handling middleware to provide robust responses for unhandled routes and server errors.",
+            "dependencies": [],
+            "details": "1. In `src/app.js`, add a middleware function *after* all routes and other middleware to handle 404 errors. This middleware should respond with a 404 status and a JSON message like `{ message: 'Resource not found' }`.\n2. Add a general error handling middleware function *as the last middleware* in `src/app.js`. This middleware should catch any errors, log them, and respond with a 500 status and a generic error message (e.g., `{ message: 'Internal Server Error' }`).",
+            "status": "done",
+            "testStrategy": "1. Verify `src/app.js` contains the 404 and general error handling middleware.\n2. After running the server (from subtask 4), make a request to a non-existent API endpoint (e.g., `GET /api/nonexistent`) and verify it returns a 404 status with the expected JSON message.\n3. (Optional) Introduce a temporary error in a route to confirm the general error handler catches it and returns a 500 status."
+          }
+        ]
+      }
+    ],
+    "metadata": {
+      "created": "2025-09-11T23:32:24.592Z",
+      "updated": "2025-09-16T06:05:08.536Z",
+      "description": "Tasks for master context"
+    }
+  }
+}

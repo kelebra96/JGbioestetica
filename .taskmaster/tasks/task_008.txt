@@ -1,0 +1,79 @@
+# Task ID: 8
+# Title: Set Up Headless CMS for Blog and Services
+# Status: pending
+# Dependencies: None
+# Priority: medium
+# Description: Choose, configure, and set up a headless CMS to manage dynamic content for the website's blog and services sections, including defining the necessary content models.
+# Details:
+This task involves setting up a headless CMS to allow non-technical users to manage content. The implementation will be split into CMS configuration and frontend integration preparation.
+
+1. **CMS Selection & Setup:**
+   - Choose a headless CMS. Sanity.io is recommended due to its generous free tier and real-time content editing capabilities.
+   - Create a new project on the chosen platform.
+   - Initialize the CMS studio within the project repository, likely in a new top-level directory named `studio`.
+
+2. **Content Modeling (Schema Definition):**
+   - Inside the `studio/schemas` directory, define the following content models:
+     - **`post`:** For blog articles. Fields: `title` (string), `slug` (slug, with source from title), `mainImage` (image with hotspot/crop), `publishedAt` (datetime), `excerpt` (string), `body` (block content for rich text).
+     - **`service`:** For clinic services. Fields: `title` (string), `slug` (slug, with source from title), `mainImage` (image), `summary` (text), `details` (block content for rich text).
+     - **`author`:** To link authors to posts. Fields: `name` (string), `picture` (image).
+
+3. **Frontend Client Integration:**
+   - Install the CMS client library in the React app: `npm install @sanity/client`.
+   - Create a new utility file `src/lib/sanityClient.js` to initialize and export the client. Configuration details (Project ID, Dataset) should be stored in environment variables (`.env` file) and accessed via `process.env.REACT_APP_SANITY_PROJECT_ID`.
+
+4. **API Hooks for Data Fetching:**
+   - To promote reusability, create custom hooks for fetching data. For example, `src/hooks/usePosts.js` which will use the Sanity client to run a GROQ query to fetch all published posts. This abstracts the data-fetching logic from the UI components.
+
+# Test Strategy:
+1. **Studio Verification:** Deploy the Sanity Studio and access it via its URL. Verify that you can log in and see the custom content types: 'Post', 'Service', and 'Author'.
+2. **Content Entry:** Use the studio to create at least two sample services and two sample blog posts. Test all fields, including image uploads and rich text formatting. Publish the entries.
+3. **API Connectivity Test:** Create a temporary test page or component in the React app. Use the configured client from `src/lib/sanityClient.js` to fetch all posts. `console.log` the results and verify in the browser's developer console that the data matches the content entered in the CMS.
+4. **Environment Variable Check:** Ensure no secret keys or project IDs are hardcoded in the repository. Verify the application successfully connects to the CMS using only environment variables.
+
+# Subtasks:
+## 1. Initialize Sanity.io Project and Studio [pending]
+### Dependencies: None
+### Description: Create a new project on Sanity.io and initialize the Sanity Studio within the local project repository in a new 'studio' directory. This sets the foundation for all content management.
+### Details:
+1. Go to sanity.io and create a new project. Note the Project ID and choose a dataset name (e.g., 'production').
+2. In the project root, run `npm create sanity@latest` and follow the prompts to connect to your new project. Choose the 'Clean project with no predefined schemas' template.
+3. When prompted for the output path, specify `./studio`.
+4. After initialization, navigate to the `studio` directory and run `npm install`.
+5. Add `/studio/node_modules` and `/studio/dist` to the main `.gitignore` file to avoid committing them.
+
+## 2. Define 'Post' and 'Author' Schemas [pending]
+### Dependencies: 8.1
+### Description: Create the schema definitions for blog posts and authors within the Sanity Studio. This will define the structure of the content that can be created.
+### Details:
+1. In `studio/schemas`, create `post.js`. Define fields: `title` (string), `slug` (slug, with `title` as source), `author` (reference to `author`), `mainImage` (image with hotspot), `publishedAt` (datetime), `excerpt` (string), and `body` (blockContent).
+2. In `studio/schemas`, create `author.js`. Define fields: `name` (string), `picture` (image).
+3. In `studio/schemas/index.js`, import both `post` and `author` schemas and add them to the `types` array to register them with the studio.
+
+## 3. Define 'Service' Schema [pending]
+### Dependencies: 8.1
+### Description: Create the schema definition for the clinic's services. This model will store information about each service offered.
+### Details:
+1. In `studio/schemas`, create a new file `service.js`.
+2. Define the schema with the following fields: `title` (string), `slug` (slug, with `title` as source), `mainImage` (image), `summary` (text), and `details` (blockContent for rich text).
+3. In `studio/schemas/index.js`, import the `service` schema and add it to the `types` array.
+
+## 4. Configure Frontend Sanity Client [pending]
+### Dependencies: 8.1
+### Description: Install the Sanity client library in the React application and create a configured, reusable client instance. This will enable the frontend to communicate with the Sanity API.
+### Details:
+1. In the project root, run `npm install @sanity/client`.
+2. Create a `.env` file in the project root. Add your Sanity Project ID and Dataset name: `REACT_APP_SANITY_PROJECT_ID=your_project_id` and `REACT_APP_SANITY_DATASET=production`.
+3. Ensure `.env` is listed in your `.gitignore` file.
+4. Create a new file at `src/lib/sanityClient.js`.
+5. In this file, import `createClient` from `@sanity/client`, initialize it with the project ID, dataset, `apiVersion`, and `useCdn: true`, and export the configured client.
+
+## 5. Create Custom Hooks for Data Fetching [pending]
+### Dependencies: 8.2, 8.3, 8.4
+### Description: Develop reusable React hooks to abstract the logic for fetching posts and services from Sanity. This promotes clean code and separation of concerns in UI components.
+### Details:
+1. Create a new directory `src/hooks`.
+2. Create `src/hooks/usePosts.js`. This hook should use the Sanity client to fetch all published posts, ordered by `publishedAt` date. It should manage loading and error states.
+3. Create `src/hooks/useServices.js`. This hook will use the Sanity client to fetch all services, likely ordered by title. It should also manage loading and error states.
+4. The hooks should accept optional parameters for more specific queries in the future (e.g., fetching a single post by its slug).
+

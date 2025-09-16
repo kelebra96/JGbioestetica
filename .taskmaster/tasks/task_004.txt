@@ -1,0 +1,84 @@
+# Task ID: 4
+# Title: Implement Responsive Design Across All Pages
+# Status: pending
+# Dependencies: 2, 3
+# Priority: medium
+# Description: Apply CSS media queries and flexible layouts to ensure the website is fully responsive and provides an optimal viewing experience on desktop, tablet, and mobile devices.
+# Details:
+This task focuses on retrofitting all existing and newly developed components with responsive styles using a mobile-first approach. The implementation must leverage the existing `styled-components` architecture and establish a consistent pattern for handling breakpoints across the application.
+
+**1. Establish Global Breakpoints:**
+   - In a central theme file (e.g., `src/styles/theme.js` or a new `src/styles/breakpoints.js`), define the standard breakpoints for the project. Based on other tasks, these should be:
+     - `mobile`: 375px
+     - `tablet`: 768px
+     - `desktop`: 1440px
+   - Create a media query helper utility to easily consume these breakpoints within styled-components. Example:
+     ```javascript
+     // src/styles/media.js
+     const breakpoints = { tablet: '768px', desktop: '1440px' };
+     export const media = Object.keys(breakpoints).reduce((acc, label) => {
+       acc[label] = (...args) => css`
+         @media (min-width: ${breakpoints[label]}) {
+           ${css(...args)}
+         }
+       `;
+       return acc;
+     }, {});
+     ```
+
+**2. Refactor Core Components:**
+   - **Header (`src/components/Header/Header.styles.js`):** Implement the mobile navigation (hamburger menu). The navigation links should collapse into a toggleable menu on screens smaller than the tablet breakpoint. On larger screens, it should display the full navigation bar.
+   - **Footer (`src/components/Footer/Footer.styles.js`):** Adjust the layout of footer columns. On mobile, stack elements vertically. On tablet and desktop, arrange them in a multi-column layout using Flexbox or CSS Grid.
+
+**3. Refactor Page Components:**
+   - **Homepage (`src/pages/Home/Home.js` and its sub-components):**
+     - `Hero`: Adjust font sizes, padding, and button sizes for smaller screens.
+     - `ServiceHighlights`: The layout should transition from a single-column view on mobile to a multi-column grid on tablet and desktop.
+     - `Testimonials`: Ensure the testimonial cards are readable and well-formatted on all screen sizes, potentially using a carousel/slider for mobile.
+
+**4. General Guidelines:**
+   - Use relative units like `rem`, `em`, and `%` for font sizes, padding, and margins where appropriate to ensure scalability.
+   - Use `max-width` on containers to prevent content from becoming too wide on large desktop screens.
+   - Ensure all images are responsive, using `max-width: 100%;` and `height: auto;`.
+
+# Test Strategy:
+1.  **Breakpoint Verification:** Use browser developer tools (e.g., Chrome DevTools' Responsive Mode) to test the layout at the specified breakpoints (375px, 768px, 1440px) and at sizes in between.
+2.  **Layout Integrity:** Verify that no horizontal scrollbars appear on any page at any screen size. Check that all content reflows correctly and there are no overlapping or broken elements.
+3.  **Mobile Navigation Functional Test:** On screen widths below 768px, confirm that the hamburger menu icon appears in the header. Test opening and closing the menu, and verify that all navigation links within it are tappable and functional.
+4.  **Component Responsiveness:**
+    - **Homepage:** Confirm the `ServiceHighlights` section transitions from a single column to a grid layout at the tablet breakpoint.
+    - **Footer:** Verify that footer elements stack vertically on mobile and align horizontally on larger screens.
+5.  **Cross-Browser Testing:** Render all pages on the latest versions of Chrome, Firefox, and Safari to ensure consistent behavior and appearance.
+6.  **Device Testing (Optional but Recommended):** Test the site on at least one physical iOS device and one physical Android device to check for touch target sizing and performance.
+
+# Subtasks:
+## 1. Establish Global Breakpoints and Media Query Helper [pending]
+### Dependencies: None
+### Description: Define standard project breakpoints in the theme and create a reusable media query utility for styled-components to ensure a consistent, mobile-first approach.
+### Details:
+In `src/styles/theme.js`, add a `breakpoints` object: `{ mobile: '375px', tablet: '768px', desktop: '1440px' }`. Create a new file `src/styles/media.js` to export a `media` helper function that consumes these breakpoints and generates `min-width` media queries for use in styled-components, as outlined in the task description.
+
+## 2. Implement Responsive Header with Hamburger Menu [pending]
+### Dependencies: 4.1
+### Description: Refactor the Header component to be fully responsive. The desktop navigation should collapse into a toggleable hamburger menu on mobile and tablet screens.
+### Details:
+In `src/components/Header/Header.styles.js`, use the new `media` helper to hide the main navigation links and display a hamburger menu icon on screens smaller than the tablet breakpoint. In `src/components/Header/index.js`, add state management (e.g., `useState`) to toggle the visibility of a mobile navigation overlay/drawer when the hamburger icon is clicked.
+
+## 3. Refactor Footer for Responsive Layout [pending]
+### Dependencies: 4.1
+### Description: Adjust the layout of the Footer component to ensure its content is well-organized and readable on all screen sizes, stacking vertically on mobile devices.
+### Details:
+Using the `media` helper in `src/components/Footer/Footer.styles.js`, modify the footer's container. The default style (mobile-first) should use `flex-direction: column` to stack footer sections and links vertically. For tablet and larger screens, use a media query to set `flex-direction: row` and `justify-content: space-between` for a multi-column layout.
+
+## 4. Apply Responsive Styles to Homepage Sections (Hero & Service Highlights) [pending]
+### Dependencies: 4.1
+### Description: Adapt the main sections of the homepage, including the Hero banner and Service Highlights, to be responsive across all devices.
+### Details:
+Locate the style files for the `Hero` and `ServiceHighlights` components. Use the `media` helper to adjust styles for different breakpoints. For the `Hero` component, scale down font sizes, padding, and button sizes for mobile. For `ServiceHighlights`, change the layout from a multi-column grid on desktop to a single-column vertical stack on mobile.
+
+## 5. Adapt Homepage Testimonials and Implement a Global Container [pending]
+### Dependencies: 4.1
+### Description: Make the Testimonials section responsive and create a reusable `Container` component to enforce a consistent max-width across all pages.
+### Details:
+In the `Testimonials` component styles, adjust the layout so that cards stack vertically on mobile. Create a new reusable component (e.g., `src/components/Layout/Container.js`) that applies `width: 100%`, a `max-width` (e.g., 1200px), `margin: 0 auto`, and responsive padding. Apply this `Container` as the top-level wrapper within each page component (e.g., `Home`, `About`, `Services`) to prevent content from stretching too wide on large screens.
+

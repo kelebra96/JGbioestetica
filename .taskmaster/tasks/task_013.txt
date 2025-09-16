@@ -1,0 +1,78 @@
+# Task ID: 13
+# Title: Set Up Analytics and Post-Launch Monitoring
+# Status: pending
+# Dependencies: 11, 12
+# Priority: medium
+# Description: Integrate web analytics to track user engagement and configure monitoring tools to ensure website uptime, performance, and search engine health post-launch.
+# Details:
+This task involves setting up essential third-party services to monitor the application after it has been deployed.
+
+**1. Google Analytics 4 (GA4) Integration:**
+- Create a new GA4 property in the Google Analytics dashboard to obtain a Measurement ID (e.g., `G-XXXXXXXXXX`).
+- Store this ID as an environment variable in the project's hosting environment (Vercel/Netlify) and locally in a `.env` file (e.g., `REACT_APP_GA_MEASUREMENT_ID=G-XXXXXXXXXX`). Ensure `.env` files are in `.gitignore`.
+- To handle page views in a Single Page Application (SPA), install a dedicated library: `npm install react-ga4`.
+- In `src/App.js` or a similar top-level component, initialize GA4 using the measurement ID. It's best to do this only in production environments.
+- Create a custom hook `src/hooks/usePageTracking.js` that utilizes `react-router-dom`'s `useLocation` hook. This hook will have a `useEffect` that triggers `ReactGA.send({ hitType: 'pageview', page: location.pathname + location.search });` whenever the location changes.
+- Call this `usePageTracking()` hook within your main `App.js` component to automate page view tracking across the entire site.
+
+**2. Google Search Console Setup:**
+- Go to Google Search Console and add the final domain (from Task #29) as a new property.
+- Verify domain ownership using the DNS record method, which can be configured in the control panel of the domain registrar.
+- Once verified, submit the `sitemap.xml` file (generated during Task #28) to help Google discover and index all pages efficiently.
+
+**3. Uptime Monitoring:**
+- Sign up for a free uptime monitoring service like UptimeRobot or Better Uptime.
+- Create a new HTTP(S) monitor pointing to the website's final production URL.
+- Configure the monitor to check the site every 5-15 minutes and set up email alerts to be notified immediately if the site becomes unavailable.
+
+**4. Performance and Error Monitoring:**
+- Leverage the built-in analytics and monitoring features of the hosting provider (Vercel is recommended in Task #29).
+- If using Vercel, enable Vercel Analytics to gather Core Web Vitals and other performance data from real users.
+- Regularly review the function logs in the Vercel dashboard to monitor for any server-side errors, especially for API routes or serverless functions connected to the Sanity CMS.
+
+# Test Strategy:
+**1. Analytics Verification:**
+- After deploying the changes, open the live website. Navigate between several pages (e.g., Home, Services, Blog, a specific blog post).
+- Log in to the Google Analytics dashboard and open the 'Realtime' report. Confirm that your activity, including page views and location, is being registered.
+- Use browser developer tools, open the 'Network' tab, and filter for 'collect'. Verify that a request to `google-analytics.com` is sent each time you navigate to a new page.
+
+**2. Search Console Verification:**
+- In Google Search Console, confirm that the domain property shows a 'Verified' status.
+- Navigate to the 'Sitemaps' section and check that the submitted `sitemap.xml` has a 'Success' status.
+- Use the 'URL Inspection' tool on the homepage and a blog post URL to ensure Google can crawl the pages successfully.
+
+**3. Uptime Monitor Verification:**
+- Log in to the chosen uptime monitoring service. Verify that the monitor for the website shows an 'Up' status.
+- Check the monitor's history to see a log of successful checks.
+
+# Subtasks:
+## 1. Configure GA4 Environment and Dependencies [pending]
+### Dependencies: None
+### Description: Add the Google Analytics Measurement ID to a local environment file and install the necessary package for GA4 integration.
+### Details:
+Based on the codebase analysis, the project uses Create React App, which supports `.env.local` for local environment variables. Create a `.env.local` file in the project root. Add the variable `REACT_APP_GA_MEASUREMENT_ID=G-XXXXXXXXXX` (replace with the actual ID). The existing `.gitignore` already ignores this file. Then, run `npm install react-ga4` to add the required dependency to `package.json`.
+
+## 2. Initialize Google Analytics in the Application [pending]
+### Dependencies: 13.1
+### Description: Modify the main `App.js` component to initialize the `react-ga4` library using the environment variable, ensuring it only runs in the production environment.
+### Details:
+In `src/App.js`, import `ReactGA` from `react-ga4`. Add logic at the top of the file, before the `App` component definition, to check if `process.env.NODE_ENV === 'production'` and if `process.env.REACT_APP_GA_MEASUREMENT_ID` is set. If both conditions are met, call `ReactGA.initialize(process.env.REACT_APP_GA_MEASUREMENT_ID)`. This ensures analytics are only active in the deployed version.
+
+## 3. Create a Custom Hook for Page View Tracking [pending]
+### Dependencies: 13.2
+### Description: Develop a reusable React hook that listens for route changes using `react-router-dom` and sends pageview events to Google Analytics.
+### Details:
+Create a new directory `src/hooks`. Inside it, create a file named `usePageTracking.js`. This file will define and export a custom hook `usePageTracking`. Inside the hook, use `useLocation` from `react-router-dom` and `useEffect` from `react`. The `useEffect` should have the `location` object as a dependency. Inside the effect, call `ReactGA.send({ hitType: 'pageview', page: location.pathname + location.search });` to report the new page view.
+
+## 4. Implement Automated Page View Tracking in App.js [pending]
+### Dependencies: 13.3
+### Description: Integrate the `usePageTracking` hook into the main application component to enable automatic page view tracking for all routes.
+### Details:
+In `src/App.js`, import the `usePageTracking` hook from `src/hooks/usePageTracking.js`. Call the hook `usePageTracking()` once inside the `App` component function body, ensuring it is within the `<Router>` context. This will activate the listener for the entire application.
+
+## 5. Configure Google Search Console and Uptime Monitoring [pending]
+### Dependencies: None
+### Description: Perform the necessary external setup on Google Search Console and an uptime monitoring service to ensure search engine visibility and site availability. This task does not involve code changes.
+### Details:
+This is an administrative task. 1. Go to Google Search Console, add the production domain as a property, and verify ownership using the DNS record method. 2. Submit the `sitemap.xml` (from Task #28) to the verified property. 3. Sign up for a free service like UptimeRobot, create a new HTTP(S) monitor for the production URL, and configure email alerts for downtime.
+
