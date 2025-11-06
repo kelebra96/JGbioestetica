@@ -1,28 +1,28 @@
 <!-- Header -->
-<header class="header">
+<header class="header" role="banner">
     <div class="header-container">
-        <a href="/" class="logo">JG Bioestética</a>
-        <nav class="navigation">
-            <a href="/" class="nav-link <%= currentPage === '/' ? 'active' : '' %>">Início</a>
-            <a href="/about" class="nav-link <%= currentPage === '/about' ? 'active' : '' %>">Sobre</a>
-            <a href="/services" class="nav-link <%= currentPage === '/services' ? 'active' : '' %>">Serviços</a>
-            <a href="/contact" class="nav-link <%= currentPage === '/contact' ? 'active' : '' %>">Contato</a>
+        <a href="/" class="logo" aria-label="JG Bioestética - Página inicial">JG Bioestética</a>
+        <nav class="navigation" role="navigation" aria-label="Navegação principal">
+            <a href="/" class="nav-link <%= currentPage === '/' ? 'active' : '' %>" <%= currentPage === '/' ? 'aria-current="page"' : '' %>>Início</a>
+            <a href="/about" class="nav-link <%= currentPage === '/about' ? 'active' : '' %>" <%= currentPage === '/about' ? 'aria-current="page"' : '' %>>Sobre</a>
+            <a href="/services" class="nav-link <%= currentPage === '/services' ? 'active' : '' %>" <%= currentPage === '/services' ? 'aria-current="page"' : '' %>>Serviços</a>
+            <a href="/contact" class="nav-link <%= currentPage === '/contact' ? 'active' : '' %>" <%= currentPage === '/contact' ? 'aria-current="page"' : '' %>>Contato</a>
         </nav>
 
         <!-- Mobile Menu Button -->
-        <button class="mobile-menu-btn" aria-label="Menu" aria-expanded="false">
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
+        <button class="mobile-menu-btn" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="mobile-navigation">
+            <span class="hamburger-line" aria-hidden="true"></span>
+            <span class="hamburger-line" aria-hidden="true"></span>
+            <span class="hamburger-line" aria-hidden="true"></span>
         </button>
 
         <!-- Mobile Navigation Overlay -->
-        <div class="mobile-nav-overlay">
-            <nav class="mobile-navigation">
-                <a href="/" class="mobile-nav-link <%= currentPage === '/' ? 'active' : '' %>">Início</a>
-                <a href="/about" class="mobile-nav-link <%= currentPage === '/about' ? 'active' : '' %>">Sobre</a>
-                <a href="/services" class="mobile-nav-link <%= currentPage === '/services' ? 'active' : '' %>">Serviços</a>
-                <a href="/contact" class="mobile-nav-link <%= currentPage === '/contact' ? 'active' : '' %>">Contato</a>
+        <div class="mobile-nav-overlay" role="dialog" aria-modal="true" aria-label="Menu de navegação móvel">
+            <nav class="mobile-navigation" id="mobile-navigation" role="navigation" aria-label="Menu principal móvel">
+                <a href="/" class="mobile-nav-link <%= currentPage === '/' ? 'active' : '' %>" <%= currentPage === '/' ? 'aria-current="page"' : '' %>>Início</a>
+                <a href="/about" class="mobile-nav-link <%= currentPage === '/about' ? 'active' : '' %>" <%= currentPage === '/about' ? 'aria-current="page"' : '' %>>Sobre</a>
+                <a href="/services" class="mobile-nav-link <%= currentPage === '/services' ? 'active' : '' %>" <%= currentPage === '/services' ? 'aria-current="page"' : '' %>>Serviços</a>
+                <a href="/contact" class="mobile-nav-link <%= currentPage === '/contact' ? 'active' : '' %>" <%= currentPage === '/contact' ? 'aria-current="page"' : '' %>>Contato</a>
             </nav>
         </div>
     </div>
