@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title || 'Sobre Nós - JG Bioestética' %></title>
+    <meta name="description" content="Conheça a JG Bioestética - nossa história, missão, valores e equipe dedicada ao seu bem-estar e beleza natural.">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/accessibility.css">
     <style>
         * {
             margin: 0;
@@ -289,7 +291,7 @@
     <%- include('partials/header') %>
 
     <!-- Hero Section -->
-    <section class="hero-section">
+    <section class="hero-section" role="region" aria-label="Banner principal">
         <div class="hero-content">
             <h1 class="hero-title">Sobre a JG Bioestética</h1>
             <p class="hero-subtitle">Conheça nossa história, missão e a equipe dedicada ao seu bem-estar</p>
@@ -297,14 +299,14 @@
     </section>
 
     <!-- About Content -->
-    <section class="about-content">
+    <section class="about-content" role="region" aria-labelledby="about-title">
         <div class="container">
             <div class="about-grid">
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Clínica JG Bioestética">
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Interior moderno e acolhedor da clínica JG Bioestética com equipamentos profissionais">
                 </div>
                 <div class="about-text">
-                    <h2>Nossa História</h2>
+                    <h2 id="about-title">Nossa História</h2>
                     <p>
                         A JG Bioestética nasceu do sonho de oferecer tratamentos de beleza e bem-estar com excelência e segurança.
                         Fundada com o propósito de realçar a beleza natural de cada pessoa, nossa clínica se tornou referência em
@@ -326,83 +328,84 @@
     </section>
 
     <!-- Mission & Values -->
-    <section class="mission-values">
+    <section class="mission-values" role="region" aria-labelledby="values-title">
         <div class="container">
-            <h2 class="section-title">Nossos Valores</h2>
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-icon">🎯</div>
+            <h2 class="section-title" id="values-title">Nossos Valores</h2>
+            <div class="values-grid" role="list">
+                <article class="value-card" role="listitem">
+                    <div class="value-icon" aria-hidden="true">🎯</div>
                     <h3>Excelência</h3>
                     <p>Buscamos sempre a perfeição em nossos procedimentos, utilizando as melhores técnicas e equipamentos disponíveis no mercado.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">🤝</div>
+                </article>
+                <article class="value-card" role="listitem">
+                    <div class="value-icon" aria-hidden="true">🤝</div>
                     <h3>Confiança</h3>
                     <p>Construímos relacionamentos duradouros baseados na transparência, ética e resultados consistentes.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">💎</div>
+                </article>
+                <article class="value-card" role="listitem">
+                    <div class="value-icon" aria-hidden="true">💎</div>
                     <h3>Qualidade</h3>
                     <p>Utilizamos apenas produtos e tecnologias de primeira linha, garantindo segurança e eficácia em todos os tratamentos.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">🌿</div>
+                </article>
+                <article class="value-card" role="listitem">
+                    <div class="value-icon" aria-hidden="true">🌿</div>
                     <h3>Naturalidade</h3>
                     <p>Valorizamos e realçamos a beleza natural de cada pessoa, respeitando suas características únicas.</p>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
     <!-- Team Section -->
-    <section class="team-section">
+    <section class="team-section" role="region" aria-labelledby="team-title">
         <div class="container">
-            <h2 class="section-title">Nossa Equipe</h2>
-            <div class="team-grid">
-                <div class="team-card">
-                    <div class="team-photo">👩‍⚕️</div>
+            <h2 class="section-title" id="team-title">Nossa Equipe</h2>
+            <div class="team-grid" role="list">
+                <article class="team-card" role="listitem">
+                    <div class="team-photo" aria-hidden="true">👩‍⚕️</div>
                     <h3>Dra. Juliana Garcia</h3>
                     <div class="team-role">Biomédica Estética</div>
                     <p class="team-bio">
                         Especialista em procedimentos estéticos com mais de 10 anos de experiência.
                         Formada em Biomedicina com pós-graduação em Estética Avançada.
                     </p>
-                </div>
-                <div class="team-card">
-                    <div class="team-photo">👨‍⚕️</div>
+                </article>
+                <article class="team-card" role="listitem">
+                    <div class="team-photo" aria-hidden="true">👨‍⚕️</div>
                     <h3>Dr. Gabriel Silva</h3>
                     <div class="team-role">Dermatologista</div>
                     <p class="team-bio">
                         Médico dermatologista especializado em tratamentos rejuvenescedores e
                         harmonização facial. Membro da Sociedade Brasileira de Dermatologia.
                     </p>
-                </div>
-                <div class="team-card">
-                    <div class="team-photo">👩‍💼</div>
+                </article>
+                <article class="team-card" role="listitem">
+                    <div class="team-photo" aria-hidden="true">👩‍💼</div>
                     <h3>Ana Carolina</h3>
                     <div class="team-role">Esteticista</div>
                     <p class="team-bio">
                         Esteticista formada com especialização em tratamentos faciais e corporais.
                         Dedicada a proporcionar uma experiência única e relaxante.
                     </p>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section">
+    <section class="cta-section" role="region" aria-label="Chamada para ação">
         <div class="container">
             <h2 class="cta-title">Pronto para Realçar sua Beleza?</h2>
             <p class="cta-subtitle">
                 Agende uma consulta e descubra como podemos ajudar você a alcançar seus objetivos estéticos
             </p>
-            <a href="/contact" class="cta-button">Agendar Consulta</a>
+            <a href="/contact" class="cta-button" aria-label="Agendar consulta - ir para página de contato">Agendar Consulta</a>
         </div>
     </section>
 
     <%- include('partials/footer') %>
 
     <script src="/js/mobile-menu.js"></script>
+    <script src="/js/accessibility.js"></script>
 </body>
 </html>

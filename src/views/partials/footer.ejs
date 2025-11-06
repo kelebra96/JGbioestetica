@@ -1,10 +1,10 @@
 <!-- Footer Section -->
-<footer class="main-footer">
+<footer class="main-footer" role="contentinfo">
     <div class="footer-container">
         <!-- Column 1: Logo and About -->
         <div class="footer-column footer-about">
             <div class="footer-logo">
-                <a href="/">
+                <a href="/" aria-label="JG Bioestética - Voltar à página inicial">
                     <!-- Placeholder logo - will be replaced with actual SVG logo -->
                     <h3>JG Bioestética</h3>
                 </a>
@@ -17,18 +17,20 @@
         <!-- Column 2: Quick Links -->
         <div class="footer-column footer-links">
             <h4>Links Rápidos</h4>
-            <ul>
-                <li><a href="/" class="<%= currentPage === '/' ? 'active' : '' %>">Início</a></li>
-                <li><a href="/about" class="<%= currentPage === '/about' ? 'active' : '' %>">Sobre</a></li>
-                <li><a href="/services" class="<%= currentPage === '/services' ? 'active' : '' %>">Serviços</a></li>
-                <li><a href="/contact" class="<%= currentPage === '/contact' ? 'active' : '' %>">Contato</a></li>
-            </ul>
+            <nav aria-label="Links de rodapé">
+                <ul>
+                    <li><a href="/" class="<%= currentPage === '/' ? 'active' : '' %>" <%= currentPage === '/' ? 'aria-current="page"' : '' %>>Início</a></li>
+                    <li><a href="/about" class="<%= currentPage === '/about' ? 'active' : '' %>" <%= currentPage === '/about' ? 'aria-current="page"' : '' %>>Sobre</a></li>
+                    <li><a href="/services" class="<%= currentPage === '/services' ? 'active' : '' %>" <%= currentPage === '/services' ? 'aria-current="page"' : '' %>>Serviços</a></li>
+                    <li><a href="/contact" class="<%= currentPage === '/contact' ? 'active' : '' %>" <%= currentPage === '/contact' ? 'aria-current="page"' : '' %>>Contato</a></li>
+                </ul>
+            </nav>
         </div>
 
         <!-- Column 3: Contact Info -->
         <div class="footer-column footer-contact">
             <h4>Contato</h4>
-            <div class="contact-info">
+            <address class="contact-info">
                 <p>
                     <strong>Endereço:</strong><br>
                     Rua das Flores, 123<br>
@@ -37,28 +39,28 @@
                 </p>
                 <p>
                     <strong>Telefone:</strong><br>
-                    (11) 9 9999-9999
+                    <a href="tel:+5511999999999" aria-label="Ligar para (11) 9 9999-9999">(11) 9 9999-9999</a>
                 </p>
                 <p>
                     <strong>Email:</strong><br>
-                    contato@jgbioestetica.com.br
+                    <a href="mailto:contato@jgbioestetica.com.br" aria-label="Enviar email para contato@jgbioestetica.com.br">contato@jgbioestetica.com.br</a>
                 </p>
-            </div>
+            </address>
         </div>
 
         <!-- Column 4: Social Media -->
         <div class="footer-column footer-social">
             <h4>Redes Sociais</h4>
-            <div class="social-links">
-                <a href="https://instagram.com/jgbioestetica" target="_blank" rel="noopener noreferrer" class="social-link">
-                    <span class="social-icon">📷</span>
+            <nav class="social-links" aria-label="Redes sociais">
+                <a href="https://instagram.com/jgbioestetica" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Visite nosso Instagram (abre em nova aba)">
+                    <span class="social-icon" aria-hidden="true">📷</span>
                     Instagram
                 </a>
-                <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" class="social-link">
-                    <span class="social-icon">💬</span>
+                <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Entre em contato pelo WhatsApp (abre em nova aba)">
+                    <span class="social-icon" aria-hidden="true">💬</span>
                     WhatsApp
                 </a>
-            </div>
+            </nav>
         </div>
     </div>
 

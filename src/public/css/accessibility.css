@@ -1,0 +1,405 @@
+/* ===================================
+   ACESSIBILIDADE - JG BIOESTÉTICA
+   =================================== */
+
+/* Skip Links - Navegação por Teclado */
+.skip-links {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    z-index: 9999;
+    background: #556B2F;
+    padding: 0;
+}
+
+.skip-link {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    background: #556B2F;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 0 0 4px 0;
+    transition: all 0.3s ease;
+}
+
+.skip-link:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    left: 0;
+    top: 0;
+    overflow: visible;
+    outline: 3px solid #E2B850;
+    outline-offset: 2px;
+}
+
+/* Botão de Toggle de Alto Contraste */
+.accessibility-controls {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 9998;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.accessibility-btn {
+    background: #556B2F;
+    color: white;
+    border: 2px solid #556B2F;
+    padding: 12px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.accessibility-btn:hover {
+    background: #E2B850;
+    color: #556B2F;
+    border-color: #E2B850;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.accessibility-btn:focus {
+    outline: 3px solid #E2B850;
+    outline-offset: 3px;
+}
+
+.accessibility-icon {
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+/* Estilos de Foco Melhorados */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus,
+[tabindex]:focus {
+    outline: 3px solid #E2B850;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(226, 184, 80, 0.2);
+}
+
+/* Indicadores visuais para elementos interativos */
+button,
+a,
+input[type="submit"],
+input[type="button"],
+[role="button"] {
+    position: relative;
+}
+
+button:focus-visible,
+a:focus-visible,
+input[type="submit"]:focus-visible,
+input[type="button"]:focus-visible,
+[role="button"]:focus-visible {
+    outline: 3px solid #E2B850;
+    outline-offset: 3px;
+}
+
+/* ===================================
+   MODO DE ALTO CONTRASTE
+   =================================== */
+
+body.high-contrast {
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
+}
+
+/* Header em Alto Contraste */
+body.high-contrast .header {
+    background: #000000 !important;
+    border-bottom: 3px solid #FFFF00 !important;
+}
+
+body.high-contrast .logo {
+    color: #FFFF00 !important;
+    font-weight: bold;
+}
+
+body.high-contrast .logo:hover,
+body.high-contrast .logo:focus {
+    color: #FFFFFF !important;
+}
+
+body.high-contrast .nav-link {
+    color: #FFFFFF !important;
+    background-color: transparent !important;
+    border: 2px solid transparent;
+}
+
+body.high-contrast .nav-link:hover,
+body.high-contrast .nav-link:focus {
+    color: #000000 !important;
+    background-color: #FFFF00 !important;
+    border-color: #FFFF00 !important;
+}
+
+body.high-contrast .nav-link.active {
+    color: #000000 !important;
+    background-color: #FFFF00 !important;
+    border-color: #FFFF00 !important;
+}
+
+/* Mobile Menu em Alto Contraste */
+body.high-contrast .hamburger-line {
+    background-color: #FFFF00 !important;
+}
+
+body.high-contrast .mobile-nav-overlay {
+    background-color: #000000 !important;
+}
+
+body.high-contrast .mobile-nav-link {
+    color: #FFFFFF !important;
+    border: 2px solid #FFFF00;
+}
+
+body.high-contrast .mobile-nav-link:hover,
+body.high-contrast .mobile-nav-link:focus {
+    color: #000000 !important;
+    background-color: #FFFF00 !important;
+}
+
+body.high-contrast .mobile-nav-link.active {
+    color: #000000 !important;
+    background-color: #FFFF00 !important;
+}
+
+/* Hero Section em Alto Contraste */
+body.high-contrast .hero-section {
+    background: #000000 !important;
+    border-bottom: 3px solid #FFFF00;
+}
+
+body.high-contrast .hero-title,
+body.high-contrast .hero-subtitle {
+    color: #FFFFFF !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+body.high-contrast .cta-button {
+    background-color: #FFFF00 !important;
+    color: #000000 !important;
+    border: 3px solid #FFFF00 !important;
+    font-weight: bold;
+}
+
+body.high-contrast .cta-button:hover,
+body.high-contrast .cta-button:focus {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+    border-color: #FFFFFF !important;
+}
+
+/* Seções de Conteúdo em Alto Contraste */
+body.high-contrast .service-highlights,
+body.high-contrast .testimonials {
+    background-color: #000000 !important;
+}
+
+body.high-contrast .section-title {
+    color: #FFFF00 !important;
+}
+
+body.high-contrast .section-subtitle {
+    color: #FFFFFF !important;
+}
+
+/* Cards em Alto Contraste */
+body.high-contrast .service-card,
+body.high-contrast .testimonial-card {
+    background: #1A1A1A !important;
+    border: 3px solid #FFFF00 !important;
+    color: #FFFFFF !important;
+}
+
+body.high-contrast .service-card:hover,
+body.high-contrast .testimonial-card:hover {
+    background: #2A2A2A !important;
+    border-color: #FFFFFF !important;
+}
+
+body.high-contrast .service-title {
+    color: #FFFF00 !important;
+}
+
+body.high-contrast .service-description,
+body.high-contrast .testimonial-quote {
+    color: #FFFFFF !important;
+}
+
+body.high-contrast .testimonial-author {
+    color: #FFFF00 !important;
+}
+
+body.high-contrast .testimonial-role {
+    color: #CCCCCC !important;
+}
+
+/* Footer em Alto Contraste */
+body.high-contrast .main-footer {
+    background: #000000 !important;
+    border-top: 3px solid #FFFF00 !important;
+    color: #FFFFFF !important;
+}
+
+body.high-contrast .footer-logo h3 {
+    color: #FFFF00 !important;
+}
+
+body.high-contrast .footer-tagline,
+body.high-contrast .contact-info,
+body.high-contrast .contact-info p {
+    color: #FFFFFF !important;
+}
+
+body.high-contrast .footer-links h4,
+body.high-contrast .footer-contact h4,
+body.high-contrast .footer-social h4 {
+    color: #FFFF00 !important;
+}
+
+body.high-contrast .footer-links a {
+    color: #FFFFFF !important;
+}
+
+body.high-contrast .footer-links a:hover,
+body.high-contrast .footer-links a:focus {
+    color: #FFFF00 !important;
+}
+
+body.high-contrast .social-link {
+    color: #FFFFFF !important;
+    border: 2px solid #FFFF00;
+}
+
+body.high-contrast .social-link:hover,
+body.high-contrast .social-link:focus {
+    color: #000000 !important;
+    background-color: #FFFF00 !important;
+}
+
+body.high-contrast .footer-copyright {
+    background: #000000 !important;
+    border-top: 2px solid #FFFF00 !important;
+    color: #FFFFFF !important;
+}
+
+/* Botão de Acessibilidade em Alto Contraste */
+body.high-contrast .accessibility-btn {
+    background: #FFFF00 !important;
+    color: #000000 !important;
+    border-color: #FFFF00 !important;
+    font-weight: bold;
+}
+
+body.high-contrast .accessibility-btn:hover,
+body.high-contrast .accessibility-btn:focus {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+    border-color: #FFFFFF !important;
+}
+
+/* Formulários em Alto Contraste */
+body.high-contrast input,
+body.high-contrast textarea,
+body.high-contrast select {
+    background: #1A1A1A !important;
+    color: #FFFFFF !important;
+    border: 2px solid #FFFF00 !important;
+}
+
+body.high-contrast input:focus,
+body.high-contrast textarea:focus,
+body.high-contrast select:focus {
+    background: #000000 !important;
+    border-color: #FFFFFF !important;
+    outline: 3px solid #FFFFFF !important;
+}
+
+/* Links em Alto Contraste */
+body.high-contrast a {
+    color: #FFFF00 !important;
+    text-decoration: underline;
+}
+
+body.high-contrast a:hover,
+body.high-contrast a:focus {
+    color: #FFFFFF !important;
+}
+
+/* ===================================
+   RESPONSIVO
+   =================================== */
+
+@media (max-width: 768px) {
+    .accessibility-controls {
+        top: auto;
+        bottom: 20px;
+        right: 10px;
+    }
+
+    .accessibility-btn {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+    }
+
+    .accessibility-icon {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .accessibility-controls {
+        right: 5px;
+        bottom: 10px;
+    }
+
+    .accessibility-btn {
+        padding: 8px 10px;
+        font-size: 0.8rem;
+        gap: 6px;
+    }
+}
+
+/* Melhorias de Acessibilidade para Impressão */
+@media print {
+    .skip-links,
+    .accessibility-controls {
+        display: none !important;
+    }
+
+    body.high-contrast {
+        background: white !important;
+        color: black !important;
+    }
+}
+
+/* Suporte a Redução de Movimento */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
