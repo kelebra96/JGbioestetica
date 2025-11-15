@@ -1,0 +1,70 @@
+name: Deploy JGBioestetica to Amazon ECS
+
+on:
+  push:
+    branches: [ "main" ]         # dispara quando tiver push na main
+
+env:
+  AWS_REGION: sa-east-1          # região da AWS (São Paulo)
+  ECR_REPOSITORY: jgbioestetica  # nome do repositório no ECR
+  ECS_CLUSTER: JGBioesteticaCluster
+  ECS_SERVICE: JGBioesteticaService
+  ECS_TASK_DEFINITION: .aws/task-definition.json
+  CONTAINER_NAME: jgbioestetica-container
+
+permissions:
+  contents: read                 # precisa ler o código do repo
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4   # baixa o código do seu repositório
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v5   # action oficial da AWS 
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}         # vem dos Secrets do GitHub
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }} # idem
+        aws-region: ${{ env.AWS_REGION }}
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v2           # faz docker login no ECR 
+
+    - name: Build, tag, and push image to Amazon ECR
+      id: build-image
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}  # ex: 8509....dkr.ecr.sa-east-1.amazonaws.com
+        IMAGE_TAG: ${{ github.sha }}                          # usa o hash do commit como tag
+      run: |
+        # Build da imagem Docker
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+
+        # Envia a imagem para o ECR
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+        # Exporta a URI da imagem para os próximos passos
+        echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+
+    - name: Render Amazon ECS task definition
+      id: task-def
+      uses: aws-actions/amazon-ecs-render-task-definition@v1   # insere a nova imagem no JSON 
+      with:
+        task-definition: ${{ env.ECS_TASK_DEFINITION }}        # .aws/task-definition.json
+        container-name: ${{ env.CONTAINER_NAME }}              # jgbioestetica-container
+        image: ${{ steps.build-image.outputs.image }}          # imagem construída acima
+
+    - name: Deploy Amazon ECS task definition
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v2   # registra e faz deploy da task 
+      with:
+        task-definition: ${{ steps.task-def.outputs.task-definition }}
+        service: ${{ env.ECS_SERVICE }}
+        cluster: ${{ env.ECS_CLUSTER }}
+        wait-for-service-stability: true
+        enable-ecs-managed-tags: true
+        propagate-tags: SERVICE
