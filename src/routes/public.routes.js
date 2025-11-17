@@ -4,7 +4,7 @@ const router = express.Router();
 // Homepage route
 router.get('/', (req, res) => {
   res.render('index', {
-    title: 'JG Bioestética - Realce sua Beleza Natural',
+    title: 'Gratieri Clínica Bioestética - Taquatiringa - SP',
     currentPage: '/'
   });
 });
@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 // About Us route
 router.get('/about', (req, res) => {
   res.render('about', {
-    title: 'Sobre Nós - JG Bioestética',
+    title: 'Sobre Nós - Gratieri Clínica Bioestética',
     currentPage: '/about'
   });
 });
@@ -20,7 +20,7 @@ router.get('/about', (req, res) => {
 // Services route
 router.get('/services', (req, res) => {
   res.render('services', {
-    title: 'Serviços - JG Bioestética',
+    title: 'Serviços - Gratieri Clínica Bioestética',
     currentPage: '/services'
   });
 });
@@ -28,7 +28,7 @@ router.get('/services', (req, res) => {
 // Contact route
 router.get('/contact', (req, res) => {
   res.render('contact', {
-    title: 'Contato - JG Bioestética',
+    title: 'Contato - Gratieri Clínica Bioestética',
     currentPage: '/contact'
   });
 });
