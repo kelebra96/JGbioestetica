@@ -25,21 +25,23 @@
         /* Hero Section */
         .hero-section {
             min-height: 80vh;
-            background: linear-gradient(rgba(85, 107, 47, 0.7), rgba(85, 107, 47, 0.7)),
-                        url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background: url('/assets/img/home.png') no-repeat center center/cover,
+                        linear-gradient(#347433, rgba(48, 59, 28, 0.7));
             background-size: cover;
             background-position: center;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
+            justify-content: flex-start;
+            text-align: left;
             color: white;
             position: relative;
+            padding: 0 5%;
         }
 
         .hero-content {
             max-width: 800px;
             padding: 2rem;
+            text-align: left;
         }
 
         .hero-title {
@@ -56,13 +58,13 @@
         }
 
         .cta-button {
-            background-color: #E2B850;
-            color: #556B2F;
+            background-color: #FFC107;
+            color: #000;
             padding: 1rem 2rem;
             font-size: 1.2rem;
             font-weight: bold;
             border: none;
-            border-radius: 50px;
+            border-radius: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
@@ -98,11 +100,15 @@
         }
 
         .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: flex;
             gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
+            justify-content: center;
+            align-items: stretch;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
         }
 
         .service-card {
@@ -111,6 +117,29 @@
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+            flex: 0 0 260px;
+            min-width: 260px;
+        }
+
+        .service-card img {
+            width: 100%;
+            max-width: 260px;
+            height: auto;
+            margin-bottom: 1.25rem;
+            align-self: center;
+            border-radius: 12px;
+        }
+
+        service-card img {
+            width: 30px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 10 10 30 rgba(0, 0, 0, 0.2);
         }
 
         .service-card:hover {
@@ -214,25 +243,25 @@
 
         <div class="services-grid" role="list">
             <article class="service-card" role="listitem">
-                <div class="service-icon" aria-hidden="true">💆‍♀️</div>
+                <img src="/assets/img/limpeza_de_pele.jpg" id="limpeza_de_pele" alt="Imagem de Limpeza de Pele">
                 <h3 class="service-title">Limpeza de Pele</h3>
                 <p class="service-description">Tratamento profundo para renovação e purificação da pele, deixando-a mais limpa e saudável.</p>
             </article>
 
             <article class="service-card" role="listitem">
-                <div class="service-icon" aria-hidden="true">✨</div>
+                <img src="/assets/img/limpeza_de_pele.jpg" id="limpeza_de_pele" alt="Imagem de Limpeza de Pele">
                 <h3 class="service-title">Rejuvenescimento</h3>
                 <p class="service-description">Procedimentos avançados para combater o envelhecimento e devolver a vitalidade à sua pele.</p>
             </article>
 
             <article class="service-card" role="listitem">
-                <div class="service-icon" aria-hidden="true">🌟</div>
+                <img src="/assets/img/harmonizacao.jpg" id="limpeza_de_pele" alt="Imagem de Limpeza de Pele">
                 <h3 class="service-title">Harmonização Facial</h3>
                 <p class="service-description">Técnicas especializadas para realçar a beleza natural e harmonizar os traços faciais.</p>
             </article>
 
             <article class="service-card" role="listitem">
-                <div class="service-icon" aria-hidden="true">💫</div>
+                <img src="/assets/img/Peeling_Quimico.jpg" id="limpeza_de_pele" alt="Imagem de Limpeza de Pele">
                 <h3 class="service-title">Peeling Químico</h3>
                 <p class="service-description">Renovação celular profunda para melhorar textura, manchas e uniformidade da pele.</p>
             </article>

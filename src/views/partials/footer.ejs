@@ -19,10 +19,14 @@
             <h4>Links Rápidos</h4>
             <nav aria-label="Links de rodapé">
                 <ul>
-                    <li><a href="/" class="<%= currentPage === '/' ? 'active' : '' %>" <%= currentPage === '/' ? 'aria-current="page"' : '' %>>Início</a></li>
-                    <li><a href="/about" class="<%= currentPage === '/about' ? 'active' : '' %>" <%= currentPage === '/about' ? 'aria-current="page"' : '' %>>Sobre</a></li>
-                    <li><a href="/services" class="<%= currentPage === '/services' ? 'active' : '' %>" <%= currentPage === '/services' ? 'aria-current="page"' : '' %>>Serviços</a></li>
-                    <li><a href="/contact" class="<%= currentPage === '/contact' ? 'active' : '' %>" <%= currentPage === '/contact' ? 'aria-current="page"' : '' %>>Contato</a></li>
+                    <li><a href="/" class="<%= currentPage === '/' ? 'active' : '' %>" <%=currentPage==='/'
+                            ? 'aria-current="page"' : '' %>>Início</a></li>
+                    <li><a href="/about" class="<%= currentPage === '/about' ? 'active' : '' %>"
+                            <%=currentPage==='/about' ? 'aria-current="page"' : '' %>>Sobre</a></li>
+                    <li><a href="/services" class="<%= currentPage === '/services' ? 'active' : '' %>"
+                            <%=currentPage==='/services' ? 'aria-current="page"' : '' %>>Serviços</a></li>
+                    <li><a href="/contact" class="<%= currentPage === '/contact' ? 'active' : '' %>"
+                            <%=currentPage==='/contact' ? 'aria-current="page"' : '' %>>Contato</a></li>
                 </ul>
             </nav>
         </div>
@@ -43,7 +47,8 @@
                 </p>
                 <p>
                     <strong>Email:</strong><br>
-                    <a href="mailto:contato@jgbioestetica.com.br" aria-label="Enviar email para contato@jgbioestetica.com.br">contato@jgbioestetica.com.br</a>
+                    <a href="mailto:contato@jgbioestetica.com.br"
+                        aria-label="Enviar email para contato@jgbioestetica.com.br">contato@jgbioestetica.com.br</a>
                 </p>
             </address>
         </div>
@@ -52,11 +57,13 @@
         <div class="footer-column footer-social">
             <h4>Redes Sociais</h4>
             <nav class="social-links" aria-label="Redes sociais">
-                <a href="https://instagram.com/jgbioestetica" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Visite nosso Instagram (abre em nova aba)">
+                <a href="https://instagram.com/jgbioestetica" target="_blank" rel="noopener noreferrer"
+                    class="social-link" aria-label="Visite nosso Instagram (abre em nova aba)">
                     <span class="social-icon" aria-hidden="true">📷</span>
                     Instagram
                 </a>
-                <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Entre em contato pelo WhatsApp (abre em nova aba)">
+                <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" class="social-link"
+                    aria-label="Entre em contato pelo WhatsApp (abre em nova aba)">
                     <span class="social-icon" aria-hidden="true">💬</span>
                     WhatsApp
                 </a>
