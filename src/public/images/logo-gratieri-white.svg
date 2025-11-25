@@ -1,0 +1,45 @@
+<svg width="280" height="100" viewBox="0 0 280 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Quatrefoil/Clover Icon - White version for dark backgrounds -->
+  <g id="quatrefoil-icon" transform="translate(45, 50)">
+    <!-- Top petal - large rounded lobe -->
+    <path d="M 0,-8 C -8,-8 -18,-12 -18,-22 C -18,-32 -12,-38 0,-38 C 12,-38 18,-32 18,-22 C 18,-12 8,-8 0,-8 Z"
+          fill="none" stroke="#F5F5DC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Top inner decorative lines -->
+    <path d="M -5,-18 L -2,-13" stroke="#F5F5DC" stroke-width="2" stroke-linecap="round"/>
+    <path d="M 5,-18 L 2,-13" stroke="#F5F5DC" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Right petal -->
+    <path d="M 8,0 C 8,-8 12,-18 22,-18 C 32,-18 38,-12 38,0 C 38,12 32,18 22,18 C 12,18 8,8 8,0 Z"
+          fill="none" stroke="#F5F5DC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Right inner decorative lines -->
+    <path d="M 18,-5 L 13,-2" stroke="#F5F5DC" stroke-width="2" stroke-linecap="round"/>
+    <path d="M 18,5 L 13,2" stroke="#F5F5DC" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Bottom petal -->
+    <path d="M 0,8 C 8,8 18,12 18,22 C 18,32 12,38 0,38 C -12,38 -18,32 -18,22 C -18,12 -8,8 0,8 Z"
+          fill="none" stroke="#F5F5DC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Bottom inner decorative lines -->
+    <path d="M -5,18 L -2,13" stroke="#F5F5DC" stroke-width="2" stroke-linecap="round"/>
+    <path d="M 5,18 L 2,13" stroke="#F5F5DC" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Left petal -->
+    <path d="M -8,0 C -8,8 -12,18 -22,18 C -32,18 -38,12 -38,0 C -38,-12 -32,-18 -22,-18 C -12,-18 -8,-8 -8,0 Z"
+          fill="none" stroke="#F5F5DC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Left inner decorative lines -->
+    <path d="M -18,-5 L -13,-2" stroke="#F5F5DC" stroke-width="2" stroke-linecap="round"/>
+    <path d="M -18,5 L -13,2" stroke="#F5F5DC" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Center diamond -->
+    <path d="M 0,-6 L 6,0 L 0,6 L -6,0 Z" fill="#F5F5DC"/>
+  </g>
+
+  <!-- GRATIERI text -->
+  <text x="105" y="58" font-family="'Playfair Display', serif" font-size="32" font-weight="400" fill="#F5F5DC" letter-spacing="2">GRATIERI</text>
+
+  <!-- Subtitle -->
+  <text x="105" y="72" font-family="'Open Sans', sans-serif" font-size="10" font-weight="300" fill="#F5F5DC" letter-spacing="3">CLÍNICA BIOESTÉTICA</text>
+</svg>
