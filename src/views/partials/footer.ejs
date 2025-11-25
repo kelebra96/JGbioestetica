@@ -19,10 +19,14 @@
             <h4>Links Rápidos</h4>
             <nav aria-label="Links de rodapé">
                 <ul>
-                    <li><a href="/" class="<%= currentPage === '/' ? 'active' : '' %>" <%= currentPage === '/' ? 'aria-current="page"' : '' %>>Início</a></li>
-                    <li><a href="/about" class="<%= currentPage === '/about' ? 'active' : '' %>" <%= currentPage === '/about' ? 'aria-current="page"' : '' %>>Sobre</a></li>
-                    <li><a href="/services" class="<%= currentPage === '/services' ? 'active' : '' %>" <%= currentPage === '/services' ? 'aria-current="page"' : '' %>>Serviços</a></li>
-                    <li><a href="/contact" class="<%= currentPage === '/contact' ? 'active' : '' %>" <%= currentPage === '/contact' ? 'aria-current="page"' : '' %>>Contato</a></li>
+                    <li><a href="/" class="<%= currentPage === '/' ? 'active' : '' %>" <%=currentPage==='/'
+                            ? 'aria-current="page"' : '' %>>Início</a></li>
+                    <li><a href="/about" class="<%= currentPage === '/about' ? 'active' : '' %>"
+                            <%=currentPage==='/about' ? 'aria-current="page"' : '' %>>Sobre</a></li>
+                    <li><a href="/services" class="<%= currentPage === '/services' ? 'active' : '' %>"
+                            <%=currentPage==='/services' ? 'aria-current="page"' : '' %>>Serviços</a></li>
+                    <li><a href="/contact" class="<%= currentPage === '/contact' ? 'active' : '' %>"
+                            <%=currentPage==='/contact' ? 'aria-current="page"' : '' %>>Contato</a></li>
                 </ul>
             </nav>
         </div>
@@ -44,6 +48,11 @@
                     <strong>Profissional:</strong><br>
                     Joice Gratieri
                 </p>
+                <p>
+                    <strong>Email:</strong><br>
+                    <a href="mailto:jgbioestetica10@gmail.com"
+                        aria-label="Enviar email para jgbioestetica10@gmail.com">jgbioestetica10@gmail.com</a>
+                </p>
             </address>
         </div>
 
@@ -51,7 +60,7 @@
         <div class="footer-column footer-social">
             <h4>Redes Sociais</h4>
             <nav class="social-links" aria-label="Redes sociais">
-                <a href="https://instagram.com/gratieri_bioestetica" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Visite nosso Instagram (abre em nova aba)">
+                <a href="https://instagram.com/clinica_bioestetica" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Visite nosso Instagram (abre em nova aba)">
                     <span class="social-icon" aria-hidden="true">📷</span>
                     Instagram
                 </a>
