@@ -1,79 +1,83 @@
 <!-- Footer Section -->
 <footer class="main-footer" role="contentinfo">
     <div class="footer-container">
-        <!-- Column 1: Logo and About -->
-        <div class="footer-column footer-about">
-            <div class="footer-logo">
-                <a href="/" aria-label="Gratieri Clínica Bioestética - Voltar à página inicial">
-                    <!-- Placeholder logo - will be replaced with actual SVG logo -->
-                    <h3>Gratieri Clínica Bioestética</h3>
+        <div class="footer-grid">
+            <!-- Column 1: Logo and About -->
+            <div class="footer-column footer-about">
+                <a href="/" class="footer-brand" aria-label="Gratieri Clínica Bioestética - Voltar à página inicial">
+                    <div class="brand-mark">JG</div>
+                    <div>
+                        <h3>Gratieri Clínica Bioestética</h3>
+                    </div>
                 </a>
+                <p class="footer-tagline">
+                    Realçando sua beleza natural com tratamentos seguros e eficazes.
+                </p>
             </div>
-            <p class="footer-tagline">
-                Realçando sua beleza natural com tratamentos seguros e eficazes.
-            </p>
-        </div>
 
-        <!-- Column 2: Quick Links -->
-        <div class="footer-column footer-links">
-            <h4>Links Rápidos</h4>
-            <nav aria-label="Links de rodapé">
-                <ul>
-                    <li><a href="/" class="<%= currentPage === '/' ? 'active' : '' %>" <%=currentPage==='/'
-                            ? 'aria-current="page"' : '' %>>Início</a></li>
-                    <li><a href="/about" class="<%= currentPage === '/about' ? 'active' : '' %>"
-                            <%=currentPage==='/about' ? 'aria-current="page"' : '' %>>Sobre</a></li>
-                    <li><a href="/services" class="<%= currentPage === '/services' ? 'active' : '' %>"
-                            <%=currentPage==='/services' ? 'aria-current="page"' : '' %>>Serviços</a></li>
-                    <li><a href="/contact" class="<%= currentPage === '/contact' ? 'active' : '' %>"
-                            <%=currentPage==='/contact' ? 'aria-current="page"' : '' %>>Contato</a></li>
-                </ul>
-            </nav>
-        </div>
+            <!-- Column 2: Quick Links -->
+            <div class="footer-column footer-links">
+                <h4>Links Rápidos</h4>
+                <nav aria-label="Links de rodapé">
+                    <ul>
+                        <li><a href="/" class="<%= currentPage === '/' ? 'active' : '' %>" <%=currentPage==='/'
+                                ? 'aria-current="page"' : '' %>>Início</a></li>
+                        <li><a href="/about" class="<%= currentPage === '/about' ? 'active' : '' %>"
+                                <%=currentPage==='/about' ? 'aria-current="page"' : '' %>>Sobre</a></li>
+                        <li><a href="/services" class="<%= currentPage === '/services' ? 'active' : '' %>"
+                                <%=currentPage==='/services' ? 'aria-current="page"' : '' %>>Serviços</a></li>
+                        <li><a href="/contact" class="<%= currentPage === '/contact' ? 'active' : '' %>"
+                                <%=currentPage==='/contact' ? 'aria-current="page"' : '' %>>Contato</a></li>
+                    </ul>
+                </nav>
+            </div>
 
-        <!-- Column 3: Contact Info -->
-        <div class="footer-column footer-contact">
-            <h4>Contato</h4>
-            <address class="contact-info">
-                <p>
-                    <strong>Endereço:</strong><br>
-                    R. Sete de setembro, 666<br>
-                    Taquatiringa - SP
-                </p>
-                <p>
-                    <strong>WhatsApp:</strong><br>
-                    <a href="https://wa.me/5516999633163" aria-label="Enviar mensagem no WhatsApp para (16) 99963-3163">(16) 99963-3163</a>
-                </p>
-                <p>
-                    <strong>Profissional:</strong><br>
-                    Joice Gratieri
-                </p>
-                <p>
-                    <strong>Email:</strong><br>
-                    <a href="mailto:jgbioestetica10@gmail.com"
-                        aria-label="Enviar email para jgbioestetica10@gmail.com">jgbioestetica10@gmail.com</a>
-                </p>
-            </address>
-        </div>
+            <!-- Column 3: Contact Info -->
+            <div class="footer-column footer-contact">
+                <h4>Contato</h4>
+                <address class="contact-info">
+                    <ul class="contact-list">
+                        <li>
+                            <strong>Endereço:</strong>
+                            R. Sete de setembro, 666<br>
+                            Taquatiringa - SP
+                        </li>
+                        <li>
+                            <strong>WhatsApp:</strong>
+                            <a href="https://wa.me/5516999633163" aria-label="Enviar mensagem no WhatsApp para (16) 99963-3163">(16) 99963-3163</a>
+                        </li>
+                        <li>
+                            <strong>Profissional:</strong>
+                            Joice Gratieri
+                        </li>
+                        <li>
+                            <strong>Email:</strong>
+                            <a href="mailto:jgbioestetica10@gmail.com"
+                                aria-label="Enviar email para jgbioestetica10@gmail.com">jgbioestetica10@gmail.com</a>
+                        </li>
+                    </ul>
+                </address>
+            </div>
 
-        <!-- Column 4: Social Media -->
-        <div class="footer-column footer-social">
-            <h4>Redes Sociais</h4>
-            <nav class="social-links" aria-label="Redes sociais">
-                <a href="https://instagram.com/clinica_bioestetica" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Visite nosso Instagram (abre em nova aba)">
-                    <span class="social-icon" aria-hidden="true">📷</span>
-                    Instagram
-                </a>
-                <a href="https://wa.me/5516999633163" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Entre em contato pelo WhatsApp (abre em nova aba)">
-                    <span class="social-icon" aria-hidden="true">💬</span>
-                    WhatsApp
-                </a>
-            </nav>
+            <!-- Column 4: Social Media -->
+            <div class="footer-column footer-social">
+                <h4>Redes Sociais</h4>
+                <nav class="social-links" aria-label="Redes sociais">
+                    <a href="https://instagram.com/clinica_bioestetica" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Visite nosso Instagram (abre em nova aba)">
+                        <span class="social-icon" aria-hidden="true">📷</span>
+                        Instagram
+                    </a>
+                    <a href="https://wa.me/5516999633163" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Entre em contato pelo WhatsApp (abre em nova aba)">
+                        <span class="social-icon" aria-hidden="true">💬</span>
+                        WhatsApp
+                    </a>
+                </nav>
+            </div>
         </div>
     </div>
 
     <!-- Copyright Section -->
-    <div class="footer-copyright">
+    <div class="footer-base">
         <div class="footer-container">
             <p>&copy; <%= new Date().getFullYear() %> Gratieri Clínica Bioestética. Todos os direitos reservados.</p>
         </div>
