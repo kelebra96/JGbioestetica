@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title || 'Sobre Nós - JG Bioestética' %></title>
-    <meta name="description" content="Conheça a JG Bioestética - nossa história, missão, valores e equipe dedicada ao seu bem-estar e beleza natural.">
+    <title><%= title || 'Sobre Nós - Gratieri Clínica Bioestética' %></title>
+    <meta name="description" content="Conheça Joice Gratieri - Biomédica Estética especialista em LASER com mais de 10 anos de experiência devolvendo autoconfiança às clientes.">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/accessibility.css">
@@ -114,23 +114,22 @@
         }
 
         .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 24px;
             margin-top: 48px;
+            justify-content: space-between;
         }
 
         .value-card {
             background: white;
-            padding: 32px 24px;
+            padding: 24px 16px;
             border-radius: 12px;
             text-align: center;
             box-shadow: 0 4px 20px rgba(85, 107, 47, 0.1);
             transition: transform 0.3s ease;
-        }
-
-        .value-card:hover {
-            transform: translateY(-5px);
+            flex: 1;
+            max-width: 24%;
         }
 
         .value-icon {
@@ -279,10 +278,16 @@
                 font-size: 2rem;
             }
 
-
-            .values-grid,
             .team-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .values-grid {
+                flex-direction: column;
+            }
+
+            .value-card {
+                max-width: 100%;
             }
         }
     </style>
@@ -293,8 +298,8 @@
     <!-- Hero Section -->
     <section class="hero-section" role="region" aria-label="Banner principal">
         <div class="hero-content">
-            <h1 class="hero-title">Sobre a JG Bioestética</h1>
-            <p class="hero-subtitle">Conheça nossa história, missão e a equipe dedicada ao seu bem-estar</p>
+            <h1 class="hero-title">Nossa História</h1>
+            <p class="hero-subtitle">Conheça nossa história, missão e a profissional dedicada ao seu bem-estar</p>
         </div>
     </section>
 
@@ -303,24 +308,22 @@
         <div class="container">
             <div class="about-grid">
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Interior moderno e acolhedor da clínica JG Bioestética com equipamentos profissionais">
+                    <img src="/assets/img/SobreAJoice.png" alt="Imagem da Joice Gratieri">
                 </div>
                 <div class="about-text">
-                    <h2 id="about-title">Nossa História</h2>
+                    <h2 id="about-title">Sobre Joice Gratieri</h2>
                     <p>
-                        A JG Bioestética nasceu do sonho de oferecer tratamentos de beleza e bem-estar com excelência e segurança.
-                        Fundada com o propósito de realçar a beleza natural de cada pessoa, nossa clínica se tornou referência em
-                        procedimentos estéticos avançados.
+                        Sou graduada em biomedicina, pós graduada em biomedicina estética e Especialista em LASER,
+                        remoção de tatuagem e depilação a laser.
                     </p>
                     <p>
-                        Com anos de experiência no mercado, construímos uma reputação sólida baseada na confiança,
-                        profissionalismo e resultados excepcionais. Nossa equipe altamente qualificada trabalha com as
-                        mais modernas técnicas e equipamentos para proporcionar a melhor experiência aos nossos clientes.
+                        Sou mãe de uma estudante de medicina e carrego uma bagagem com mais de 10 anos de experiência
+                        no mercado estético, devolvendo autoconfiança às minhas clientes e promovendo saúde.
                     </p>
-                    <p>
-                        Acreditamos que a beleza vai além da aparência física - é sobre autoestima, confiança e bem-estar.
-                        Por isso, oferecemos um atendimento personalizado e humanizado, respeitando as necessidades e
-                        expectativas de cada pessoa.
+                    <p style="font-style: italic; color: #556B2F; font-weight: 500;">
+                        "Entendo a necessidade e objetivo de cada paciente, e sei como combinar tratamentos para melhor
+                        resultado a fim de não comprometer sua auto-estima, valorizando seus pontos fortes. Estou muito
+                        satisfeita com os resultados que obtive até agora"
                     </p>
                 </div>
             </div>
@@ -330,27 +333,32 @@
     <!-- Mission & Values -->
     <section class="mission-values" role="region" aria-labelledby="values-title">
         <div class="container">
-            <h2 class="section-title" id="values-title">Nossos Valores</h2>
+            <h2 class="section-title" id="values-title">Clínica de Biomedicina Estética</h2>
+            <p style="text-align: center; max-width: 900px; margin: 0 auto 3rem; font-size: 1.1rem; color: #666; line-height: 1.8;">
+                São muitas as opções que podem proporcionar o tão sonhado bem-estar, e cada vez mais, as clínicas
+                estão se equipando para dar a seus clientes os mais modernos procedimentos para a saúde e o bem-estar.
+                E é este o legado seguido pela clínica para que o melhor do mercado seja proporcionado às clientes.
+            </p>
             <div class="values-grid" role="list">
                 <article class="value-card" role="listitem">
                     <div class="value-icon" aria-hidden="true">🎯</div>
-                    <h3>Excelência</h3>
-                    <p>Buscamos sempre a perfeição em nossos procedimentos, utilizando as melhores técnicas e equipamentos disponíveis no mercado.</p>
+                    <h3>Especialização</h3>
+                    <p>Especialista em LASER, remoção de tatuagem e depilação a laser com as mais modernas tecnologias do mercado.</p>
                 </article>
                 <article class="value-card" role="listitem">
                     <div class="value-icon" aria-hidden="true">🤝</div>
-                    <h3>Confiança</h3>
-                    <p>Construímos relacionamentos duradouros baseados na transparência, ética e resultados consistentes.</p>
+                    <h3>Autoconfiança</h3>
+                    <p>Devolvendo autoconfiança às clientes e promovendo saúde através de tratamentos personalizados.</p>
                 </article>
                 <article class="value-card" role="listitem">
                     <div class="value-icon" aria-hidden="true">💎</div>
-                    <h3>Qualidade</h3>
-                    <p>Utilizamos apenas produtos e tecnologias de primeira linha, garantindo segurança e eficácia em todos os tratamentos.</p>
+                    <h3>Experiência</h3>
+                    <p>Mais de 10 anos de experiência no mercado estético com resultados comprovados e clientes satisfeitas.</p>
                 </article>
                 <article class="value-card" role="listitem">
                     <div class="value-icon" aria-hidden="true">🌿</div>
-                    <h3>Naturalidade</h3>
-                    <p>Valorizamos e realçamos a beleza natural de cada pessoa, respeitando suas características únicas.</p>
+                    <h3>Personalização</h3>
+                    <p>Entendendo a necessidade de cada paciente para combinar tratamentos e valorizar seus pontos fortes.</p>
                 </article>
             </div>
         </div>
@@ -359,33 +367,16 @@
     <!-- Team Section -->
     <section class="team-section" role="region" aria-labelledby="team-title">
         <div class="container">
-            <h2 class="section-title" id="team-title">Nossa Equipe</h2>
+            <h2 class="section-title" id="team-title">Profissional</h2>
             <div class="team-grid" role="list">
-                <article class="team-card" role="listitem">
+                <article class="team-card" role="listitem" style="max-width: 600px; margin: 0 auto;">
                     <div class="team-photo" aria-hidden="true">👩‍⚕️</div>
-                    <h3>Dra. Juliana Garcia</h3>
+                    <h3>Joice Gratieri</h3>
                     <div class="team-role">Biomédica Estética</div>
                     <p class="team-bio">
-                        Especialista em procedimentos estéticos com mais de 10 anos de experiência.
-                        Formada em Biomedicina com pós-graduação em Estética Avançada.
-                    </p>
-                </article>
-                <article class="team-card" role="listitem">
-                    <div class="team-photo" aria-hidden="true">👨‍⚕️</div>
-                    <h3>Dr. Gabriel Silva</h3>
-                    <div class="team-role">Dermatologista</div>
-                    <p class="team-bio">
-                        Médico dermatologista especializado em tratamentos rejuvenescedores e
-                        harmonização facial. Membro da Sociedade Brasileira de Dermatologia.
-                    </p>
-                </article>
-                <article class="team-card" role="listitem">
-                    <div class="team-photo" aria-hidden="true">👩‍💼</div>
-                    <h3>Ana Carolina</h3>
-                    <div class="team-role">Esteticista</div>
-                    <p class="team-bio">
-                        Esteticista formada com especialização em tratamentos faciais e corporais.
-                        Dedicada a proporcionar uma experiência única e relaxante.
+                        Graduada em biomedicina, pós graduada em biomedicina estética e Especialista em LASER,
+                        remoção de tatuagem e depilação a laser. Mãe de uma estudante de medicina com mais de
+                        10 anos de experiência no mercado estético, devolvendo autoconfiança às clientes e promovendo saúde.
                     </p>
                 </article>
             </div>
