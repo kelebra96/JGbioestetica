@@ -71,8 +71,8 @@
 
 .footer-brand .brand-mark {
   display: inline-flex;
-  width: 48px;
-  height: 48px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background: var(--color-secondary);
   color: var(--color-primary);
@@ -81,6 +81,13 @@
   font-weight: 700;
   font-size: 1.1rem;
   flex-shrink: 0;
+}
+
+.footer-brand .brand-mark img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  border-radius: 50%;
 }
 
 .footer-brand h3 {
