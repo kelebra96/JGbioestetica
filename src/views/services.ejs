@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title || 'Serviços - Gratieri Clínica Bioestética' %></title>
-    <meta name="description" content="Tratamentos a laser, depilação, harmonização facial, remoção de tatuagem, peeling, CO2 fracionado e laser Lavieen. Taquatiringa - SP.">
+    <title>
+        <%= title || 'Serviços - Gratieri Clínica Bioestética' %>
+    </title>
+    <meta name="description"
+        content="Tratamentos a laser, depilação, harmonização facial, remoção de tatuagem, peeling, CO2 fracionado e laser Lavieen. Taquatiringa - SP.">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/accessibility.css">
@@ -25,7 +29,7 @@
         /* Hero Section */
         .hero-section {
             background: linear-gradient(rgba(85, 107, 47, 0.8), rgba(85, 107, 47, 0.8)),
-                        url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+                url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
             height: 400px;
@@ -45,7 +49,7 @@
             font-size: 3rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .hero-subtitle {
@@ -194,7 +198,7 @@
             background: white;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
 
@@ -275,7 +279,7 @@
             background-color: #EDE5B0;
             color: #556B2F;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         /* Responsive Design */
@@ -310,190 +314,205 @@
         }
     </style>
 </head>
+
 <body>
     <%- include('partials/header') %>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-content">
-            <h1 class="hero-title">Nossos Serviços</h1>
-            <p class="hero-subtitle">Descubra todos os tratamentos de bioestética que oferecemos para realçar sua beleza natural</p>
-        </div>
-    </section>
-
-    <!-- Main Services -->
-    <section class="services-content">
-        <div class="container">
-            <h2 class="section-title">Tratamentos Disponíveis</h2>
-            <p class="section-subtitle">
-                Oferecemos uma ampla gama de procedimentos estéticos avançados, realizados por profissionais experientes
-                com equipamentos de última geração para garantir sua segurança e os melhores resultados.
-            </p>
-
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">✨</div>
-                    <h3 class="service-title">Revitalização da Pele a Laser</h3>
-                    <p class="service-description">
-                        A Revitalização da Pele a Laser funciona profundamente na pele para ajudar seu corpo a fazer mais colágeno.
-                    </p>
-                    <ul class="service-features">
-                        <li>Estimulação da produção de colágeno</li>
-                        <li>Pele mais firme e suave</li>
-                        <li>Aparência mais uniforme</li>
-                        <li>Resultados duradouros</li>
-                    </ul>
-                    <a href="/contact" class="service-button">Agendar</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">💫</div>
-                    <h3 class="service-title">Depilação a Laser</h3>
-                    <p class="service-description">
-                        Solução moderna e duradoura para eliminar pelos indesejados através de aparelho que emite comprimento de onda de laser.
-                    </p>
-                    <ul class="service-features">
-                        <li>Atinge o local de crescimento do pelo</li>
-                        <li>Remoção pela raiz</li>
-                        <li>Maior dificuldade de crescer novamente</li>
-                        <li>Resultados duradouros</li>
-                    </ul>
-                    <a href="/contact" class="service-button">Agendar</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">🌟</div>
-                    <h3 class="service-title">Harmonização Facial</h3>
-                    <p class="service-description">
-                        Conjunto de procedimentos estéticos minimamente invasivos que buscam o equilíbrio dos traços do rosto.
-                    </p>
-                    <ul class="service-features">
-                        <li>Preenchimento com ácido hialurônico</li>
-                        <li>Aplicação de toxina botulínica</li>
-                        <li>Bioestimuladores de colágeno</li>
-                        <li>Fios de sustentação</li>
-                    </ul>
-                    <a href="/contact" class="service-button">Agendar</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">🎯</div>
-                    <h3 class="service-title">Remoção de Tatuagem</h3>
-                    <p class="service-description">
-                        Aplicação de feixe de luz concentrado que penetra na pele e destrói as camadas de tinta.
-                    </p>
-                    <ul class="service-features">
-                        <li>Diferentes tipos de laser</li>
-                        <li>Comprimentos de onda variados</li>
-                        <li>Cada caso avaliado individualmente</li>
-                        <li>De acordo com tinta e cor</li>
-                    </ul>
-                    <a href="/contact" class="service-button">Agendar</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">🧪</div>
-                    <h3 class="service-title">Peeling Químico</h3>
-                    <p class="service-description">
-                        Procedimento estético que utiliza substâncias ácidas para remover as camadas danificadas da pele.
-                    </p>
-                    <ul class="service-features">
-                        <li>Renovação celular profunda</li>
-                        <li>Produção de colágeno e elastina</li>
-                        <li>Tratamento de manchas e cicatrizes</li>
-                        <li>Superficial, médio ou profundo</li>
-                    </ul>
-                    <a href="/contact" class="service-button">Agendar</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">💎</div>
-                    <h3 class="service-title">CO2 Fracionado</h3>
-                    <p class="service-description">
-                        Tecnologia que utiliza feixes de luz de dióxido de carbono para tratar diversas condições da pele.
-                    </p>
-                    <ul class="service-features">
-                        <li>Tratamento de rugas e cicatrizes</li>
-                        <li>Estimula produção de colágeno</li>
-                        <li>Melhora elasticidade e firmeza</li>
-                        <li>Pele nova e mais firme</li>
-                    </ul>
-                    <a href="/contact" class="service-button">Agendar</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">⚡</div>
-                    <h3 class="service-title">Laser Lavieen</h3>
-                    <p class="service-description">
-                        Tratamento dermatológico que usa tecnologia de laser de thulium para rejuvenescer e restaurar a pele.
-                    </p>
-                    <ul class="service-features">
-                        <li>Trata manchas e cicatrizes de acne</li>
-                        <li>Melasma e rugas</li>
-                        <li>Menos invasivo, recuperação rápida</li>
-                        <li>BB Glow e problemas capilares</li>
-                    </ul>
-                    <a href="/contact" class="service-button">Agendar</a>
-                </div>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Nossos Serviços</h1>
+                <p class="hero-subtitle">Descubra todos os tratamentos de bioestética que oferecemos para realçar sua
+                    beleza natural</p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Featured Services -->
-    <section class="featured-services">
-        <div class="container">
-            <h2 class="section-title">Tratamentos em Destaque</h2>
-            <div class="featured-grid">
-                <div class="featured-card">
-                    <div class="featured-image" style="background-image: url('/assets/img/remocao_tatuagem_featured.jpg')"></div>
-                    <div class="featured-content">
-                        <h3 class="featured-title">Remoção de Tatuagem</h3>
-                        <p class="featured-description">
+        <!-- Main Services -->
+        <section class="services-content">
+            <div class="container">
+                <h2 class="section-title">Tratamentos Disponíveis</h2>
+                <p class="section-subtitle">
+                    Oferecemos uma ampla gama de procedimentos estéticos avançados, realizados por profissionais
+                    experientes
+                    com equipamentos de última geração para garantir sua segurança e os melhores resultados.
+                </p>
+
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">✨</div>
+                        <h3 class="service-title">Revitalização da Pele a Laser</h3>
+                        <p class="service-description">
+                            A Revitalização da Pele a Laser funciona profundamente na pele para ajudar seu corpo a fazer
+                            mais colágeno.
+                        </p>
+                        <ul class="service-features">
+                            <li>Estimulação da produção de colágeno</li>
+                            <li>Pele mais firme e suave</li>
+                            <li>Aparência mais uniforme</li>
+                            <li>Resultados duradouros</li>
+                        </ul>
+                        <a href="/contact" class="service-button">Agendar</a>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">💫</div>
+                        <h3 class="service-title">Depilação a Laser</h3>
+                        <p class="service-description">
+                            Solução moderna e duradoura para eliminar pelos indesejados através de aparelho que emite
+                            comprimento de onda de laser.
+                        </p>
+                        <ul class="service-features">
+                            <li>Atinge o local de crescimento do pelo</li>
+                            <li>Remoção pela raiz</li>
+                            <li>Maior dificuldade de crescer novamente</li>
+                            <li>Resultados duradouros</li>
+                        </ul>
+                        <a href="/contact" class="service-button">Agendar</a>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">🌟</div>
+                        <h3 class="service-title">Harmonização Facial</h3>
+                        <p class="service-description">
+                            Conjunto de procedimentos estéticos minimamente invasivos que buscam o equilíbrio dos traços
+                            do rosto.
+                        </p>
+                        <ul class="service-features">
+                            <li>Preenchimento com ácido hialurônico</li>
+                            <li>Aplicação de toxina botulínica</li>
+                            <li>Bioestimuladores de colágeno</li>
+                            <li>Fios de sustentação</li>
+                        </ul>
+                        <a href="/contact" class="service-button">Agendar</a>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">🎯</div>
+                        <h3 class="service-title">Remoção de Tatuagem</h3>
+                        <p class="service-description">
                             Aplicação de feixe de luz concentrado que penetra na pele e destrói as camadas de tinta.
                         </p>
-                        <a href="/contact" class="featured-link">Saiba mais →</a>
+                        <ul class="service-features">
+                            <li>Diferentes tipos de laser</li>
+                            <li>Comprimentos de onda variados</li>
+                            <li>Cada caso avaliado individualmente</li>
+                            <li>De acordo com tinta e cor</li>
+                        </ul>
+                        <a href="/contact" class="service-button">Agendar</a>
                     </div>
-                </div>
 
-                <div class="featured-card">
-                    <div class="featured-image" style="background-image: url('/assets/img/revitalizacao_featured.jpg')"></div>
-                    <div class="featured-content">
-                        <h3 class="featured-title">Revitalização da Pele a Laser</h3>
-                        <p class="featured-description">
-                            A Revitalização da Pele a Laser funciona profundamente na pele para ajudar seu corpo a fazer mais colágeno.
+                    <div class="service-card">
+                        <div class="service-icon">🧪</div>
+                        <h3 class="service-title">Peeling Químico</h3>
+                        <p class="service-description">
+                            Procedimento estético que utiliza substâncias ácidas para remover as camadas danificadas da
+                            pele.
                         </p>
-                        <a href="/contact" class="featured-link">Saiba mais →</a>
+                        <ul class="service-features">
+                            <li>Renovação celular profunda</li>
+                            <li>Produção de colágeno e elastina</li>
+                            <li>Tratamento de manchas e cicatrizes</li>
+                            <li>Superficial, médio ou profundo</li>
+                        </ul>
+                        <a href="/contact" class="service-button">Agendar</a>
                     </div>
-                </div>
 
-                <div class="featured-card">
-                    <div class="featured-image" style="background-image: url('/assets/img/peeling_quimico_featured.jpg')"></div>
-                    <div class="featured-content">
-                        <h3 class="featured-title">Peeling Químico</h3>
-                        <p class="featured-description">
-                            Procedimento estético que utiliza substâncias ácidas para remover as camadas danificadas da pele.
+                    <div class="service-card">
+                        <div class="service-icon">💎</div>
+                        <h3 class="service-title">CO2 Fracionado</h3>
+                        <p class="service-description">
+                            Tecnologia que utiliza feixes de luz de dióxido de carbono para tratar diversas condições da
+                            pele.
                         </p>
-                        <a href="/contact" class="featured-link">Saiba mais →</a>
+                        <ul class="service-features">
+                            <li>Tratamento de rugas e cicatrizes</li>
+                            <li>Estimula produção de colágeno</li>
+                            <li>Melhora elasticidade e firmeza</li>
+                            <li>Pele nova e mais firme</li>
+                        </ul>
+                        <a href="/contact" class="service-button">Agendar</a>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">⚡</div>
+                        <h3 class="service-title">Laser Lavieen</h3>
+                        <p class="service-description">
+                            Tratamento dermatológico que usa tecnologia de laser de thulium para rejuvenescer e
+                            restaurar a pele.
+                        </p>
+                        <ul class="service-features">
+                            <li>Trata manchas e cicatrizes de acne</li>
+                            <li>Melasma e rugas</li>
+                            <li>Menos invasivo, recuperação rápida</li>
+                            <li>BB Glow e problemas capilares</li>
+                        </ul>
+                        <a href="/contact" class="service-button">Agendar</a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <h2 class="cta-title">Pronto para Transformar sua Beleza?</h2>
-            <p class="cta-subtitle">
-                Agende uma avaliação gratuita e descubra qual tratamento é ideal para você
-            </p>
-            <a href="/contact" class="cta-button">Agendar Avaliação</a>
-        </div>
-    </section>
+        <!-- Featured Services -->
+        <section class="featured-services">
+            <div class="container">
+                <h2 class="section-title">Tratamentos em Destaque</h2>
+                <div class="featured-grid">
+                    <div class="featured-card">
+                        <div class="featured-image"
+                            style="background-image: url('/assets/img/remocao_tatuagem_featured.png')"></div>
+                        <div class="featured-content">
+                            <h3 class="featured-title">Remoção de Tatuagem</h3>
+                            <p class="featured-description">
+                                Aplicação de feixe de luz concentrado que penetra na pele e destrói as camadas de tinta.
+                            </p>
+                            <a href="/contact" class="featured-link">Saiba mais →</a>
+                        </div>
+                    </div>
 
-    <%- include('partials/footer') %>
+                    <div class="featured-card">
+                        <div class="featured-image"
+                            style="background-image: url('/assets/img/revitalizacao_lazer_featured.png')"></div>
+                        <div class="featured-content">
+                            <h3 class="featured-title">Revitalização da Pele a Laser</h3>
+                            <p class="featured-description">
+                                A Revitalização da Pele a Laser funciona profundamente na pele para ajudar seu corpo a
+                                fazer mais colágeno.
+                            </p>
+                            <a href="/contact" class="featured-link">Saiba mais →</a>
+                        </div>
+                    </div>
 
-    <script src="/js/mobile-menu.js"></script>
-    <script src="/js/accessibility.js"></script>
+                    <div class="featured-card">
+                        <div class="featured-image"
+                            style="background-image: url('/assets/img/peeling_quimico_featured.png')"></div>
+                        <div class="featured-content">
+                            <h3 class="featured-title">Peeling Químico</h3>
+                            <p class="featured-description">
+                                Procedimento estético que utiliza substâncias ácidas para remover as camadas danificadas
+                                da pele.
+                            </p>
+                            <a href="/contact" class="featured-link">Saiba mais →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <h2 class="cta-title">Pronto para Transformar sua Beleza?</h2>
+                <p class="cta-subtitle">
+                    Agende uma avaliação gratuita e descubra qual tratamento é ideal para você
+                </p>
+                <a href="/contact" class="cta-button">Agendar Avaliação</a>
+            </div>
+        </section>
+
+        <%- include('partials/footer') %>
+
+            <script src="/js/mobile-menu.js"></script>
+            <script src="/js/accessibility.js"></script>
 </body>
+
 </html>
